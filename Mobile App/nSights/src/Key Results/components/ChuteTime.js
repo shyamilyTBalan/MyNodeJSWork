@@ -17,7 +17,7 @@ const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.tt
 
 
 
-export default class HospitalTurnaroudTime extends Component {
+export default class ChuteTime extends Component {
 
     constructor(props) {
         super(props);

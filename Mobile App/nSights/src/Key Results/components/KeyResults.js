@@ -39,11 +39,12 @@ export default class Home extends Component {
               </Row>
               <Row>
               <Col style={{width:'100%',alignItems:'center',flex:2}}>
-              <Row style={{width:'60%',alignItems:'center',justifyContent:'space-around',marginTop:10,marginBottom:10}}>
+              <Row style={{width:'50%',alignItems:'center',justifyContent:'space-around',marginTop:10,marginBottom:10}}>
               {/* <ImageBackground source={require('../../../assets/images/all.png')} style={{ width: 31, height: 31,  }}>
               <Text>All
                 </Text>
                 </ImageBackground> */}
+                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/all1.png')} />
               <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy1.png')} />
               <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile2.png')} />
               <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh1.png')} />
@@ -65,7 +66,7 @@ export default class Home extends Component {
               </Card>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('HospitalTurnaroundTime')}>
+            <TouchableOpacity  onPress={() => this.props.navigation.navigate('ChuteTime')}>
             <Card >
               <CardItem padder  >               
                   <Body style={{justifyContent: 'center',flex:2}} >
@@ -77,7 +78,7 @@ export default class Home extends Component {
               </CardItem>
             </Card>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('HospitalTurnaroundTime')}>
+          <TouchableOpacity  onPress={() => this.props.navigation.navigate('ResponseTime')}>
               <Card >
                 <CardItem padder  >               
                     <Body style={{justifyContent: 'center',flex:2}} >
@@ -89,7 +90,7 @@ export default class Home extends Component {
                 </CardItem>
               </Card>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('HospitalTurnaroundTime')}>
+            <TouchableOpacity  onPress={() => this.props.navigation.navigate('OnSceneTime')}>
               <Card >
                 <CardItem padder  >               
                     <Body style={{justifyContent: 'center',flex:2}} >

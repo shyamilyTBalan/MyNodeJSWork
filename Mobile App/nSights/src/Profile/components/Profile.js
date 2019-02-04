@@ -58,7 +58,7 @@ export default class Home extends Component {
                     <View style={{ marginTop: 5, width: '25%', alignSelf: 'flex-start', alignItems: 'center' }}>
                       <Text style={{ fontFamily: "avenir light", fontSize: 10, color: '#B37601' }}>RECEIVED
                       </Text>
-                      <Text style={{ fontFamily: "avenir light", fontSize: 24, color: '#B37601' }}>45</Text>
+                      <Text style={{ fontFamily: "avenir light", fontSize: 24, color: '#B37601' }}>23</Text>
                     </View>
                   </ImageBackground>
                 </View>

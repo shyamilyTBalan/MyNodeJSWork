@@ -6,10 +6,15 @@ import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer
 import { Platform, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
-import HospitalTurnaroundTime from '../../../src/Key Results/components/HospitalTurnaroundTime'
+
 import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
 import Login from '../../../src/Login/components/Login'
 import KeyResults from '../../../src/Key Results/components/KeyResults'
+import HospitalTurnaroundTime from '../../../src/Key Results/components/HospitalTurnaroundTime'
+import ChuteTime from '../../../src/Key Results/components/ChuteTime'
+import ResponseTime from '../../../src/Key Results/components/ResponseTime'
+import OnSceneTime from '../../../src/Key Results/components/OnSceneTime'
+
 import Feedback from '../../../src/Feedback/components/Feedback'
 import Profile from '../../../src/Profile/components/Profile'
 import LeaderBoards from '../../../src/Leader Boards/components/LeaderBoards'
@@ -266,7 +271,46 @@ const KeyResultsStack = createStackNavigator({
      
     }, screen: HospitalTurnaroundTime
   },
+  ChuteTime: {
+    navigationOptions: {
+    
+      title: 'Chute Time',
+      headerStyle: {
+        backgroundColor: '#F7941D',
+        textAlign: 'center',
+      },
+      headerTintColor: '#fff',
+     
+    }, screen: ChuteTime
+  },
+  ResponseTime: {
+    navigationOptions: {
+    
+      title: 'Response Time',
+      headerStyle: {
+        backgroundColor: '#F7941D',
+        textAlign: 'center',
+      },
+      headerTintColor: '#fff',
+     
+    }, screen: ResponseTime
+  },
+  OnSceneTime: {
+    navigationOptions: {
+      
+    
+      title: 'On-Scene Time',
+      headerStyle: {
+        backgroundColor: '#F7941D',
 
+      },
+      headerTitleStyle :{flex: 1,textAlign: 'center',},    
+
+     
+      headerTintColor: '#fff',
+     
+    }, screen: OnSceneTime
+  },
 });
 
 export default createAppContainer(

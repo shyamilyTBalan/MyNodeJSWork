@@ -94,17 +94,6 @@ const posts = [
 
 class Home extends Component {
 
-  // static navigationOptions = ({ navigation }) => {
-  //   return {
-  //     headerTitle: 'nSights',
-  //     headerRight: (
-  //       <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/group6.png')} />
-  //     ),
-  //     headerLeft: (
-  //       <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Bookmark.png')} />
-  //     ),
-  //   };
-  // };
   componentWillUnmount() {
     Alert.alert(
         'Exit nSights',

@@ -79,6 +79,7 @@ export default class Feedback extends Component {
     super(props);
     this.state = {
       checkbox: false,
+      stars: 5,
       qualities: "Professionalism"
       }
 
@@ -93,6 +94,22 @@ export default class Feedback extends Component {
       checkbox: !this.state.checkbox
     });
   }
+
+
+  generateStars = () => {
+    var stars = this.state.stars;
+    
+    for (var i=0; i < stars; i++) {
+      <Linericon name='Star' size={28} color='#FFCB05' />
+    }
+  
+}
+
+
+
+
+
+
 
 
   pickerValues = (data) => {
@@ -116,7 +133,8 @@ export default class Feedback extends Component {
         </View>)
     }
     else  if (this.state.qualities === "Team Work" ) {
-      return (  <View>
+      return (  
+      <View>
          <Row>
          <Content>
          <View style={{ flex: 1, flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'center' }}>
@@ -169,11 +187,12 @@ export default class Feedback extends Component {
                     </Row>
                     <Row>
                       <View style={{ flex: 1, flexDirection: 'row' }}>
+                        {/* <Linericon name='Star' size={28} color='#FFCB05' />
                         <Linericon name='Star' size={28} color='#FFCB05' />
                         <Linericon name='Star' size={28} color='#FFCB05' />
                         <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
+                        <Linericon name='Star' size={28} color='#FFCB05' /> */}
+                        {this.generateStars}
                       </View>
                     </Row>
                     <Row>

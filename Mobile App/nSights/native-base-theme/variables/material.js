@@ -217,10 +217,10 @@ export default {
   },
 
   // Segment
-  segmentBackgroundColor: "#f7941d",
-  segmentActiveBackgroundColor: "#fff",
-  segmentTextColor: "#fff",
-  segmentActiveTextColor: "#f7941d",
+  segmentBackgroundColor: "#F3F3F3",
+  segmentActiveBackgroundColor: "#f7941d",
+  segmentTextColor: "#D1D3D4",
+  segmentActiveTextColor: "#fff",
   segmentBorderColor: "#fff",
   segmentBorderColorMain: "#f7941d",
 

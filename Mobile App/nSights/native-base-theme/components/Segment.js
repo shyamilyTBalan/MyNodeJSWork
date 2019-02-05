@@ -6,14 +6,15 @@ export default (variables /*: * */ = variable) => {
   const platform = variables.platform;
 
   const segmentTheme = {
-    height: 45,
+    height: 28,
+ 
     borderColor: variables.segmentBorderColorMain,
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: variables.segmentBackgroundColor,
     "NativeBase.Button": {
       alignSelf: "center",
-      borderRadius: 0,
+      borderRadius: 14,
       paddingTop: 3,
       paddingBottom: 3,
       height: 30,

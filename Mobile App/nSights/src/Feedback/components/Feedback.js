@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react';
 import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Label, List,Icon, ListItem, Button, Left, Right, Body,CheckBox, StyleProvider, Form, Card, Picker, CardItem } from 'native-base';
 import { Platform, StyleSheet, ScrollView, TextInput, Image, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
@@ -12,11 +14,15 @@ const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.tt
 const questionnaire = {
 	"Professionalism": [{
 			"id": 1,
-			"name": " I've observed that"
+			"name": "I've observed that"
 		},
 		{
-			"id": 1,
-			"name": " I've observed that"
+			"id": 2,
+			"name": "I mention this because"
+    },
+    {
+			"id": 3,
+			"name": "One suggestion that I have"
 		}
 	],
 	"Patient Care": [{

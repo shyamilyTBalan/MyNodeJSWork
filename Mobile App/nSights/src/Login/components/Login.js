@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Title, Content, Input, Text, InputGroup, Item, Label, Footer, FooterTab, Button, Left, Right, Body, StyleProvider } from 'native-base';
 import { Platform, Alert, StyleSheet, ScrollView, TextInput, Image, View, TouchableOpacity, TouchableHighlight } from 'react-native';
 
-import HomeScreen from '../../../src/Home/components/Home'
+import Home from '../../../src/Home/components/Home'
 
 
 
@@ -90,7 +90,7 @@ export default class Login extends Component {
                         <Label style={{ fontFamily:'avenir light', alignSelf: 'flex-start', color: '#000000', marginBottom: 10, }}>Enter your email</Label>
                         <View style={styles.inputContainer}>
                             <TextInput  
-                          
+
                                 selectionColor={'#f7941d'}
                                 onFocus={this.handleFocusEmail}
                                 onBlur={this.handleBlurEmail}
@@ -103,8 +103,11 @@ export default class Login extends Component {
                                 style={[styles.textInput, { borderColor: isFocusedEmail ? '#f7941d' : '#D1D3D4' }]}
                                 ref={input => {
                                     this.inputs['Enter your email'] = input;
-                                }} placeholderTextColor="#939598" value={this.state.name}
-                                onChangeText={name => this.setState({ name })} />
+                                }} placeholderTextColor="#939598" 
+                               // value={'John'}
+                                value={this.state.name}
+                                onChangeText={name => this.setState({ name })}
+                                 />
                         </View>
                         <Label style={{ fontFamily:'avenir light',alignSelf: 'flex-start', color: '#000000', marginBottom: 10, }}>Enter your password</Label>
                         <View style={styles.inputContainer}>
@@ -117,8 +120,11 @@ export default class Login extends Component {
                                 ref={input => {
                                     this.inputs['Enter your password'] = input;
                                 }}
-                                secureTextEntry={true} placeholderTextColor="#939598" value={this.state.Password}
-                                onChangeText={Password => this.setState({ Password })} />
+                                secureTextEntry={true} placeholderTextColor="#939598"
+                               // value={'123'}
+                                 value={this.state.Password}
+                                onChangeText={Password => this.setState({ Password })} 
+                                />
                         </View>
                         <View style={styles.buttonContainer}>
                             <TouchableOpacity style={[styles.button, styles.loginButton]} onPress={this.login}>
@@ -215,3 +221,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#f7941d"
     },
 });
+
+
+
+
+
+
+
+

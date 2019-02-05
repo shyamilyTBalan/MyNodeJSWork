@@ -3,12 +3,18 @@
 
 import React, { Component } from 'react';
 import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
-import { Platform, StyleSheet, ScrollView, TextInput,Alert,BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
+import { Platform, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+
+import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
 import Login from '../../../src/Login/components/Login'
 import KeyResults from '../../../src/Key Results/components/KeyResults'
+import HospitalTurnaroundTime from '../../../src/Key Results/components/HospitalTurnaroundTime'
+import ChuteTime from '../../../src/Key Results/components/ChuteTime'
+import ResponseTime from '../../../src/Key Results/components/ResponseTime'
+import OnSceneTime from '../../../src/Key Results/components/OnSceneTime'
+
 import Feedback from '../../../src/Feedback/components/Feedback'
 import Profile from '../../../src/Profile/components/Profile'
 import LeaderBoards from '../../../src/Leader Boards/components/LeaderBoards'
@@ -96,16 +102,16 @@ class Home extends Component {
 
   componentWillUnmount() {
     Alert.alert(
-        'Exit nSights',
-        'Do you want to exit?',
-        [
-            { text: 'Cancel', onPress: () => this.props.navigation.push('Home'), style: 'cancel' },
-            { text: 'OK', onPress: () => BackHandler.exitApp() },
-        ],
-        { cancelable: false }
+      'Exit nSights',
+      'Do you want to exit?',
+      [
+        { text: 'Cancel', onPress: () => this.props.navigation.push('Home'), style: 'cancel' },
+        { text: 'OK', onPress: () => BackHandler.exitApp() },
+      ],
+      { cancelable: false }
     );
 
-}
+  }
   render() {
     return (
 
@@ -137,10 +143,10 @@ class Home extends Component {
             <Card style={{ marginRight: 10, marginLeft: 10 }}>
               <View
                 style={{ flex: 1, flexDirection: 'row', width: '90%', paddingLeft: 10 }}>
-                <View style={{ width: '10%', marginTop: 7}}>
+                <View style={{ width: '10%', marginTop: 7 }}>
                   <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
                 <View style={{ width: '100%' }}><TextInput multiline
-                  style={{ height: 60, fontFamily: "avenir light" ,   textAlignVertical: 'top'}}
+                  style={{ height: 60, fontFamily: "avenir light", textAlignVertical: 'top' }}
                   placeholderTextColor="#939598"
                   placeholder="Use @ mention to recognize your teammates and give them Kudos"
                 /></View>
@@ -176,7 +182,7 @@ class Home extends Component {
                               {data.targetuser} </Text>
                           </Text>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row',  justifyContent: 'flex-end', width: '28%' }}>
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', width: '28%' }}>
                           <Text note >{data.datetime}</Text>
                           <Image style={{ maxWidth: '100%', maxHeight: '100%', marginRight: 15, marginTop: 10 }} source={require('../../../assets/images/arrowDown.png')} />
                         </View>
@@ -212,7 +218,6 @@ class Home extends Component {
 
 
           </Content>
-          {/* </Container> */}
 
         </Container>
       </StyleProvider>
@@ -223,6 +228,108 @@ class Home extends Component {
   }
 }
 
+const HomeStack = createStackNavigator({
+
+  Home: {
+
+    navigationOptions: {
+      header: null,
+    },
+    screen: Home,
+  }
+
+
+
+
+});
+
+const KeyResultsStack = createStackNavigator({
+  KeyResults: {
+    navigationOptions: {
+      header: null,
+    }, screen: KeyResults
+  },
+  HospitalTurnaroundTime: {
+    navigationOptions: {
+    
+      title: 'Hospital Turnaround Time',
+      headerStyle: {
+        backgroundColor: '#F7941D',
+      },
+      headerTintColor: '#fff',
+     
+    }, screen: HospitalTurnaroundTime
+  },
+  ChuteTime: {
+    navigationOptions: {
+    
+      title: 'Chute Time',
+      headerStyle: {
+        backgroundColor: '#F7941D',
+        textAlign: 'center',
+      },
+      headerTintColor: '#fff',
+     
+    }, screen: ChuteTime
+  },
+  ResponseTime: {
+    navigationOptions: {
+    
+      title: 'Response Time',
+      headerStyle: {
+        backgroundColor: '#F7941D',
+        textAlign: 'center',
+      },
+      headerTintColor: '#fff',
+     
+    }, screen: ResponseTime
+  },
+  OnSceneTime: {
+    navigationOptions: {
+      
+    
+      title: 'On-Scene Time',
+      headerStyle: {
+        backgroundColor: '#F7941D',
+
+      },
+      headerTitleStyle :{flex: 1,textAlign: 'center',},    
+
+     
+      headerTintColor: '#fff',
+     
+    }, screen: OnSceneTime
+  },
+});
+
+export default createAppContainer(
+   createBottomTabNavigator(
+  {
+    // Home: { screen: HomeStack },
+    // Settings: { screen: SettingsStack },
+    Home: { screen: Home },
+    KeyResults: { screen: KeyResultsStack },
+    Feedback: { screen: Feedback },
+    LeaderBoards: { screen: LeaderBoards },
+    Profile: { screen: Profile },
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) =>
+        getTabBarIcon(navigation, focused, tintColor),
+    }),
+    tabBarOptions: {
+
+      activeTintColor: '#F7941D',
+      inactiveTintColor: '#D1D3D4',
+      style: {
+
+        elevation: 2
+      }
+    },
+    lazy: true,
+  }
+));
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
   const { routeName } = navigation.state;
@@ -251,32 +358,3 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
 
   return <Linericon name={iconName} size={24} color={iconcolor} />;
 };
-
-export default createAppContainer(
-  createBottomTabNavigator(
-    {
-      Home: { screen: Home },
-      KeyResults: { screen: KeyResults },
-      Feedback: { screen: Feedback },
-      LeaderBoards: { screen: LeaderBoards },
-      Profile: { screen: Profile },
-
-    },
-    {
-      defaultNavigationOptions: ({ navigation }) => ({
-        tabBarIcon: ({ focused, tintColor }) =>
-          getTabBarIcon(navigation, focused, tintColor),
-      }),
-      tabBarOptions: {
-
-        activeTintColor: '#F7941D',
-        inactiveTintColor: '#D1D3D4',
-        style: {
-         
-          elevation:2
-        }
-      },
-      lazy: true,
-    }
-  )
-);

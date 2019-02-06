@@ -1,7 +1,7 @@
 
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Label, List,Icon, ListItem, Button, Left, Right, Body,CheckBox, StyleProvider, Form, Card, Picker, CardItem } from 'native-base';
+import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Label, List, ListItem, Button,Icon, Left, Right, Body,CheckBox, StyleProvider, Form, Card, Picker, CardItem } from 'native-base';
 import { Platform, StyleSheet, ScrollView, TextInput, Image, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import getTheme from '../../../native-base-theme/components';
@@ -9,16 +9,18 @@ import material from '../../../native-base-theme/variables/material';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import icoMoonConfig from '../../../selection.json';
-
+import StarRating from 'react-native-star-rating';
+import Icon1 from 'react-native-vector-icons/FontAwesome';
+ 
 const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
 const questionnaire = {
 	"Professionalism": [{
 			
-			"label": " I've observed that"
+			"label": "I've observed that"
 		},
 		{
-			"label": " I've observed that"
+			"label": "One suggestion that I have"
 		}
 	],
 	"Patient Care": [{
@@ -26,10 +28,10 @@ const questionnaire = {
       "label": "I mention this because"
 		},
 		{
-      "label": "I mention this because"
+      "label": "One suggestion that I have"
     },
     {
-      "label": "I mention this because"
+      "label": "I've observed that"
 		}
 	],
 	"Team Work": [{
@@ -38,7 +40,11 @@ const questionnaire = {
 		},
 		{
 		
-			"label": "One suggestion that I have"
+			"label": "I've observed that"
+    },
+    {
+		
+			"label": "I mention this because"
 		}
 	],
 
@@ -53,7 +59,7 @@ const questionnaire = {
 	],
 	"Leadership": [{
 			
-			"label": "I've observed that"
+			"label": "I mention this because"
 		},
 		{
 		
@@ -62,10 +68,7 @@ const questionnaire = {
 	]
 
 }
-// var radio_props = [
-//   {label: 'param1', value: 0 },
-//   {label: 'param2', value: 1 }
-// ];
+
 
 export default class Feedback extends Component {
 
@@ -81,19 +84,44 @@ export default class Feedback extends Component {
     super(props);
     this.state = {
       checkbox: false,
-      stars: 5,
+      profilerating: 5,
+      starCount1: 1,
+      starCount2: 1,
+      starCount3: 1,
+      starCount4: 1,
+      starCount5: 1,
       qualities: "Professionalism"
       }
-
-
-
-   
-  
-    
   }
   toggleSwitch() {
     this.setState({
       checkbox: !this.state.checkbox
+    });
+  }
+
+  onStarRatingPress1(rating) {
+    this.setState({
+      starCount1: rating
+    });
+  }
+  onStarRatingPress2(rating) {
+    this.setState({
+      starCount2: rating
+    });
+  }
+  onStarRatingPress3(rating) {
+    this.setState({
+      starCount3: rating
+    });
+  }
+  onStarRatingPress4(rating) {
+    this.setState({
+      starCount4: rating
+    });
+  }
+  onStarRatingPress5(rating) {
+    this.setState({
+      starCount5: rating
     });
   }
 
@@ -255,11 +283,17 @@ else if (this.state.qualities === "Leadership" ) {
                     </Row>
                     <Row>
                       <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
+                      {/* <Linericon name='Star' size={28} color='#FFCB05' />
+                      <Linericon name='Star' size={28} color='#FFCB05' />
+                      <Linericon name='Star' size={28} color='#FFCB05' />
+                      <Linericon name='Star' size={28} color='#FFCB05' />
+                      <Linericon name='Star' size={28} color='#FFCB05' /> */}
+                      <StarRating
+                       disabled={true}
+                       maxStars={5}
+                       rating={this.state.profilerating}
+                      //  selectedStar={(rating) => this.onStarRatingPress1(rating)}
+                        />
                       </View>
                     </Row>
                     <Row>
@@ -282,11 +316,14 @@ else if (this.state.qualities === "Leadership" ) {
                     </Left>
                     <Right>
                       <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
+                         <Icon1  name='star' size={26} color='#FFCB05' />
+                        <StarRating
+                       disabled={false}
+                       maxStars={4}
+                       rating={this.state.starCount1}
+                       selectedStar={(rating) => this.onStarRatingPress1(rating)}
+                        />
+                         
                       </View>
                     </Right>
                   </Row>
@@ -296,11 +333,13 @@ else if (this.state.qualities === "Leadership" ) {
                     </Left>
                     <Right>
                       <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
+                      <Icon1  name='star' size={26} color='#FFCB05' />
+                      <StarRating
+                       disabled={false}
+                       maxStars={4}
+                       rating={this.state.starCount2}
+                       selectedStar={(rating) => this.onStarRatingPress2(rating)}
+                        />
                       </View>
                     </Right>
                   </Row>
@@ -310,11 +349,13 @@ else if (this.state.qualities === "Leadership" ) {
                     </Left>
                     <Right>
                       <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
+                      <Icon1  name='star' size={26} color='#FFCB05' />
+                      <StarRating
+                       disabled={false}
+                       maxStars={4}
+                       rating={this.state.starCount3}
+                       selectedStar={(rating) => this.onStarRatingPress3(rating)}
+                        />
                       </View>
                     </Right>
                   </Row>
@@ -324,11 +365,13 @@ else if (this.state.qualities === "Leadership" ) {
                     </Left>
                     <Right>
                       <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
+                      <Icon1  name='star' size={26} color='#FFCB05' />
+                      <StarRating
+                       disabled={false}
+                       maxStars={4}
+                       rating={this.state.starCount4}
+                       selectedStar={(rating) => this.onStarRatingPress4(rating)}
+                        />
                       </View>
                     </Right>
                   </Row>
@@ -338,11 +381,13 @@ else if (this.state.qualities === "Leadership" ) {
                     </Left>
                     <Right>
                       <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' />
+                      <Icon1  name='star' size={26} color='#FFCB05' />
+                      <StarRating
+                       disabled={false}
+                       maxStars={4}
+                       rating={this.state.starCount5}
+                       selectedStar={(rating) => this.onStarRatingPress5(rating)}
+                        />
                       </View>
                     </Right>
                   </Row>
@@ -366,7 +411,9 @@ else if (this.state.qualities === "Leadership" ) {
        <Container  style={styles.pickerContainer} >
        <View style={{ flex: 1, flexDirection: 'row'}}>
             <Picker   style={styles.picker}
-            selectedValue = {this.state.qualities} onValueChange = {this.updateUser}>
+            selectedValue = {this.state.qualities} onValueChange = {this.updateUser} 
+            itemStyle={styles.pickeritemstyle}
+            >
             
             <Picker.Item label="Professionalism" value="Professionalism" key="0"/>
             <Picker.Item label="Patient Care" value="Patient Care" key="1"/>
@@ -441,16 +488,19 @@ pickerContainer: {
   borderColor :'#CB9B41',
   borderRadius: 5,
   flexDirection: 'column',
-  alignItems: 'center',
+ // alignItems: 'center',
  
+},
+pickeritemstyle: {
+  backgroundColor: '#d3d3d3'
 },
 picker: {
   height: 40,
   flexDirection: 'row',
-  backgroundColor: '#FDE5BE',
+  backgroundColor:'#FDE5BE',
   borderRadius: 10,
   marginTop: 2,
-   width: 100,
+   width: 150,
   },
   labelstyle: {
     fontFamily:'avenir light',

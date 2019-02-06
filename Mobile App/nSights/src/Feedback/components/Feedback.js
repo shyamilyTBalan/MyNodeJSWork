@@ -7,63 +7,65 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import icoMoonConfig from '../../../selection.json';
 
 const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
 const questionnaire = {
 	"Professionalism": [{
-			"id": 1,
-			"name": "I've observed that"
+			
+			"label": " I've observed that"
 		},
 		{
-			"id": 2,
-			"name": "I mention this because"
-    },
-    {
-			"id": 3,
-			"name": "One suggestion that I have"
+			"label": " I've observed that"
 		}
 	],
 	"Patient Care": [{
-			"id": 1,
-			"name": "I mention this because"
+
+      "label": "I mention this because"
 		},
 		{
-			"id": 2,
-			"name": "I mention this because"
+      "label": "I mention this because"
+    },
+    {
+      "label": "I mention this because"
 		}
 	],
 	"Team Work": [{
-			"id": 1,
-			"name": "One suggestion that I have"
+	
+			"label": "One suggestion that I have"
 		},
 		{
-			"id": 2,
-			"name": "One suggestion that I have"
+		
+			"label": "One suggestion that I have"
 		}
 	],
 
 	"Attitude": [{
-			"id": 1,
-			"name": "ckj lsfjk fbjkl"
+			
+			"label": "I've observed that"
 		},
 		{
-			"id": 2,
-			"name": "ckj lsfjk fbjkl"
+		
+			"label": "One suggestion that I have"
 		}
 	],
 	"Leadership": [{
-			"id": 1,
-			"name": "fdysilgf frduagio"
+			
+			"label": "I've observed that"
 		},
 		{
-			"id": 2,
-			"name": "fdysilgf frduagio"
+		
+			"label": "One suggestion that I have"
 		}
 	]
 
 }
+// var radio_props = [
+//   {label: 'param1', value: 0 },
+//   {label: 'param2', value: 1 }
+// ];
 
 export default class Feedback extends Component {
 
@@ -96,31 +98,17 @@ export default class Feedback extends Component {
   }
 
 
-  generateStars = () => {
-    var stars = this.state.stars;
-    
-    for (var i=0; i < stars; i++) {
-      <Linericon name='Star' size={28} color='#FFCB05' />
-    }
-  
-}
-
-
-
-
-
-
-
-
-  pickerValues = (data) => {
+  pickerValues = (val) => {
    
   
     if (this.state.qualities === "Professionalism" ) {
+      return  val.map((data) =>{
       return (
+       
       <View>
       <Row>
       <Label style={styles.labelstyle}>
-      {data.name}</Label>
+      {data.label}</Label>
       </Row>
       <Row >
       <Content>
@@ -130,27 +118,107 @@ export default class Feedback extends Component {
        </Item>
       </Content>
         </Row>
-        </View>)
+        </View> )
+     })
     }
-    else  if (this.state.qualities === "Team Work" ) {
+    else  if (this.state.qualities === "Patient Care" ) {
       return (  
       <View>
          <Row>
          <Content>
          <View style={{ flex: 1, flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'center' }}>
-         <CheckBox
-  center
-   color="#A7A9AC"
-  checked={this.state.checkbox}
-  onPress={() => this.toggleSwitch()}
-/>
-
-<Text style={{ fontFamily:'avenir light', fontSize: 12, fontWeight: 'normal', marginLeft: 15 }}>{data.name}</Text>
+      
+      
+         <RadioForm
+          radio_props={val}
+          initial={0}
+          onPress={(value) => {this.setState({value:value})}}
+        />
       </View>    
 </Content>
            </Row>
          </View>)
     }
+//     else  if (this.state.qualities === "Team Work" ) {
+//       return  val.map((data) =>{
+//       return ( 
+      
+//       <View>
+//          <Row>
+//          <Content>
+//          <View style={{ flex: 1, flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'center' }}>
+//          <CheckBox
+//   center
+//    color="#A7A9AC"
+//   checked={this.state.checkbox}
+//   onPress={() => this.toggleSwitch()}
+// />
+
+// <Text style={{ fontFamily:'avenir light', fontSize: 12, fontWeight: 'normal', marginLeft: 15 }}>{data.name}</Text>
+//       </View>    
+// </Content>
+//            </Row>
+//          </View> )
+//       })
+//     }
+else if (this.state.qualities === "Team Work" ) {
+  return  val.map((data) =>{
+  return (
+   
+  <View>
+  <Row>
+  <Label style={styles.labelstyle}>
+  {data.label}</Label>
+  </Row>
+  <Row >
+  <Content>
+  <Item style={{borderRadius: 5, borderWidth: 1}}  regular>
+     <Input style={styles.inputstyle} 
+     multiline  />
+   </Item>
+  </Content>
+    </Row>
+    </View> )
+ })
+}
+else  if (this.state.qualities === "Attitude" ) {
+  return (  
+  <View>
+     <Row>
+     <Content>
+     <View style={{ flex: 1, flexDirection: 'row', marginTop: 20, alignItems: 'center', justifyContent: 'center' }}>
+  
+  
+     <RadioForm
+      radio_props={val}
+      initial={0}
+      onPress={(value) => {this.setState({value:value})}}
+    />
+  </View>    
+</Content>
+       </Row>
+     </View>)
+}
+else if (this.state.qualities === "Leadership" ) {
+  return  val.map((data) =>{
+  return (
+   
+  <View>
+  <Row>
+  <Label style={styles.labelstyle}>
+  {data.label}</Label>
+  </Row>
+  <Row >
+  <Content>
+  <Item style={{borderRadius: 5, borderWidth: 1}}  regular>
+     <Input style={styles.inputstyle} 
+     multiline  />
+   </Item>
+  </Content>
+    </Row>
+    </View> )
+ })
+}
 }
 
   render() {
@@ -187,12 +255,11 @@ export default class Feedback extends Component {
                     </Row>
                     <Row>
                       <View style={{ flex: 1, flexDirection: 'row' }}>
-                        {/* <Linericon name='Star' size={28} color='#FFCB05' />
                         <Linericon name='Star' size={28} color='#FFCB05' />
                         <Linericon name='Star' size={28} color='#FFCB05' />
                         <Linericon name='Star' size={28} color='#FFCB05' />
-                        <Linericon name='Star' size={28} color='#FFCB05' /> */}
-                        {this.generateStars}
+                        <Linericon name='Star' size={28} color='#FFCB05' />
+                        <Linericon name='Star' size={28} color='#FFCB05' />
                       </View>
                     </Row>
                     <Row>
@@ -295,7 +362,7 @@ export default class Feedback extends Component {
                
 
               <Row style={{marginTop: 20}}>    
-        {/* <View> */}
+       
        <Container  style={styles.pickerContainer} >
        <View style={{ flex: 1, flexDirection: 'row'}}>
             <Picker   style={styles.picker}
@@ -311,74 +378,14 @@ export default class Feedback extends Component {
             <Icon type='Entypo' name='chevron-small-down' size={5} style={{ color: "#CB9B41", marginTop: 10 }} />
          </View>
         </Container>
-         {/* </View> */}
+        
               </Row>
 
          
           
              
-              {questionnaire[this.state.qualities].map((data, i) =>
-                
-                this.pickerValues(data)
-)}
- 
- {/* <View>
-<Row>
-<Label style={styles.labelstyle}>
-{data['name']}</Label>
-</Row>
-<Row >
-<Content>
-<Item style={{borderRadius: 5, borderWidth: 1}}  regular>
-   <Input style={styles.inputstyle} 
-   multiline  />
- </Item>
-</Content>
-  </Row> 
-                </View>  */}
-                
-               
+              { this.pickerValues(questionnaire[this.state.qualities])}
 
-         {/* <Row>
-         <Label style={styles.labelstyle}>
-         I've observed that</Label>
-         </Row>
-         <Row >
-         <Content>
-         <Item style={{borderRadius: 5, borderWidth: 1}}  regular>
-            <Input style={styles.inputstyle} 
-            multiline placeholder='your assessment for a recent chest pain call was spot on' />
-          </Item>
-         </Content>
-        
-           </Row>
-
-           <Row>
-           <Label style={styles.labelstyle}>
-         I mention this because</Label>
-         </Row>
-         <Row>
-         <Content>
-         <Item style={{borderRadius: 5, borderWidth: 1}} regular>
-            <Input  style={styles.inputstyle}  multiline placeholder='I was impressed with your clinical skills' />
-          </Item>
-         
-         </Content>
-         
-           </Row>
-
-           <Row>
-         <Label style={styles.labelstyle}>
-         One suggestion that I have</Label>
-         </Row>
-         <Row>
-         <Content>
-         <Item style={{borderRadius: 5, borderWidth: 1}} regular>
-            <Input style={styles.inputstyle} multiline placeholder='is to keep up the good' />
-          </Item>
-         </Content>
-           </Row> */}
-           
          <Row>
          <Content>
          <View style={{ flex: 1, flexDirection: 'row', marginTop: 15, alignItems: 'center', justifyContent: 'center' }}>
@@ -421,12 +428,10 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: '100%',
     height: '100%',
-    // marginLeft: '20%',
-    // marginRight: '80%',
      marginTop: 20,
     flexDirection: 'column',
     alignItems: 'center',
-    // backgroundColor: 'red'
+   
 },
 pickerContainer: {
   width: '100%',
@@ -434,13 +439,10 @@ pickerContainer: {
   backgroundColor: '#FDE5BE',
   borderWidth: 1,
   borderColor :'#CB9B41',
-  // marginLeft: '20%',
-  // marginRight: '80%',
-  //  marginTop: 20
   borderRadius: 5,
   flexDirection: 'column',
   alignItems: 'center',
-  // backgroundColor: 'red'
+ 
 },
 picker: {
   height: 40,

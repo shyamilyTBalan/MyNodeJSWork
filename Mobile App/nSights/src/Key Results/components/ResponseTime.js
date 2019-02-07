@@ -6,7 +6,7 @@ import { Platform, StyleSheet, ScrollView, ActivityIndicator, Dimensions, TextIn
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import { Col, Row, Grid } from "react-native-easy-grid";
-import { BarChart, XAxis } from 'react-native-svg-charts'
+import { BarChart, XAxis, AreaChart, LineChart, YAxis, Grid as Grid1 } from 'react-native-svg-charts'
 import Svg, { Circle } from 'react-native-svg'
 import * as scale from 'd3-scale'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
@@ -27,38 +27,45 @@ export default class ResponseTime extends Component {
     }
     state = { selected: 1 }
     render() {
-        const data1 = [195, 150, 180, 155, 140, 180, 192]
-            .map((value) => ({ value }))
-        const data2 = [180, 190, 193, 195, 190, 140, 150]
-            .map((value) => ({ value }))
-        const data3 = [190, 125, 160, 125, 120, 150, 128]
-            .map((value) => ({ value }))
+        const data1 = [80, 60, 74, 95, 85, 91, 70,]
+        const data2 = [50, 50, 50, 50, 50, 50, 50]
+
+        const data3 = [70, 80, 70, 50, 80, 80, 71,]
+     //   const data5 = [10, 80, 70, 50, 80, 40, 71, 80, 40, 71]
 
         const data = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
+        // const data1 = [195, 150, 180, 155, 140, 180, 192]
+        //     .map((value) => ({ value }))
+        // const data2 = [180, 190, 193, 195, 190, 140, 150]
+        //     .map((value) => ({ value }))
+        // const data3 = [190, 125, 160, 125, 120, 150, 128]
+        //     .map((value) => ({ value }))
 
 
-        const barData = [
-            {
-                data: data1,
-                svg: {
-                    fill: '#F7941D', 
-                   borderRadius:100
-                },
-            },
-            {
-                data: data2,
-                svg: {
-                    fill: '#FAB007',
-                },
-            },
-            {
-                data: data3,
-                svg: {
-                    fill: '#E67702',
-                },
-            },
-        ]
+
+
+        // const barData = [
+        //     {
+        //         data: data1,
+        //         svg: {
+        //             fill: '#F7941D',
+        //             borderRadius: 100
+        //         },
+        //     },
+        //     {
+        //         data: data2,
+        //         svg: {
+        //             fill: '#FAB007',
+        //         },
+        //     },
+        //     {
+        //         data: data3,
+        //         svg: {
+        //             fill: '#E67702',
+        //         },
+        //     },
+        // ]
 
         const barWidth = Dimensions.get('screen').width - 30;
 
@@ -84,7 +91,7 @@ export default class ResponseTime extends Component {
                     <Header hasSegment style={{ backgroundColor: 'white' }}>
 
                         <Body>
-                            <Segment style={{ width: 204, borderRadius: 14 }}>
+                            <Segment style={{ width: 300, borderRadius: 14 }}>
                                 <Button first active={this.state.selected === 1} style={styles.segmentButton} onPress={() => this.setState({ selected: 1 })}>
                                     <Text uppercase={false} style={{ fontFamily: "avenir light", fontSize: 14, }}>Week</Text>
                                 </Button>
@@ -148,39 +155,61 @@ export default class ResponseTime extends Component {
 Keep up the good work!
                             </Text>
                             <View style={[styles.separator, { marginTop: 15 }]} />
-                            <View style={{ flex: 1 }}>
-                                <BarChart
-                                    flex={1}                               
-                                    borderRadius={.5}
-                                    spacingInner={.4}
-                                    spacingOuter={.15}
-                                    style={{ height: 200,  borderRadius: 125 }}
-                                    data={barData}
-                                    spacing={.6}
-                                    contentInset={{ top: 10, bottom: 10 }}
-                                    yAccessor={({ item }) => item.value}
 
-                                    scale={scale.scaleBand}
-                                    { ...this.props }
+
+                            <View style={{ height: 200, paddingVertical: 16, flexDirection: 'row' }}>
+                                {/* <YAxis data={ data1 } formatLabel={ value => `${value}` }
+                                 contentInset={{top: 5, bottom: 5}} svg={{ fill: 'grey', fontSize: 10, }} 
+                                 numberOfTicks={ 10} /> */}
+                                <LineChart
+                                spacingInner={.9}
+                                spacingOuter={.9}
+                                    style={StyleSheet.absoluteFill}
+                                    data={data1}
+                                    svg={{ stroke: '#F7941D', strokeWidth: 5 }}
+                                    contentInset={{ top: 20, bottom: 20 }}
+                                // curve={ shape.curveNatural }
                                 >
+                                    {/* <Grid1 /> */}
+                                </LineChart>
 
-                                </BarChart>
+                                <LineChart
+                                spacingInner={.9}
+                                spacingOuter={.9}
+                                    // yAccessor={({ data2 }) => data2.val}
+                                    style={StyleSheet.absoluteFill}
+                                    data={data2}
+                                    svg={{ stroke: '#975A16', strokeWidth: 5 }}
+                                    contentInset={{ bottom: 95 }}
 
-                            </View>
-                            <View style={{ marginTop: 10, width: '100%', height: 100 }}>
-                                <XAxis
-                                    spacingInner={.9}
-                                    spacingOuter={.9}                                  
-                                    contentInset={{ left: 20, right: 20 }}                                   
-                                    data={data}
-                                    svg={{
-                                        fill: 'black',
-                                        fontFamily: 'avenir light',
-                                        fontSize: 14,
-                                        paddingLeft: 30, marginRight: 20
-                                    }}                                    
-                                    formatLabel={(value, index) => data[index]}                                
                                 />
+                                <LineChart
+                                spacingInner={.9}
+                                spacingOuter={.9}
+                                    style={StyleSheet.absoluteFill}
+                                    data={data3}
+                                    svg={{ stroke: '#E67702', strokeWidth: 5 }}
+                                    contentInset={{ top: 20, bottom: 20 }}
+                                //curve={ shape.curveNatural }
+                                />
+                            </View>
+                            <XAxis
+                                spacingInner={.9}
+                                spacingOuter={.9}
+                                contentInset={{ left: 20, right: 10 }}
+                                data={data}
+                                svg={{
+                                    fill: 'black',
+                                    fontFamily: 'avenir light',
+                                    fontSize: 14,
+                                    //paddingLeft: 0, marginRight: 20
+                                }}
+                                formatLabel={(value, index) => data[index]}
+                            />
+
+
+                            <View style={{ marginTop: 10, width: '100%', height: 100 }}>
+
                                 <Grid>
                                     <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
                                         <Svg height="20%" width="20%" viewBox="0 0 100 100">
@@ -201,7 +230,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#FAB007"
+                                                fill="#975A16"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -291,6 +320,8 @@ const styles = StyleSheet.create({
         borderColor: '#DCDCDC',
     },
     segmentButton: {
+        width: 100,
+        justifyContent: 'center',
         paddingLeft: 0,
         paddingRight: 0,
 

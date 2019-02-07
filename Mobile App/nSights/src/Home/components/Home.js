@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
-import { Platform, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
+import { Platform, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight,Dimensions } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 
@@ -266,8 +266,9 @@ const KeyResultsStack = createStackNavigator({
       title: 'Chute Time',
       headerStyle: {
         backgroundColor: '#F7941D',
-        textAlign: 'center',
+       
       },
+      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
       headerTintColor: '#fff',
      
     }, screen: ChuteTime
@@ -278,27 +279,32 @@ const KeyResultsStack = createStackNavigator({
       title: 'Response Time',
       headerStyle: {
         backgroundColor: '#F7941D',
-        textAlign: 'center',
+      
       },
+      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
       headerTintColor: '#fff',
      
     }, screen: ResponseTime
   },
   OnSceneTime: {
-    navigationOptions: {
+    navigationOptions:( { navigation } ) => ( {
       
-    
+     
       title: 'On-Scene Time',
       headerStyle: {
         backgroundColor: '#F7941D',
-
+       
       },
-      headerTitleStyle :{flex: 1,textAlign: 'center',},    
-
+      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
+     
+     
      
       headerTintColor: '#fff',
      
-    }, screen: OnSceneTime
+    }), screen: OnSceneTime
+
+
+    
   },
 });
 

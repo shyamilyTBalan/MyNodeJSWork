@@ -10,6 +10,7 @@
     "native-base": "^2.10.0",
     "react": "16.6.3",
     "react-native": "0.57.8",
+    "react-native-d3multiline-chart": "^1.0.18",
     "react-native-easy-grid-view": "^0.1.1",
     "react-native-gesture-handler": "^1.0.12",
     "react-native-nav-tabbar": "0.0.2",
@@ -21,7 +22,8 @@
     "react-native-svg": "^9.0.2",
     "react-native-svg-charts": "^5.2.0",
     "react-native-vector-icons": "^6.2.0",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.0.9",
+    "svg-path-properties": "^0.4.8"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

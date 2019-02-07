@@ -12,6 +12,7 @@ import * as scale from 'd3-scale'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import icoMoonConfig from '../../../selection.json';
 import ProgressBarAnimated from 'react-native-progress-bar-animated';
+// import { MultiLineChart } from 'react-native-d3multiline-chart'
 
 const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
@@ -36,7 +37,60 @@ export default class HospitalTurnaroudTime extends Component {
 
         const data = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
-
+        // var data11 =[ [{
+        //     "y": "202",
+        //     "x": 2000
+        //     }, {
+        //         "y": "215",
+        //         "x": 2001
+        //     }, {
+        //         "y": "179",
+        //         "x": 2002
+        //     }, {
+        //         "y": "199",
+        //         "x": 2003
+        //     }, {
+        //         "y": "134",
+        //         "x": 2003
+        //     }, {
+        //         "y": "176",
+        //         "x": 2010
+        //     }],
+        //     [{
+        //         "y": "152",
+        //         "x": 2000
+        //     }, {
+        //         "y": "189",
+        //         "x": 2002
+        //     }, {
+        //         "y": "179",
+        //         "x": 2004
+        //     }, {
+        //         "y": "199",
+        //         "x": 2006
+        //     }, {
+        //         "y": "134",
+        //         "x": 2008
+        //     }, {
+        //         "y": "176",
+        //         "x": 2010
+        //     }]
+        //     ]
+        //     //default data is available 
+        //     let leftAxisData = [
+        //       134,144,154,164,174,184,194,204,215
+        //     ]
+        //     //default data is available 
+        //     let bottomAxisData = [
+        //       2000,2002,2004,2006,2008,2010
+        //     ]
+        //     let legendColor = ['#00b7d4','red']
+        //     let legendText = ['sales','year']
+        //     let minX= 2000, maxX= 2010
+        //     let minY= 134, maxY= 215
+            
+        //     //since there are only two lines
+        //     var Color = ['#00b7d4','red']
 
         const barData = [
             {
@@ -149,7 +203,7 @@ Keep up the good work!
                             </Text>
                             <View style={[styles.separator, { marginTop: 15 }]} />
                             <View style={{ flex: 1 }}>
-                                <BarChart
+                                {/* <BarChart
                                     flex={1}                               
                                     borderRadius={.5}
                                     spacingInner={.4}
@@ -164,8 +218,10 @@ Keep up the good work!
                                     { ...this.props }
                                 >
 
-                                </BarChart>
-
+                                </BarChart> */}
+                                
+                                {/* <MultiLineChart data= {data11} leftAxisData= {leftAxisData} bottomAxisData= {bottomAxisData} legendColor= {legendColor}
+        legendText= {legendText} minX= {minX} maxX= {maxX} minY= {minY} maxY= {maxY} scatterPlotEnable= {false}   dataPointsVisible= {true} Color= {Color} /> */}
                             </View>
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
                                 <XAxis

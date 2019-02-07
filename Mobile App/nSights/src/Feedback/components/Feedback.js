@@ -160,6 +160,10 @@ export default class Feedback extends Component {
          <RadioForm
           radio_props={val}
           initial={0}
+          buttonColor= {'#FFCB05'}
+          selectedButtonColor= {'#FFCB05'}
+          buttonSize= {10}
+          buttonOuterSize= {20}
           onPress={(value) => {this.setState({value:value})}}
         />
       </View>    
@@ -220,6 +224,10 @@ else  if (this.state.qualities === "Attitude" ) {
      <RadioForm
       radio_props={val}
       initial={0}
+      buttonColor= {'#FFCB05'}
+      selectedButtonColor= {'#FFCB05'}
+      buttonSize= {10}
+      buttonOuterSize= {20}
       onPress={(value) => {this.setState({value:value})}}
     />
   </View>    
@@ -291,6 +299,9 @@ else if (this.state.qualities === "Leadership" ) {
                       <StarRating
                        disabled={true}
                        maxStars={5}
+                       starSize={26}
+                       fullStarColor={'#FFCB05'}
+                       emptyStarColor={'#FFCB05'}
                        rating={this.state.profilerating}
                       //  selectedStar={(rating) => this.onStarRatingPress1(rating)}
                         />
@@ -320,6 +331,9 @@ else if (this.state.qualities === "Leadership" ) {
                         <StarRating
                        disabled={false}
                        maxStars={4}
+                       starSize={26}
+                       fullStarColor={'#FFCB05'}
+                       emptyStarColor={'#FFCB05'}
                        rating={this.state.starCount1}
                        selectedStar={(rating) => this.onStarRatingPress1(rating)}
                         />
@@ -337,6 +351,9 @@ else if (this.state.qualities === "Leadership" ) {
                       <StarRating
                        disabled={false}
                        maxStars={4}
+                       starSize={26}
+                       fullStarColor={'#FFCB05'}
+                       emptyStarColor={'#FFCB05'}
                        rating={this.state.starCount2}
                        selectedStar={(rating) => this.onStarRatingPress2(rating)}
                         />
@@ -353,6 +370,9 @@ else if (this.state.qualities === "Leadership" ) {
                       <StarRating
                        disabled={false}
                        maxStars={4}
+                       starSize={26}
+                       fullStarColor={'#FFCB05'}
+                       emptyStarColor={'#FFCB05'}
                        rating={this.state.starCount3}
                        selectedStar={(rating) => this.onStarRatingPress3(rating)}
                         />
@@ -369,6 +389,9 @@ else if (this.state.qualities === "Leadership" ) {
                       <StarRating
                        disabled={false}
                        maxStars={4}
+                       starSize={26}
+                       fullStarColor={'#FFCB05'}
+                       emptyStarColor={'#FFCB05'}
                        rating={this.state.starCount4}
                        selectedStar={(rating) => this.onStarRatingPress4(rating)}
                         />
@@ -385,6 +408,9 @@ else if (this.state.qualities === "Leadership" ) {
                       <StarRating
                        disabled={false}
                        maxStars={4}
+                       starSize={26}
+                       fullStarColor={'#FFCB05'}
+                       emptyStarColor={'#FFCB05'}
                        rating={this.state.starCount5}
                        selectedStar={(rating) => this.onStarRatingPress5(rating)}
                         />

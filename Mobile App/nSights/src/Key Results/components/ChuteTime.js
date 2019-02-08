@@ -131,7 +131,7 @@ export default class ChuteTime extends Component {
                                         {...progressTargetStyles}
                                         width={barWidth}
                                         height={28}
-                                        value={80}
+                                        value={55}
                                     />
                                 </View>
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
@@ -251,7 +251,7 @@ at your job?
                                     {...progressAverageStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={30}
+                                    value={45}
                                 />
                             </View>
                             <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
@@ -260,7 +260,7 @@ at your job?
                                     {...progressTargetStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={80}
+                                    value={50}
                                 />
                             </View>
                             <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
@@ -270,7 +270,7 @@ at your job?
                                     {...progressTeamAverageStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={50}
+                                    value={30}
                                 />
                             </View>
 
@@ -379,7 +379,7 @@ at your job?
                                     {...progressAverageStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={30}
+                                    value={35}
                                 />
                             </View>
                             <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
@@ -388,7 +388,7 @@ at your job?
                                     {...progressTargetStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={80}
+                                    value={55}
                                 />
                             </View>
                             <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
@@ -398,7 +398,7 @@ at your job?
                                     {...progressTeamAverageStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={50}
+                                    value={40}
                                 />
                             </View>
 

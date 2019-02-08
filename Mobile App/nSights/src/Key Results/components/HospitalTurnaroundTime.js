@@ -37,6 +37,14 @@ export default class HospitalTurnaroudTime extends Component {
         const data2 = [50, 50, 50, 50, 50, 50, 50]
         const data3 = [50, 65, 60, 95, 40, 60, 80,]
 
+        const data11 = [50, 60, 70, 90, 60, 50, 95,]
+        const data12 = [50, 50, 50, 50, 50, 50, 50]
+        const data13 = [80, 62, 52, 75, 90, 54, 60,]
+
+        const data21 = [50, 60, 70, 90, 60, 50, 95,].reverse()
+        const data22 = [50, 50, 50, 50, 50, 50, 50]
+        const data23 =  [80, 62, 52, 75, 90, 54, 60,].reverse()
+
         // var data11 =[ [{
         //     "y": "202",
         //     "x": 2000
@@ -282,7 +290,7 @@ Keep up the good work!
                                     {...progressAverageStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={70}
+                                    value={90}
                                 />
                             </View>
                             <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
@@ -291,7 +299,7 @@ Keep up the good work!
                                     {...progressTargetStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={80}
+                                    value={60}
                                 />
                             </View>
                             <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
@@ -301,7 +309,7 @@ Keep up the good work!
                                     {...progressTeamAverageStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={90}
+                                    value={65}
                                 />
                             </View>
 
@@ -325,7 +333,7 @@ Keep up the good work!
                         <View style={{ height: 200, marginLeft: 10 }}>
                             <LineChart
                                 style={{ flex: 1 }}
-                                data={data1}
+                                data={data11}
                                 svg={{ stroke: '#F7941D', strokeWidth: 4 }}
                                 contentInset={{ top: 20, bottom: 20 }}
                                 yMin={10}
@@ -335,7 +343,7 @@ Keep up the good work!
                             </LineChart>
                             <LineChart
                                 style={StyleSheet.absoluteFill}
-                                data={data2}
+                                data={data12}
                                 svg={{ stroke: '#975A16', strokeWidth: 4 }}
                                 contentInset={{ top: 20, bottom: 20 }}
                                 yMin={10}
@@ -344,7 +352,7 @@ Keep up the good work!
 
                             <LineChart
                                 style={StyleSheet.absoluteFill}
-                                data={data3}
+                                data={data13}
                                 svg={{ stroke: '#E67702', strokeWidth: 4 }}
                                 contentInset={{ top: 20, bottom: 20 }}
                                 yMin={10}
@@ -421,7 +429,7 @@ Keep up the good work!
                                     {...progressAverageStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={70}
+                                    value={85}
                                 />
                             </View>
                             <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
@@ -430,7 +438,7 @@ Keep up the good work!
                                     {...progressTargetStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={80}
+                                    value={70}
                                 />
                             </View>
                             <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
@@ -440,7 +448,7 @@ Keep up the good work!
                                     {...progressTeamAverageStyles}
                                     width={barWidth}
                                     height={28}
-                                    value={90}
+                                    value={95}
                                 />
                             </View>
 
@@ -464,7 +472,7 @@ Keep up the good work!
                         <View style={{ height: 200, marginLeft: 10 }}>
                             <LineChart
                                 style={{ flex: 1 }}
-                                data={data1}
+                                data={data21}
                                 svg={{ stroke: '#F7941D', strokeWidth: 4 }}
                                 contentInset={{ top: 20, bottom: 20 }}
                                 yMin={10}
@@ -474,7 +482,7 @@ Keep up the good work!
                             </LineChart>
                             <LineChart
                                 style={StyleSheet.absoluteFill}
-                                data={data2}
+                                data={data22}
                                 svg={{ stroke: '#975A16', strokeWidth: 4 }}
                                 contentInset={{ top: 20, bottom: 20 }}
                                 yMin={10}
@@ -483,7 +491,7 @@ Keep up the good work!
 
                             <LineChart
                                 style={StyleSheet.absoluteFill}
-                                data={data3}
+                                data={data23}
                                 svg={{ stroke: '#E67702', strokeWidth: 4 }}
                                 contentInset={{ top: 20, bottom: 20 }}
                                 yMin={10}

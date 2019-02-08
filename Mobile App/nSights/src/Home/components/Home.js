@@ -17,6 +17,8 @@ import OnSceneTime from '../../../src/Key Results/components/OnSceneTime'
 
 import Feedback from '../../../src/Feedback/components/Feedback'
 import Profile from '../../../src/Profile/components/Profile'
+import Achievements from '../../../src/Profile/components/Achievements'
+import Rating_Comments from '../../../src/Profile/components/Rating_Comments'
 import LeaderBoards from '../../../src/Leader Boards/components/LeaderBoards'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import icoMoonConfig from '../../../selection.json';
@@ -242,6 +244,37 @@ const HomeStack = createStackNavigator({
 
 
 });
+const ProfileStack = createStackNavigator({
+  Profile: {
+    navigationOptions: {
+      header: null,
+    }, screen: Profile
+  },
+  Achievements: {
+    navigationOptions: {
+    
+      title: 'My Achievements',
+      headerStyle: {
+        backgroundColor: '#F7941D',
+      },
+      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
+      headerTintColor: '#fff',
+     
+    }, screen: Achievements
+  },
+  Rating_Comments: {
+    navigationOptions: {
+    
+      title: 'Profile',
+      headerStyle: {
+        backgroundColor: '#F7941D',
+      },
+      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
+      headerTintColor: '#fff',
+     
+    }, screen: Rating_Comments
+  },
+})
 
 const KeyResultsStack = createStackNavigator({
   KeyResults: {
@@ -317,7 +350,7 @@ export default createAppContainer(
     KeyResults: { screen: KeyResultsStack },
     Feedback: { screen: Feedback },
     LeaderBoards: { screen: LeaderBoards },
-    Profile: { screen: Profile },
+    Profile: { screen: ProfileStack },
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

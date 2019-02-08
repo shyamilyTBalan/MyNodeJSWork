@@ -264,7 +264,7 @@ else if (this.state.qualities === "Leadership" ) {
         <Container>
           <Header>
             <Left style={{ flex: 1 }}>
-              <Button transparent>
+              <Button transparent onPress={() => this.props.navigation.goBack()}>
                 <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Path1.png')} />
               </Button>
             </Left>

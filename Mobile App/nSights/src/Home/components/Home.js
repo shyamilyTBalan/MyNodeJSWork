@@ -2,23 +2,24 @@
 
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
-import { Platform, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight,Dimensions } from 'react-native';
+import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, CheckBox, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
+import { Platform, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight, Dimensions } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 
 import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
 import Login from '../../../src/Login/components/Login'
 import KeyResults from '../../../src/Key Results/components/KeyResults'
+import Bookmarks from '../../../src/Home/components/Bookmarks'
 import HospitalTurnaroundTime from '../../../src/Key Results/components/HospitalTurnaroundTime'
 import ChuteTime from '../../../src/Key Results/components/ChuteTime'
 import ResponseTime from '../../../src/Key Results/components/ResponseTime'
 import OnSceneTime from '../../../src/Key Results/components/OnSceneTime'
 
 import Feedback from '../../../src/Feedback/components/Feedback'
-import FeedbackMain from  '../../../src/Feedback/components/FeedbackMain'
-import Pending from  '../../../src/Feedback/components/FeedbackMain'
-import Requested from  '../../../src/Feedback/components/FeedbackMain'
+import FeedbackMain from '../../../src/Feedback/components/FeedbackMain'
+import Pending from '../../../src/Feedback/components/FeedbackMain'
+import Requested from '../../../src/Feedback/components/FeedbackMain'
 import Profile from '../../../src/Profile/components/Profile'
 import Achievements from '../../../src/Profile/components/Achievements'
 import Rating_Comments from '../../../src/Profile/components/Rating_Comments'
@@ -104,7 +105,13 @@ const posts = [
 ];
 
 class Home extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      checkbox: false
+    }
+  }
   componentWillUnmount() {
     Alert.alert(
       'Exit nSights',
@@ -117,7 +124,52 @@ class Home extends Component {
     );
 
   }
+  handleFocus = event => {
+    this.setState({
+      visible: true
+    });
+    if (this.props.onFocus) {
+      this.props.onFocus(event);
+    }
+  };
+  toggleSwitch() {
+    this.setState({
+      checkbox: !this.state.checkbox
+    });
+  }
+  pickerValues = (val) => {
+    if (this.state.visible) {
+      return (
+<View>
+        {/* <View style={{ flex: 1, width:'80%',flexDirection: 'row', marginTop: 15, alignItems: 'center', justifyContent: 'center' }}>
+          <CheckBox
+      
+            center
+            color="#A7A9AC"
+            checked={this.state.checkbox}
+            onPress={() => this.toggleSwitch()}
+          />
+
+          <Text style={{ fontFamily: 'avenir light', fontSize: 12, fontWeight: 'normal', marginLeft: 15 }}>This will only be visible to you and a person you marked with @</Text>
+          </View>
+          <View style={styles.buttonContainer}>
+                                    <TouchableOpacity style={[styles.button, styles.loginButton]}>
+                                        <Text style={styles.loginText}>Submit</Text>
+                                    </TouchableOpacity>
+                                </View> */}
+                                </View>
+      )
+    }
+  }
+
   render() {
+
+
+
+    const { onFocus } = this.props;
+
+
+
     return (
 
 
@@ -125,7 +177,7 @@ class Home extends Component {
         <Container>
           <Header>
             <Left style={{ flex: 1 }}>
-              <Button transparent>
+              <Button transparent onPress={() => this.props.navigation.navigate('Bookmarks')}>
                 {/* <Icon name='ios-bookmark' color='#ffffff' /> */}
                 <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Bookmark.png')} />
               </Button>
@@ -150,14 +202,21 @@ class Home extends Component {
                 style={{ flex: 1, flexDirection: 'row', width: '90%', paddingLeft: 10 }}>
                 <View style={{ width: '10%', marginTop: 7 }}>
                   <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
-                <View style={{ width: '100%' }}><TextInput multiline
+
+
+
+                <View style={{ width: '100%' }}><TextInput multiline onFocus={this.handleFocus}
                   style={{ height: 60, fontFamily: "avenir light", textAlignVertical: 'top' }}
                   placeholderTextColor="#939598"
                   placeholder="Use @ mention to recognize your teammates and give them Kudos"
-                /></View>
-              </View>
-            </Card>
+                />
 
+                </View>
+
+              </View>
+
+            </Card>
+            {this.pickerValues(this.state.visible)}
             <List>
               {posts.map((data, i) => (
                 <View>
@@ -232,7 +291,29 @@ class Home extends Component {
     )
   }
 }
+const styles=StyleSheet.create({
+  buttonContainer: {
+  
+    marginTop: 20,
+    flexDirection: 'column',
+    alignItems: 'center',
 
+},
+button: {
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 200,
+    borderRadius: 30,
+},
+loginButton: {
+    backgroundColor: "#f7941d",
+},
+loginText: {
+    color: 'white',
+},
+})
 const HomeStack = createStackNavigator({
 
   Home: {
@@ -241,7 +322,13 @@ const HomeStack = createStackNavigator({
       header: null,
     },
     screen: Home,
-  }
+  },
+  Bookmarks: {
+    navigationOptions: {
+
+      header: null,
+    }, screen: Bookmarks
+  },
 
 
 
@@ -255,26 +342,16 @@ const ProfileStack = createStackNavigator({
   },
   Achievements: {
     navigationOptions: {
-    
-      title: 'My Achievements',
-      headerStyle: {
-        backgroundColor: '#F7941D',
-      },
-      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
-      headerTintColor: '#fff',
-     
+
+      header: null,
     }, screen: Achievements
   },
   Rating_Comments: {
     navigationOptions: {
-    
-      title: 'Profile',
-      headerStyle: {
-        backgroundColor: '#F7941D',
-      },
-      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
-      headerTintColor: '#fff',
-     
+
+      header: null,
+
+
     }, screen: Rating_Comments
   },
 })
@@ -287,62 +364,65 @@ const KeyResultsStack = createStackNavigator({
   },
   HospitalTurnaroundTime: {
     navigationOptions: {
-    
+
       title: 'Hospital Turnaround Time',
       headerStyle: {
         backgroundColor: '#F7941D',
       },
       headerTintColor: '#fff',
-     
+
     }, screen: HospitalTurnaroundTime
   },
   ChuteTime: {
     navigationOptions: {
-    
+
       title: 'Chute Time',
       headerStyle: {
         backgroundColor: '#F7941D',
-       
+
       },
-      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
+      headerTitleStyle: { flex: 1, textAlign: 'center', marginLeft: -10 },
       headerTintColor: '#fff',
-     
+
     }, screen: ChuteTime
   },
   ResponseTime: {
     navigationOptions: {
-    
+
       title: 'Response Time',
       headerStyle: {
         backgroundColor: '#F7941D',
-      
+
       },
-      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
+      headerTitleStyle: { flex: 1, textAlign: 'center', marginLeft: -10 },
       headerTintColor: '#fff',
-     
+
     }, screen: ResponseTime
   },
   OnSceneTime: {
-    navigationOptions:( { navigation } ) => ( {
-      
-     
+    navigationOptions: ({ navigation }) => ({
+
+
       title: 'On-Scene Time',
       headerStyle: {
         backgroundColor: '#F7941D',
-       
+
       },
-      headerTitleStyle :{flex:1, textAlign:'center',marginLeft:-10},    
-     
-     
-     
+      headerTitleStyle: { flex: 1, textAlign: 'center', marginLeft: -10 },
+
+
+
       headerTintColor: '#fff',
-     
+
     }), screen: OnSceneTime
 
 
-    
+
   },
 });
+
+
+
 
 const FeedbackStack = createStackNavigator({
 
@@ -352,7 +432,7 @@ const FeedbackStack = createStackNavigator({
       headerStyle: {
         backgroundColor: '#F7941D',
       },
-      headerTitleStyle :{flex: 1,textAlign: 'center',},    
+      headerTitleStyle: { flex: 1, textAlign: 'center', },
       headerTintColor: '#fff',
     }, screen: FeedbackMain
   },
@@ -363,43 +443,40 @@ const FeedbackStack = createStackNavigator({
     }, screen: Feedback
   },
   Pending: {
-     screen: Pending
+    screen: Pending
   },
   Requested: {
-   screen: Requested
+    screen: Requested
   },
 
 });
 
 export default createAppContainer(
-   createBottomTabNavigator(
-  {
-    // Home: { screen: HomeStack },
-    // Settings: { screen: SettingsStack },
-    Home: { screen: Home },
-    KeyResults: { screen: KeyResultsStack },
-    // Feedback: { screen: Feedback },
-    FeedbackMain: { screen: FeedbackStack},
-    LeaderBoards: { screen: LeaderBoards },
-    Profile: { screen: ProfileStack },
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) =>
-        getTabBarIcon(navigation, focused, tintColor),
-    }),
-    tabBarOptions: {
-
-      activeTintColor: '#F7941D',
-      inactiveTintColor: '#D1D3D4',
-      style: {
-
-        elevation: 2
-      }
+  createBottomTabNavigator(
+    {
+      Home: { screen: HomeStack },
+      KeyResults: { screen: KeyResultsStack },
+      Feedback: { screen: FeedbackStack },
+      LeaderBoards: { screen: LeaderBoards },
+      Profile: { screen: ProfileStack },
     },
-    lazy: true,
-  }
-));
+    {
+      defaultNavigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({ focused, tintColor }) =>
+          getTabBarIcon(navigation, focused, tintColor),
+      }),
+      tabBarOptions: {
+
+        activeTintColor: '#F7941D',
+        inactiveTintColor: '#D1D3D4',
+        style: {
+
+          elevation: 2
+        }
+      },
+      lazy: true,
+    }
+  ));
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
   const { routeName } = navigation.state;

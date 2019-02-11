@@ -21,7 +21,7 @@ const MyAchievements =
 
 
     }
-const rowHeight = (Dimensions.get('screen').height - 100) / 3;
+const rowHeight = (Dimensions.get('screen').height - 150) / 3;
 
 export default class Achievements extends Component {
 
@@ -33,6 +33,22 @@ export default class Achievements extends Component {
 
             <StyleProvider style={getTheme(material)}>
                 <Container>
+                <Header>
+            <Left style={{ flex: 0,width:'10%'}}>
+              <Button transparent onPress={() => this.props.navigation.goBack()}>
+                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Path1.png')} />
+              </Button>
+            </Left>
+            <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'80%' ,}}>
+              <Title style={{
+                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                fontStyle: "normal",
+              }}>My Achievements</Title>
+            </Body>
+            <Right  style={{ flex:0,width:'10%'}}>
+                </Right>
+          
+          </Header>
                     <Content padder>
                         <Grid>
                             <Col>

@@ -119,7 +119,8 @@ export default class FeedbackMain extends Component {
     return (
       <StyleProvider style={getTheme(material)}>
       <Container >
-
+      <View style={{height: '85%' }}>
+          <Content >
         <Tabs  >
        
           <Tab heading="Pending" >  
@@ -131,7 +132,28 @@ export default class FeedbackMain extends Component {
           </Tab>
 
         </Tabs>
-       
+        </Content>
+        </View>
+        <View style={{height: '15%'}}>
+        <Content>
+         <Row >
+           <Col style={{ width: '50%' }}>
+           <View style={styles.buttonContainer}>
+                            <TouchableOpacity style={[styles.button, styles.loginButton]}  onPress={() => this.props.navigation.navigate('RequestFeedback')}>
+                                <Text style={styles.loginText}>Request Feedback</Text>
+                            </TouchableOpacity>
+                        </View>
+                        </Col>
+                        <Col style={{ width: '50%' }}>
+                <View style={styles.buttonContainer}>
+                            <TouchableOpacity style={[styles.button, styles.loginButton]}>
+                                <Text style={styles.loginText}>Give Feedback</Text>
+                            </TouchableOpacity>
+                        </View>
+                       </Col>
+           </Row>
+           </Content>
+           </View>
       </Container>
       </StyleProvider>
     );
@@ -145,10 +167,6 @@ class Pending extends Component {
    
     return (
       <Container >
-        
-        <Content >
-          <View style={{height: '90%' }}>
-       
        <List >
        {datas1.map((data, i) => (
               <ListItem avatar noBorder>
@@ -173,32 +191,6 @@ class Pending extends Component {
               </ListItem>
             ))}
          </List>
-       
-        </View>
-        
-       
-        <View style={{height: '10%'}}>
-       
-         <Row >
-           <Col style={{ width: '50%' }}>
-           <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={[styles.button, styles.loginButton]}>
-                                <Text style={styles.loginText}>Request Feedback</Text>
-                            </TouchableOpacity>
-                        </View>
-                        </Col>
-                        <Col style={{ width: '50%' }}>
-                <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={[styles.button, styles.loginButton]}>
-                                <Text style={styles.loginText}>Give Feedback</Text>
-                            </TouchableOpacity>
-                        </View>
-                       </Col>
-           </Row>
-          
-           </View>
-           </Content>
-
       </Container>
     );
   }
@@ -211,13 +203,12 @@ class Requested extends Component {
     return (
       <Container>
         <List>
+        
        {datas2.map((data, i) => (
               <ListItem avatar noBorder>
-              {/* <TouchableOpacity onPress={() => this.props.navigate('Feedback')}> */}
                 <Left>
                   <Thumbnail small source={data.img} />
                 </Left>
-                {/* </TouchableOpacity> */}
                 <Body>
                   <Text style={styles.textname}>{data.name}</Text>
                   <Text style={styles.textnote} numberOfLines={1} note>
@@ -230,24 +221,7 @@ class Requested extends Component {
               </ListItem>
             ))}
          </List>
-         <Row style={{position: 'absolute', bottom: 15}}>
-           <Col style={{ width: '50%' }}>
-           <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={[styles.button, styles.loginButton]}>
-                                <Text style={styles.loginText}>Request Feedback</Text>
-                            </TouchableOpacity>
-                        </View>
-                        </Col>
-                        <Col style={{ width: '50%' }}>
-                <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={[styles.button, styles.loginButton]}>
-                                <Text style={styles.loginText}>Give Feedback</Text>
-                            </TouchableOpacity>
-                        </View>
-                       </Col>
-           </Row>
-
-      </Container>
+        </Container>
     );
   }
 
@@ -277,7 +251,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: '100%',
     height: '100%',
-     marginTop: 20,
+     marginTop: 5,
+    // marginBottom: 10,
     flexDirection: 'column',
     alignItems: 'center',
    

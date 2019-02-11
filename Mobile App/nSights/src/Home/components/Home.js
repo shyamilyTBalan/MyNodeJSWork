@@ -17,6 +17,7 @@ import OnSceneTime from '../../../src/Key Results/components/OnSceneTime'
 
 import Feedback from '../../../src/Feedback/components/Feedback'
 import FeedbackMain from  '../../../src/Feedback/components/FeedbackMain'
+import RequestFeedback from '../../../src/Feedback/components/RequestFeedback'
 import Pending from  '../../../src/Feedback/components/FeedbackMain'
 import Requested from  '../../../src/Feedback/components/FeedbackMain'
 import Profile from '../../../src/Profile/components/Profile'
@@ -362,6 +363,11 @@ const FeedbackStack = createStackNavigator({
       header: null,
     }, screen: Feedback
   },
+  RequestFeedback: {
+    navigationOptions: {
+      header: null,
+    }, screen: RequestFeedback
+  },
   Pending: {
      screen: Pending
   },
@@ -379,7 +385,7 @@ export default createAppContainer(
     Home: { screen: Home },
     KeyResults: { screen: KeyResultsStack },
     // Feedback: { screen: Feedback },
-    FeedbackMain: { screen: FeedbackStack},
+    Feedback: { screen: FeedbackStack},
     LeaderBoards: { screen: LeaderBoards },
     Profile: { screen: ProfileStack },
   },
@@ -415,7 +421,7 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     iconName = `Chart-bar${focused ? '' : ''}`;
 
   }
-  else if (routeName === 'FeedbackMain') {
+  else if (routeName === 'Feedback') {
     iconName = `Star${focused ? '' : ''}`;
 
   }

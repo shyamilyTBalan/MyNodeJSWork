@@ -17,9 +17,12 @@ import ResponseTime from '../../../src/Key Results/components/ResponseTime'
 import OnSceneTime from '../../../src/Key Results/components/OnSceneTime'
 
 import Feedback from '../../../src/Feedback/components/Feedback'
-import FeedbackMain from '../../../src/Feedback/components/FeedbackMain'
-import Pending from '../../../src/Feedback/components/FeedbackMain'
-import Requested from '../../../src/Feedback/components/FeedbackMain'
+
+import FeedbackMain from  '../../../src/Feedback/components/FeedbackMain'
+import RequestFeedback from '../../../src/Feedback/components/RequestFeedback'
+import Pending from  '../../../src/Feedback/components/FeedbackMain'
+import Requested from  '../../../src/Feedback/components/FeedbackMain'
+
 import Profile from '../../../src/Profile/components/Profile'
 import Achievements from '../../../src/Profile/components/Achievements'
 import Rating_Comments from '../../../src/Profile/components/Rating_Comments'
@@ -442,6 +445,11 @@ const FeedbackStack = createStackNavigator({
       header: null,
     }, screen: Feedback
   },
+  RequestFeedback: {
+    navigationOptions: {
+      header: null,
+    }, screen: RequestFeedback
+  },
   Pending: {
     screen: Pending
   },
@@ -452,6 +460,7 @@ const FeedbackStack = createStackNavigator({
 });
 
 export default createAppContainer(
+
   createBottomTabNavigator(
     {
       Home: { screen: HomeStack },
@@ -459,6 +468,7 @@ export default createAppContainer(
       Feedback: { screen: FeedbackStack },
       LeaderBoards: { screen: LeaderBoards },
       Profile: { screen: ProfileStack },
+
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({
@@ -492,7 +502,7 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     iconName = `Chart-bar${focused ? '' : ''}`;
 
   }
-  else if (routeName === 'FeedbackMain') {
+  else if (routeName === 'Feedback') {
     iconName = `Star${focused ? '' : ''}`;
 
   }

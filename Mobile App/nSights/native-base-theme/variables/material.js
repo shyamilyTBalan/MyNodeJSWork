@@ -101,7 +101,7 @@ export default {
   CheckboxIconMarginTop: 1,
   CheckboxFontSize: 17,
   checkboxBgColor: "#039BE5",
-  checkboxSize: 20,
+  checkboxSize: 25,
   checkboxTickColor: "#fff",
 
   // Color

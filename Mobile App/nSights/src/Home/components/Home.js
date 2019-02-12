@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, CheckBox, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
-import { Platform, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight, Dimensions } from 'react-native';
+import { Platform, span, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight, Dimensions } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 
@@ -11,6 +11,7 @@ import { createBottomTabNavigator, createAppContainer, createStackNavigator } fr
 import Login from '../../../src/Login/components/Login'
 import KeyResults from '../../../src/Key Results/components/KeyResults'
 import Bookmarks from '../../../src/Home/components/Bookmarks'
+import Notifications from '../../../src/Home/components/Notifications'
 import HospitalTurnaroundTime from '../../../src/Key Results/components/HospitalTurnaroundTime'
 import ChuteTime from '../../../src/Key Results/components/ChuteTime'
 import ResponseTime from '../../../src/Key Results/components/ResponseTime'
@@ -18,10 +19,10 @@ import OnSceneTime from '../../../src/Key Results/components/OnSceneTime'
 
 import Feedback from '../../../src/Feedback/components/Feedback'
 
-import FeedbackMain from  '../../../src/Feedback/components/FeedbackMain'
+import FeedbackMain from '../../../src/Feedback/components/FeedbackMain'
 import RequestFeedback from '../../../src/Feedback/components/RequestFeedback'
-import Pending from  '../../../src/Feedback/components/FeedbackMain'
-import Requested from  '../../../src/Feedback/components/FeedbackMain'
+import Pending from '../../../src/Feedback/components/FeedbackMain'
+import Requested from '../../../src/Feedback/components/FeedbackMain'
 
 import Profile from '../../../src/Profile/components/Profile'
 import Achievements from '../../../src/Profile/components/Achievements'
@@ -104,14 +105,24 @@ const posts = [
     likes: 16,
     comments: 6,
 
-  }
-];
+  },
+  {
+    Ownername: 'Kate Black',
+    targetuser: null,
+    content: 'I noticed how kind you were to that frustrated nurse.  It was clear your kindness made her feel better.',
+    datetime: '8h ago',
+    likes: 16,
+    comments: 6,
 
+  },
+];
+const inputWidth = (Dimensions.get('screen').width - 20);
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
+      isFocused: false,
       checkbox: false
     }
   }
@@ -127,9 +138,19 @@ class Home extends Component {
     );
 
   }
+  handleBlur = event => {
+    this.textInput.clear()
+    this.setState({
+      isFocused: false, visible: false,
+    });
+    if (this.props.onBlur) {
+      this.textInput.clear();
+      this.props.onBlur(event);
+    }
+  };
   handleFocus = event => {
     this.setState({
-      visible: true
+      visible: true, isFocused: true,
     });
     if (this.props.onFocus) {
       this.props.onFocus(event);
@@ -143,38 +164,54 @@ class Home extends Component {
   pickerValues = (val) => {
     if (this.state.visible) {
       return (
-<View>
-        {/* <View style={{ flex: 1, width:'80%',flexDirection: 'row', marginTop: 15, alignItems: 'center', justifyContent: 'center' }}>
-          <CheckBox
-      
-            center
-            color="#A7A9AC"
-            checked={this.state.checkbox}
-            onPress={() => this.toggleSwitch()}
-          />
-
-          <Text style={{ fontFamily: 'avenir light', fontSize: 12, fontWeight: 'normal', marginLeft: 15 }}>This will only be visible to you and a person you marked with @</Text>
+        <View>
+          <View style={{ flex: 1, paddingLeft: 15, paddingRight: 15, width: '100%', flexDirection: 'row', marginTop: 10, alignItems: 'center', justifyContent: 'center' }}>
+            <CheckBox
+              center
+              color="#f7941d"
+              checked={this.state.checkbox}
+              onPress={() => this.toggleSwitch()}
+            />
+            <Text style={{ fontFamily: 'avenir light', fontSize: 12, fontWeight: 'normal', marginLeft: 15 }}>This will only be visible to you and a person you marked with @</Text>
           </View>
           <View style={styles.buttonContainer}>
-                                    <TouchableOpacity style={[styles.button, styles.loginButton]}>
-                                        <Text style={styles.loginText}>Submit</Text>
-                                    </TouchableOpacity>
-                                </View> */}
-                                </View>
+            <TouchableOpacity style={[styles.button, styles.loginButton]} onPress={this.handleBlur}>
+              <Text style={styles.loginText}>Publish</Text>
+            </TouchableOpacity>
+          </View>
+          <Separator style={{
+            height: 7,
+            backgroundColor: "#f3f3f3"
+          }} />
+        </View>
       )
+    }
+    else {
+      return null
     }
   }
 
   render() {
+    const user = [{
+      name: 'John',
+      surname: 'Doe',
+      address: null,
+    },
+    {
+      name: 'John',
+      surname: 'Doe',
+      address: null,
+    }];
 
+    const userName = user && user[0].name // John
 
-
+    const { isFocused } = this.state;
     const { onFocus } = this.props;
 
 
 
-    return (
 
+    return (
 
       <StyleProvider style={getTheme(material)}>
         <Container>
@@ -192,71 +229,72 @@ class Home extends Component {
               }}>nSights</Title>
             </Body>
             <Right style={{ flex: 1 }}>
-              <Button transparent>
+              <Button transparent onPress={() => this.props.navigation.navigate('Notifications')}>
                 {/* <Icon name='ios-notifications' /> */}
                 <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/group6.png')} />
               </Button>
             </Right>
           </Header>
           {/* <Container> */}
-          <Content>
-            <Card style={{ marginRight: 10, marginLeft: 10 }}>
-              <View
-                style={{ flex: 1, flexDirection: 'row', width: '90%', paddingLeft: 10 }}>
-                <View style={{ width: '10%', marginTop: 7 }}>
-                  <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
+          <Content >
+            <View
+              style={[styles.viewInput, { borderColor: isFocused ? '#f7941d' : '#D1D3D4' }]}>
+              <View style={{ width: '10%', marginTop: 7 }}>
+                <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
 
 
 
-                <View style={{ width: '100%' }}><TextInput multiline onFocus={this.handleFocus}
-                  style={{ height: 60, fontFamily: "avenir light", textAlignVertical: 'top' }}
-                  placeholderTextColor="#939598"
-                  placeholder="Use @ mention to recognize your teammates and give them Kudos"
-                />
+              <View style={{ width: '90%' }}><TextInput multiline onFocus={this.handleFocus} onBlur={this.handleBlur} ref={input => { this.textInput = input }}
 
-                </View>
+                style={[styles.textInput, { borderColor: isFocused ? '#f7941d' : '#D1D3D4' }]}
+                placeholderTextColor="#939598"
+                placeholder="Use @ mention to recognize your teammates and give them Kudos"
+              />
 
               </View>
 
-            </Card>
+            </View>
+
             {this.pickerValues(this.state.visible)}
+
             <List>
               {posts.map((data, i) => (
+
                 <View>
                   <ListItem avatar noBorder >
-
                     <Left>
-                      <View >
-
-                        <View style={{ zIndex: 1 }} >
-                          <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
-                        <View style={{ zIndex: 0, marginTop: 20, position: 'absolute', marginLeft: 18 }} >
-                          <Thumbnail small source={require('../../../assets/images/bitmap.png')} />
+                      {posts[i].targetuser
+                        ? <View >
+                          <View style={{ zIndex: 1 }} >
+                            <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
+                          <View style={{ zIndex: 0, marginTop: 20, position: 'absolute', marginLeft: 18 }} >
+                            <Thumbnail small source={require('../../../assets/images/bitmap.png')} />
+                          </View>
                         </View>
-                      </View>
+                        : <View  >
+                          <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
+                      }
+
                     </Left>
-
-
-
                     <Body>
                       <View style={{ flex: 1, flexDirection: 'row', marginLeft: 5, width: '100%' }}>
                         <View style={{ width: '72%' }}>
                           <Text>
                             <Text style={{ fontFamily: 'avenir light', fontWeight: "500" }}>
                               {data.Ownername} </Text>
-                            <Text style={{ fontFamily: 'avenir light', color: '#D1D3D4' }}> to </Text>
-                            <Text style={{ fontFamily: 'avenir light', fontWeight: "500" }}>
-                              {data.targetuser} </Text>
+                            {posts[i].targetuser && <Text><Text style={{ fontFamily: 'avenir light', color: '#D1D3D4' }}> to </Text>
+                              <Text style={{ fontFamily: 'avenir light', fontWeight: "500" }}>
+                                {data.targetuser} </Text></Text>}
                           </Text>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', width: '28%' }}>
-                          <Text note >{data.datetime}</Text>
+                        <View style={{ flex: 0, flexDirection: 'row', width: '28%', }}>
+                          <Text note style={{ alignItems: 'flex-end', alignSelf: 'flex-end', textAlign: 'center' }} >{data.datetime}</Text>
                           <Image style={{ maxWidth: '100%', maxHeight: '100%', marginRight: 15, marginTop: 10 }} source={require('../../../assets/images/arrowDown.png')} />
                         </View>
                       </View>
                       <Content style={{ marginLeft: 5 }}>
                         <Text style={{ fontFamily: "avenir light", fontWeight: "300" }}>
-                          <Text style={{ color: '#F7941D', fontFamily: "avenir light" }}>{"@" + data.targetuser + ", "}</Text>
+                          {posts[i].targetuser && <Text style={{ color: '#F7941D', fontFamily: "avenir light" }}>{"@" + data.targetuser + ", "}</Text>}
                           {data.content}
                         </Text>
                       </Content>
@@ -268,54 +306,59 @@ class Home extends Component {
                           {" "}{data.comments}
                         </Text>
                       </View>
-
                     </Body>
-                    {/* <Right>
-          <Text note>{data.datetime}</Text>
-        </Right> */}
-
                   </ListItem>
                   <Separator style={{
                     height: 7,
                     backgroundColor: "#f3f3f3"
                   }} />
+
                 </View>
               ))}
             </List>
-
-
           </Content>
-
         </Container>
       </StyleProvider>
-
-
-
     )
   }
 }
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
+  viewInput:
+  {
+    flex: 1, 
+    flexDirection: 'row',
+    width: inputWidth,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 10,
+    borderRadius: 5,
+    paddingLeft: 10,
+    borderWidth: 1
+  },
+  textInput: {
+    height: 60, fontFamily: "avenir light", textAlignVertical: 'top'
+  },
   buttonContainer: {
-  
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 10,
     flexDirection: 'column',
     alignItems: 'center',
 
-},
-button: {
-    height: 50,
+  },
+  button: {
+    height: 30,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 200,
+    width: 100,
     borderRadius: 30,
-},
-loginButton: {
+  },
+  loginButton: {
     backgroundColor: "#f7941d",
-},
-loginText: {
+  },
+  loginText: {
     color: 'white',
-},
+  },
 })
 const HomeStack = createStackNavigator({
 
@@ -331,6 +374,12 @@ const HomeStack = createStackNavigator({
 
       header: null,
     }, screen: Bookmarks
+  },
+  Notifications: {
+    navigationOptions: {
+
+      header: null,
+    }, screen: Notifications
   },
 
 

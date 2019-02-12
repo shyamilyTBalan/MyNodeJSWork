@@ -12,12 +12,12 @@ const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.tt
 
 const MyAchievements =
     {
-        HoursWorked: 20000,
+        HoursWorked: '14,400',
         MostCalls: 20,
-        TotalMiles: 15,
-        Shifts: 45,
-        TotalMVC: 23,
-        Morphine: 55
+        TotalMiles: '75,000',
+        Shifts: 600,
+        TotalMVC: 300,
+        Morphine: 1200
 
 
     }
@@ -56,14 +56,14 @@ export default class Achievements extends Component {
                                     <Col style={styles.colStyle}>
                                         <Thumbnail large source={require('../../../assets/images/Achieve2.png')} />
                                         <Text style={styles.textValue}>{MyAchievements.HoursWorked}</Text>
-                                        <Text style={styles.text}>Hours Worked</Text>
+                                        <Text style={styles.text}>Total Hours Worked</Text>
                                     </Col>
                                 </View>
                                 <View style={{ height: rowHeight }}>
                                     <Col style={styles.colStyle}>
                                         <Thumbnail large source={require('../../../assets/images/Achieve3.png')} />
                                         <Text style={styles.textValue}>{MyAchievements.TotalMiles}</Text>
-                                        <Text style={styles.text}>Total Miles</Text>
+                                        <Text style={styles.text}>Total Miles Driven</Text>
                                     </Col>
                                 </View>
                                 <View style={{ height: rowHeight }}>
@@ -81,21 +81,21 @@ export default class Achievements extends Component {
                                     <Col style={styles.colStyle}>
                                         <Thumbnail large source={require('../../../assets/images/Achieve1.png')} />
                                         <Text style={styles.textValue}>{MyAchievements.MostCalls}</Text>
-                                        <Text style={styles.text}>Most Calls</Text>
+                                        <Text style={styles.text}>Most Calls per Shift</Text>
                                     </Col>
                                 </View>
                                 <View style={{ height: rowHeight }}>
                                     <Col style={styles.colStyle}>
                                         <Thumbnail large source={require('../../../assets/images/Achieve4.png')} />
                                         <Text style={styles.textValue}>{MyAchievements.Shifts}</Text>
-                                        <Text style={styles.text}>Shifts</Text>
+                                        <Text style={styles.text}>Total Shifts Worked</Text>
                                     </Col>
                                 </View>
                                 <View style={{ height: rowHeight, width: '100%' }}>
                                     <Col style={styles.colStyle}>
                                         <Thumbnail large source={require('../../../assets/images/Achieve5.png')} />
                                         <Text style={styles.textValue}>{MyAchievements.Morphine}</Text>
-                                        <Text style={styles.text}>Morphines, Total administrated(mg)</Text>
+                                        <Text style={styles.text}>Morphine, Total given(mg)</Text>
                                     </Col>
                                 </View>
 

@@ -17,114 +17,65 @@ const datas1 = [
   {
     img: ann,
     name: "Ann Davis",
-    note: "EMT-Basic",
-    id: "1"
+    note: "EMT-Basic"
   },
   {
     img: john,
     name: "John Harris",
-    note: "Critical Care Paramedic",
-    id: "2"
+    note: "Critical Care Paramedic"
   },
   {
     img: kate,
     name: "Kate White",
-    note: "EMT-Paramedic",
-    id: "3"
+    note: "EMT-Paramedic"
   },
   {
     img: mary,
     name: "Mary-Kate Washington",
-    note: "EMT-Basic",
-    id: "4"
+    note: "EMT-Basic"
   },
   {
     img: ted,
     name: "Ted Mosby",
-    note: "EMT-Paramedic",
-    id: "5"
+    note: "EMT-Paramedic"
   },
   {
     img: kate,
     name: "Kate White",
-    note: "EMT-Paramedic",
-    id: "6"
+    note: "EMT-Paramedic"
   },
   {
     img: ann,
     name: "Ann Davis",
-    note: "EMT-Basic",
-    id: "7"
+    note: "EMT-Basic"
   },
   {
     img: mary,
     name: "Mary-Kate Washington",
-    note: "EMT-Basic",
-    id: "8"
+    note: "EMT-Basic"
   },
   {
     img: ted,
     name: "Ted Mosby",
-    note: "EMT-Paramedic",
-    id: "9"
+    note: "EMT-Paramedic"
   },
   {
     img: kate,
     name: "Kate White",
-    note: "EMT-Paramedic",
-    id: "10"
+    note: "EMT-Paramedic"
   },
   {
     img: ann,
     name: "Ann Davis",
-    note: "EMT-Basic",
-    id: "11"
+    note: "EMT-Basic"
   }
   
   
 ];
 
-export default class RequestFeedback extends Component {
+export default class GiveFeedback extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-         
-          selectedFriendId: [],
-          searchText: '',
-          data        : [],
-          dataBackup  : []
-          }
-      }
-
-      onCheckBoxPress(id) {
-        let tmp = this.state.selectedFriendId;
-    
-        if ( tmp.includes( id ) ) {
-          tmp.splice( tmp.indexOf(id), 1 );
-        } else {
-          tmp.push( id );
-        }
-    
-        this.setState({
-          selectedFriendId: tmp,
-          
-        });
-      }
-     
-      setSearchText=(event)=>{
-        searchText1 = event.target.value;
-    //    data       = this.state.dataBackup;
-     //   searchText = searchText.trim().toLowerCase();
-       data = datas1.filter(l => {
-        return( l.name.includes( searchText1 ));
-       });
-       this.setState({
-        datas1 : data
-        });
-       }
-    
-  
+ 
 
     render() {
    
@@ -138,41 +89,31 @@ export default class RequestFeedback extends Component {
                   </Button>
                 </Left>
                 <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                  <Title style={{
-                    fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
-                    fontStyle: "normal",
-                  }}>Feedback</Title>
-                </Body>
-                <Right style={{ flex: 1 }}>
-                  <Text style={{ color: '#FFFFFF', fontFamily: 'ARLRDBD' }}>Request</Text>
-                </Right>
+                            <Title style={{
+                                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                                fontStyle: "normal",
+                            }}>Feedback</Title>
+                        </Body>
+                        <Right style={{ flex: 1 }}>
+                        </Right>
               </Header>
                 
                   
 
 <Header style={{marginTop:15, backgroundColor: 'white'}} searchBar rounded>
-<View style={{borderColor: '#D1D3D4',borderWidth:1,borderRadius:5, width: "95%", padding: 5}}>
+<View style={{borderColor: '#D1D3D4',borderWidth:1,borderRadius:5, width: "100%", padding: 5}}>
           <Item style={{width: "100%"}}>
             <Icon name="ios-search" style={{color: '#D1D3D4'}}/>
             <TextInput placeholder="Search for the colleague you want to rate"  placeholderTextColor="#D1D3D4"
-            style={{fontFamily:'avenir light',fontSize: 13}} 
-             onChange={this.setSearchText}
-        //    onChange={(e)=>this.setState({searchText:e.target.value})}
-            value={this.state.searchText}
-            />
+            style={{fontFamily:'avenir light',fontSize: 13}} />
           </Item>
-         
-    </View>   
-    
+    </View>     
         </Header>
       
-        <Content padder>
+        <Content>
         <List >
        {datas1.map((data, i) => (
-        
-              <ListItem avatar noBorder 
->
-
+              <ListItem avatar noBorder>
               <TouchableOpacity onPress={() => this.props.navigate('Feedback')}>
                 <Left>
                   <Thumbnail  source={data.img} />
@@ -188,15 +129,17 @@ export default class RequestFeedback extends Component {
                   </TouchableOpacity>
                 </Body>
                 
-                <Right>
-                  
+                {/* <Right>
                 <CheckBox
+                  checked={this.state.isSelected}
                   color= '#F7941D'
-                  style={{width:36,height:36,paddingLeft:10,paddingBottom:5,paddingTop:8,paddingRight:5,borderRadius:18}}
-                  checked={this.state.selectedFriendId.includes(data.id) ? true : false}
-                  onPress={()=>this.onCheckBoxPress(data.id)}
+                  style={{  borderRadius: 13 }}
+                  onChange={this.handleChangeCheck(
+                    "isSelected"
+                  )}
+                  value="isSelected"
                         />
-                </Right>
+                </Right> */}
               </ListItem>
             ))}
          </List>

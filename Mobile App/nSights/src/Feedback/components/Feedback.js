@@ -16,36 +16,37 @@ const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.tt
 
 const questionnaire = {
 	"Professionalism": [{
-			
-			"label": "I've observed that"
-		},
-		{
-			"label": "One suggestion that I have"
-		}
+	
+    "label": "One suggestion that I have"
+  },
+  {
+  
+    "label": "I've observed that"
+  },
+  {
+  
+    "label": "I mention this because"
+  }
 	],
-	"Patient Care": [{
-
-      "label": "I mention this because"
-		},
+	"Patient Care": [
 		{
       "label": "One suggestion that I have"
     },
+    {
+
+      "label": "I mention this because"
+		},
     {
       "label": "I've observed that"
 		}
 	],
 	"Team Work": [{
-	
-			"label": "One suggestion that I have"
-		},
-		{
-		
-			"label": "I've observed that"
-    },
-    {
-		
-			"label": "I mention this because"
-		}
+			
+    "label": "I've observed that"
+  },
+  {
+    "label": "One suggestion that I have"
+  }
 	],
 
 	"Attitude": [{

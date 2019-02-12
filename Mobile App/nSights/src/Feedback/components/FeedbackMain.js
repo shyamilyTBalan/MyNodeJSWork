@@ -120,7 +120,6 @@ export default class FeedbackMain extends Component {
       <StyleProvider style={getTheme(material)}>
       <Container >
       <View style={{height: '85%' }}>
-          <Content >
         <Tabs  >
        
           <Tab heading="Pending" >  
@@ -132,7 +131,6 @@ export default class FeedbackMain extends Component {
           </Tab>
 
         </Tabs>
-        </Content>
         </View>
         <View style={{height: '15%'}}>
         <Content>
@@ -146,7 +144,7 @@ export default class FeedbackMain extends Component {
                         </Col>
                         <Col style={{ width: '50%' }}>
                 <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={[styles.button, styles.loginButton]}>
+                            <TouchableOpacity style={[styles.button, styles.loginButton]} onPress={() => this.props.navigation.navigate('GiveFeedback')}>
                                 <Text style={styles.loginText}>Give Feedback</Text>
                             </TouchableOpacity>
                         </View>
@@ -167,12 +165,13 @@ class Pending extends Component {
    
     return (
       <Container >
+        <Content>
        <List >
        {datas1.map((data, i) => (
               <ListItem avatar noBorder>
               <TouchableOpacity onPress={() => this.props.navigate('Feedback')}>
                 <Left>
-                  <Thumbnail small source={data.img} />
+                  <Thumbnail  source={data.img} />
                 </Left>
                 </TouchableOpacity>
                
@@ -191,6 +190,7 @@ class Pending extends Component {
               </ListItem>
             ))}
          </List>
+         </Content>
       </Container>
     );
   }
@@ -202,12 +202,13 @@ class Requested extends Component {
   render() {
     return (
       <Container>
+        <Content>
         <List>
         
        {datas2.map((data, i) => (
               <ListItem avatar noBorder>
                 <Left>
-                  <Thumbnail small source={data.img} />
+                  <Thumbnail  source={data.img} />
                 </Left>
                 <Body>
                   <Text style={styles.textname}>{data.name}</Text>
@@ -221,6 +222,7 @@ class Requested extends Component {
               </ListItem>
             ))}
          </List>
+         </Content>
         </Container>
     );
   }

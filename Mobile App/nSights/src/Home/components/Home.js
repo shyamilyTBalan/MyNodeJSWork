@@ -21,8 +21,11 @@ import Feedback from '../../../src/Feedback/components/Feedback'
 
 import FeedbackMain from '../../../src/Feedback/components/FeedbackMain'
 import RequestFeedback from '../../../src/Feedback/components/RequestFeedback'
-import Pending from '../../../src/Feedback/components/FeedbackMain'
-import Requested from '../../../src/Feedback/components/FeedbackMain'
+
+import GiveFeedback from '../../../src/Feedback/components/GiveFeedback'
+import Pending from  '../../../src/Feedback/components/FeedbackMain'
+import Requested from  '../../../src/Feedback/components/FeedbackMain'
+
 
 import Profile from '../../../src/Profile/components/Profile'
 import Achievements from '../../../src/Profile/components/Achievements'
@@ -498,6 +501,11 @@ const FeedbackStack = createStackNavigator({
     navigationOptions: {
       header: null,
     }, screen: RequestFeedback
+  },
+  GiveFeedback: {
+    navigationOptions: {
+      header: null,
+    }, screen: GiveFeedback
   },
   Pending: {
     screen: Pending

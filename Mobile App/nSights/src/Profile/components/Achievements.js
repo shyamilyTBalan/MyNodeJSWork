@@ -6,6 +6,7 @@ import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import icoMoonConfig from '../../../selection.json';
 const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
@@ -28,47 +29,90 @@ export default class Achievements extends Component {
     constructor(props) {
         super(props);
     }
+    
     render() {
+     
         return (
 
             <StyleProvider style={getTheme(material)}>
                 <Container>
-                <Header>
-            <Left style={{ flex: 0,width:'10%'}}>
-              <Button transparent onPress={() => this.props.navigation.goBack()}>
-                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Path1.png')} />
-              </Button>
-            </Left>
-            <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'80%' ,}}>
-              <Title style={{
-                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
-                fontStyle: "normal",
-              }}>My Achievements</Title>
-            </Body>
-            <Right  style={{ flex:0,width:'10%'}}>
-                </Right>
-          
-          </Header>
+                    <Header>
+                        <Left style={{ flex: 0, width: '10%' }}>
+                            <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Path1.png')} />
+                            </Button>
+                        </Left>
+                        <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '80%', }}>
+                            <Title style={{
+                                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                                fontStyle: "normal",
+                            }}>My Achievements</Title>
+                        </Body>
+                        <Right style={{ flex: 0, width: '10%' }}>
+                        </Right>
+
+                    </Header>
                     <Content padder>
                         <Grid>
                             <Col>
                                 <View style={{ height: rowHeight }}>
                                     <Col style={styles.colStyle}>
-                                        <Thumbnail large source={require('../../../assets/images/Achieve2.png')} />
+                                        <AnimatedCircularProgress    style={{ justifyContent: 'center', alignItems: 'center' ,overflow:'hidden',     }}                         
+                                        rotation ={0}
+                                            size={90}
+                                            width={2}
+                                            fill={80}
+                                            tintColor="#F7941D"
+                                            backgroundColor="#D1D3D4">
+                                            {
+                                                (fill) => (
+                                                    <TouchableHighlight  style={ {zindex:2,overflow:'hidden', justifyContent: 'center', alignItems: 'center', }} >       
+                                                    <Thumbnail  large source={require('../../../assets/images/Achieve2.png')} />
+                                                    </TouchableHighlight>
+                                                     )
+                                            }
+                                        </AnimatedCircularProgress>
+                                        {/* <Thumbnail large source={require('../../../assets/images/Achieve2.png')} /> */}
                                         <Text style={styles.textValue}>{MyAchievements.HoursWorked}</Text>
                                         <Text style={styles.text}>Total Hours Worked</Text>
                                     </Col>
                                 </View>
                                 <View style={{ height: rowHeight }}>
                                     <Col style={styles.colStyle}>
-                                        <Thumbnail large source={require('../../../assets/images/Achieve3.png')} />
+                                    <AnimatedCircularProgress                                       
+                                        rotation ={0}
+                                            size={90}
+                                            width={2}
+                                            fill={50}
+                                            tintColor="#F7941D"
+                                            backgroundColor="#D1D3D4">
+                                            {
+                                                (fill) => (
+                                                    <Thumbnail large source={require('../../../assets/images/Achieve3.png')} />
+                                                )
+                                            }
+                                        </AnimatedCircularProgress>
+                                      
                                         <Text style={styles.textValue}>{MyAchievements.TotalMiles}</Text>
                                         <Text style={styles.text}>Total Miles Driven</Text>
                                     </Col>
                                 </View>
                                 <View style={{ height: rowHeight }}>
                                     <Col style={styles.colStyle}>
-                                        <Thumbnail large source={require('../../../assets/images/Achieve6.png')} />
+                                    <AnimatedCircularProgress                                       
+                                        rotation ={0}
+                                            size={90}
+                                            width={2}
+                                            fill={60}
+                                            tintColor="#F7941D"
+                                            backgroundColor="#D1D3D4">
+                                            {
+                                                (fill) => (
+                                                    <Thumbnail large source={require('../../../assets/images/Achieve6.png')} />
+                                                )
+                                            }
+                                        </AnimatedCircularProgress>
+                                     
                                         <Text style={styles.textValue}>{MyAchievements.TotalMVC}</Text>
                                         <Text style={styles.text}>Total MVC's</Text>
                                     </Col>
@@ -79,21 +123,60 @@ export default class Achievements extends Component {
 
                                 <View style={{ height: rowHeight }}>
                                     <Col style={styles.colStyle}>
-                                        <Thumbnail large source={require('../../../assets/images/Achieve1.png')} />
+                                    <AnimatedCircularProgress                                       
+                                        rotation ={0}
+                                            size={90}
+                                            width={2}
+                                            fill={90}
+                                            tintColor="#F7941D"
+                                            backgroundColor="#D1D3D4">
+                                            {
+                                                (fill) => (
+                                                    <Thumbnail large source={require('../../../assets/images/Achieve1.png')} />
+                                                )
+                                            }
+                                        </AnimatedCircularProgress>
+                                       
                                         <Text style={styles.textValue}>{MyAchievements.MostCalls}</Text>
                                         <Text style={styles.text}>Most Calls per Shift</Text>
                                     </Col>
                                 </View>
                                 <View style={{ height: rowHeight }}>
                                     <Col style={styles.colStyle}>
-                                        <Thumbnail large source={require('../../../assets/images/Achieve4.png')} />
+                                    <AnimatedCircularProgress                                       
+                                        rotation ={0}
+                                            size={90}
+                                            width={2}
+                                            fill={50}
+                                            tintColor="#F7941D"
+                                            backgroundColor="#D1D3D4">
+                                            {
+                                                (fill) => (
+                                                    <Thumbnail large source={require('../../../assets/images/Achieve4.png')} />
+                                                )
+                                            }
+                                        </AnimatedCircularProgress>
+                                       
                                         <Text style={styles.textValue}>{MyAchievements.Shifts}</Text>
                                         <Text style={styles.text}>Total Shifts Worked</Text>
                                     </Col>
                                 </View>
                                 <View style={{ height: rowHeight, width: '100%' }}>
                                     <Col style={styles.colStyle}>
-                                        <Thumbnail large source={require('../../../assets/images/Achieve5.png')} />
+                                    <AnimatedCircularProgress                                       
+                                        rotation ={0}
+                                            size={90}
+                                            width={2}
+                                            fill={25}
+                                            tintColor="#F7941D"
+                                            backgroundColor="#D1D3D4">
+                                            {
+                                                (fill) => (
+                                                    <Thumbnail large source={require('../../../assets/images/Achieve5.png')} />
+                                                )
+                                            }
+                                        </AnimatedCircularProgress>
+                                      
                                         <Text style={styles.textValue}>{MyAchievements.Morphine}</Text>
                                         <Text style={styles.text}>Morphine, Total given(mg)</Text>
                                     </Col>
@@ -122,5 +205,5 @@ const styles = StyleSheet.create({
     colStyle: {
         alignItems: 'center',
         justifyContent: 'center'
-    }
+    },
 })

@@ -1,7 +1,7 @@
 
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Text, Content, Segment, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, Button, Left, Right, Body, StyleProvider, Card, CardItem } from 'native-base';
+import { Container, Header, Title, Text, Content, Segment, Input, Thumbnail, Item, Footer, FooterTab, Icon, Label, List, ListItem, Button, Left, Right, Body, StyleProvider, Card, CardItem } from 'native-base';
 import { Platform, StyleSheet, ScrollView, ActivityIndicator, Dimensions, TextInput, ProgressBarAndroid, Image, ImageBackground, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
@@ -22,9 +22,7 @@ export default class ChuteTime extends Component {
 
     constructor(props) {
         super(props);
-        // this.state = {
-        //     value: 0
-        // };
+
     }
     state = { selected: 1, value: 0 }
     render() {
@@ -37,41 +35,10 @@ export default class ChuteTime extends Component {
         const data2 = [50, 50, 50, 50, 50, 50, 50]
 
         const data3 = [70, 80, 70, 50, 80, 80, 71,]
-        //   const data5 = [10, 80, 70, 50, 80, 40, 71, 80, 40, 71]
 
         const data = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
-        // const data1 = [195, 150, 180, 155, 140, 180, 192]
-        //     .map((value) => ({ value }))
-        // const data2 = [180, 190, 193, 195, 190, 140, 150]
-        //     .map((value) => ({ value }))
-        // const data3 = [190, 125, 160, 125, 120, 150, 128]
-        //     .map((value) => ({ value }))
 
-
-
-
-        // const barData = [
-        //     {
-        //         data: data1,
-        //         svg: {
-        //             fill: '#F7941D',
-        //             borderRadius: 100
-        //         },
-        //     },
-        //     {
-        //         data: data2,
-        //         svg: {
-        //             fill: '#FAB007',
-        //         },
-        //     },
-        //     {
-        //         data: data3,
-        //         svg: {
-        //             fill: '#E67702',
-        //         },
-        //     },
-        // ]
 
         const barWidth = Dimensions.get('screen').width - 30;
 
@@ -94,6 +61,22 @@ export default class ChuteTime extends Component {
 
             <StyleProvider style={getTheme(material)}>
                 <Container>
+                    <Header>
+                        <Left style={{ flex: 1 }}>
+                            <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                <Icon type='Entypo' name='chevron-thin-left' style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                            </Button>
+                        </Left>
+                        <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                            <Title style={{
+                                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                                fontStyle: "normal",
+                            }}>Chute Time</Title>
+                        </Body>
+                        <Right style={{ flex: 1 }}>
+                        </Right>
+                    </Header>
+
                     <Header hasSegment style={{ backgroundColor: 'white' }}>
 
                         <Body>
@@ -244,258 +227,258 @@ at your job?
                         </View>}
                         {this.state.selected === 2 && <View>
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average Time
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average Time
           </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressAverageStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={45}
-                                />
-                            </View>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressTargetStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={50}
-                                />
-                            </View>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <ProgressBarAnimated
+                                        {...progressAverageStyles}
+                                        width={barWidth}
+                                        height={28}
+                                        value={45}
+                                    />
+                                </View>
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <ProgressBarAnimated
+                                        {...progressTargetStyles}
+                                        width={barWidth}
+                                        height={28}
+                                        value={50}
+                                    />
+                                </View>
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
                     </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressTeamAverageStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={30}
-                                />
-                            </View>
-
-
-                        </View>
-                        <Text style={{ fontFamily: "avenir light", fontSize: 12, textAlign: 'center', color: '#A7A9AC' }}>Last updated 2 days ago
-                    </Text>
-                        <View style={styles.separator} />
-                        <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                            <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
-                            <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
-                            <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
-                        </View>
-                        <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Attention!
-                    </Text>
-                        <Text style={{ width: '80%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 12, textAlign: 'center', flex: 1, color: '#A7A9AC' }}>We've noticed a decline in your results
-                    for a long time. Please take the survey so that
-                    we can offer you solutions to this problem
-                    </Text>
-                        <View style={{ marginTop: 15 }}>
-                            <Grid style={{ backgroundColor: '#FDE5BE', }}>
-                                <Row>
-                                    <Text style={{ width: '100%', marginTop: 10, marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>1. Are you valued or recognized
-at your job?
-</Text>
-                                </Row>
-                                <Row>
-                                    <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
-                                        <RadioForm
-                                            style={{ marginRight: 10, marginLeft: 15, paddingLeft: 15, paddingRight: 15 }}
-                                            radio_props={radio_props}
-                                            initial={0}
-                                            formHorizontal={true}
-                                            buttonColor={'#F7941D'}
-                                            selectedButtonColor={'#F7941D'}
-                                            buttonSize={10}
-                                            buttonOuterSize={20}
-                                            onPress={(value) => { this.setState({ value: value }) }}
-                                        />
-                                    </View>
-                                </Row>
-                                <Row>
-                                    <Text style={{ width: '100%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>2. Do you feel that you have balance
-                                    in your life?
-
-
-</Text>
-                                </Row>
-                                <Row>
-                                    <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
-                                        <RadioForm
-                                            style={{ marginRight: 10, marginLeft: 15, paddingLeft: 15, paddingRight: 15 }}
-                                            radio_props={radio_props}
-                                            initial={0}
-                                            formHorizontal={true}
-                                            buttonColor={'#F7941D'}
-                                            selectedButtonColor={'#F7941D'}
-                                            buttonSize={10}
-                                            buttonOuterSize={20}
-                                            onPress={(value) => { this.setState({ value: value }) }}
-                                        />
-                                    </View>
-                                </Row>
-                                <Row>
-                                    <Text style={{ width: '100%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>3. Do you have the time and resources
-                                    to accomplish what you have to do?
-
-</Text>
-                                </Row>
-                                <Row>
-                                    <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' , fontFamily: "avenir light"}}>
-                                        <RadioForm
-                                           
-                                            radio_props={radio_props}
-                                            initial={0}
-                                            formHorizontal={true}
-                                            buttonColor={'#F7941D'}
-                                            selectedButtonColor={'#F7941D'}
-                                            buttonSize={10}
-                                            buttonOuterSize={20}
-                                            onPress={(value) => { this.setState({ value: value }) }}
-                                        />
-                                    </View>
-                                </Row>
-                            </Grid>
-                        </View>
-                        <Grid>
-                            <Row>
-
-                                <View style={styles.buttonContainer}>
-                                    <TouchableOpacity style={[styles.button, styles.loginButton]}>
-                                        <Text style={styles.loginText}>Submit</Text>
-                                    </TouchableOpacity>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <ProgressBarAnimated
+                                        {...progressTeamAverageStyles}
+                                        width={barWidth}
+                                        height={28}
+                                        value={30}
+                                    />
                                 </View>
 
-                            </Row>
-                        </Grid>
+
+                            </View>
+                            <Text style={{ fontFamily: "avenir light", fontSize: 12, textAlign: 'center', color: '#A7A9AC' }}>Last updated 2 days ago
+                    </Text>
+                            <View style={styles.separator} />
+                            <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
+                            </View>
+                            <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Attention!
+                    </Text>
+                            <Text style={{ width: '80%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 12, textAlign: 'center', flex: 1, color: '#A7A9AC' }}>We've noticed a decline in your results
+                        for a long time. Please take the survey so that
+                        we can offer you solutions to this problem
+                    </Text>
+                            <View style={{ marginTop: 15 }}>
+                                <Grid style={{ backgroundColor: '#FDE5BE', }}>
+                                    <Row>
+                                        <Text style={{ width: '100%', marginTop: 10, marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>1. Are you valued or recognized
+    at your job?
+</Text>
+                                    </Row>
+                                    <Row>
+                                        <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
+                                            <RadioForm
+                                                style={{ marginRight: 10, marginLeft: 15, paddingLeft: 15, paddingRight: 15 }}
+                                                radio_props={radio_props}
+                                                initial={0}
+                                                formHorizontal={true}
+                                                buttonColor={'#F7941D'}
+                                                selectedButtonColor={'#F7941D'}
+                                                buttonSize={10}
+                                                buttonOuterSize={20}
+                                                onPress={(value) => { this.setState({ value: value }) }}
+                                            />
+                                        </View>
+                                    </Row>
+                                    <Row>
+                                        <Text style={{ width: '100%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>2. Do you feel that you have balance
+                                        in your life?
+    
+    
+</Text>
+                                    </Row>
+                                    <Row>
+                                        <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
+                                            <RadioForm
+                                                style={{ marginRight: 10, marginLeft: 15, paddingLeft: 15, paddingRight: 15 }}
+                                                radio_props={radio_props}
+                                                initial={0}
+                                                formHorizontal={true}
+                                                buttonColor={'#F7941D'}
+                                                selectedButtonColor={'#F7941D'}
+                                                buttonSize={10}
+                                                buttonOuterSize={20}
+                                                onPress={(value) => { this.setState({ value: value }) }}
+                                            />
+                                        </View>
+                                    </Row>
+                                    <Row>
+                                        <Text style={{ width: '100%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>3. Do you have the time and resources
+                                        to accomplish what you have to do?
+    
+</Text>
+                                    </Row>
+                                    <Row>
+                                        <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around', fontFamily: "avenir light" }}>
+                                            <RadioForm
+
+                                                radio_props={radio_props}
+                                                initial={0}
+                                                formHorizontal={true}
+                                                buttonColor={'#F7941D'}
+                                                selectedButtonColor={'#F7941D'}
+                                                buttonSize={10}
+                                                buttonOuterSize={20}
+                                                onPress={(value) => { this.setState({ value: value }) }}
+                                            />
+                                        </View>
+                                    </Row>
+                                </Grid>
+                            </View>
+                            <Grid>
+                                <Row>
+
+                                    <View style={styles.buttonContainer}>
+                                        <TouchableOpacity style={[styles.button, styles.loginButton]}>
+                                            <Text style={styles.loginText}>Submit</Text>
+                                        </TouchableOpacity>
+                                    </View>
+
+                                </Row>
+                            </Grid>
 
                         </View>}
                         {this.state.selected === 3 && <View>
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average Time
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average Time
           </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressAverageStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={35}
-                                />
-                            </View>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressTargetStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={55}
-                                />
-                            </View>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <ProgressBarAnimated
+                                        {...progressAverageStyles}
+                                        width={barWidth}
+                                        height={28}
+                                        value={35}
+                                    />
+                                </View>
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <ProgressBarAnimated
+                                        {...progressTargetStyles}
+                                        width={barWidth}
+                                        height={28}
+                                        value={55}
+                                    />
+                                </View>
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
                     </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressTeamAverageStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={40}
-                                />
-                            </View>
-
-
-                        </View>
-                        <Text style={{ fontFamily: "avenir light", fontSize: 12, textAlign: 'center', color: '#A7A9AC' }}>Last updated 2 days ago
-                    </Text>
-                        <View style={styles.separator} />
-                        <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                            <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
-                            <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
-                            <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
-                        </View>
-                        <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Attention!
-                    </Text>
-                        <Text style={{ width: '80%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 12, textAlign: 'center', flex: 1, color: '#A7A9AC' }}>We've noticed a decline in your results
-                    for a long time. Please take the survey so that
-                    we can offer you solutions to this problem
-                    </Text>
-                        <View style={{ marginTop: 15 }}>
-                            <Grid style={{ backgroundColor: '#FDE5BE', }}>
-                                <Row>
-                                    <Text style={{ width: '100%', marginTop: 10, marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>1. Are you valued or recognized
-at your job?
-</Text>
-                                </Row>
-                                <Row>
-                                    <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
-                                        <RadioForm
-                                            style={{ marginRight: 10, marginLeft: 15, paddingLeft: 15, paddingRight: 15 }}
-                                            radio_props={radio_props}
-                                            initial={0}
-                                            formHorizontal={true}
-                                            buttonColor={'#F7941D'}
-                                            selectedButtonColor={'#F7941D'}
-                                            buttonSize={10}
-                                            buttonOuterSize={20}
-                                            onPress={(value) => { this.setState({ value: value }) }}
-                                        />
-                                    </View>
-                                </Row>
-                                <Row>
-                                    <Text style={{ width: '100%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>2. Do you feel that you have balance
-                                    in your life?
-
-
-</Text>
-                                </Row>
-                                <Row>
-                                    <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
-                                        <RadioForm
-                                            style={{ marginRight: 10, marginLeft: 15, paddingLeft: 15, paddingRight: 15 }}
-                                            radio_props={radio_props}
-                                            initial={0}
-                                            formHorizontal={true}
-                                            buttonColor={'#F7941D'}
-                                            selectedButtonColor={'#F7941D'}
-                                            buttonSize={10}
-                                            buttonOuterSize={20}
-                                            onPress={(value) => { this.setState({ value: value }) }}
-                                        />
-                                    </View>
-                                </Row>
-                                <Row>
-                                    <Text style={{ width: '100%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>3. Do you have the time and resources
-                                    to accomplish what you have to do?
-
-</Text>
-                                </Row>
-                                <Row>
-                                    <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' , fontFamily: "avenir light"}}>
-                                        <RadioForm
-                                           
-                                            radio_props={radio_props}
-                                            initial={0}
-                                            formHorizontal={true}
-                                            buttonColor={'#F7941D'}
-                                            selectedButtonColor={'#F7941D'}
-                                            buttonSize={10}
-                                            buttonOuterSize={20}
-                                            onPress={(value) => { this.setState({ value: value }) }}
-                                        />
-                                    </View>
-                                </Row>
-                            </Grid>
-                        </View>
-                        <Grid>
-                            <Row>
-
-                                <View style={styles.buttonContainer}>
-                                    <TouchableOpacity style={[styles.button, styles.loginButton]}>
-                                        <Text style={styles.loginText}>Submit</Text>
-                                    </TouchableOpacity>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <ProgressBarAnimated
+                                        {...progressTeamAverageStyles}
+                                        width={barWidth}
+                                        height={28}
+                                        value={40}
+                                    />
                                 </View>
 
-                            </Row>
-                        </Grid>
+
+                            </View>
+                            <Text style={{ fontFamily: "avenir light", fontSize: 12, textAlign: 'center', color: '#A7A9AC' }}>Last updated 2 days ago
+                    </Text>
+                            <View style={styles.separator} />
+                            <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
+                            </View>
+                            <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Attention!
+                    </Text>
+                            <Text style={{ width: '80%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 12, textAlign: 'center', flex: 1, color: '#A7A9AC' }}>We've noticed a decline in your results
+                        for a long time. Please take the survey so that
+                        we can offer you solutions to this problem
+                    </Text>
+                            <View style={{ marginTop: 15 }}>
+                                <Grid style={{ backgroundColor: '#FDE5BE', }}>
+                                    <Row>
+                                        <Text style={{ width: '100%', marginTop: 10, marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>1. Are you valued or recognized
+    at your job?
+</Text>
+                                    </Row>
+                                    <Row>
+                                        <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
+                                            <RadioForm
+                                                style={{ marginRight: 10, marginLeft: 15, paddingLeft: 15, paddingRight: 15 }}
+                                                radio_props={radio_props}
+                                                initial={0}
+                                                formHorizontal={true}
+                                                buttonColor={'#F7941D'}
+                                                selectedButtonColor={'#F7941D'}
+                                                buttonSize={10}
+                                                buttonOuterSize={20}
+                                                onPress={(value) => { this.setState({ value: value }) }}
+                                            />
+                                        </View>
+                                    </Row>
+                                    <Row>
+                                        <Text style={{ width: '100%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>2. Do you feel that you have balance
+                                        in your life?
+    
+    
+</Text>
+                                    </Row>
+                                    <Row>
+                                        <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around' }}>
+                                            <RadioForm
+                                                style={{ marginRight: 10, marginLeft: 15, paddingLeft: 15, paddingRight: 15 }}
+                                                radio_props={radio_props}
+                                                initial={0}
+                                                formHorizontal={true}
+                                                buttonColor={'#F7941D'}
+                                                selectedButtonColor={'#F7941D'}
+                                                buttonSize={10}
+                                                buttonOuterSize={20}
+                                                onPress={(value) => { this.setState({ value: value }) }}
+                                            />
+                                        </View>
+                                    </Row>
+                                    <Row>
+                                        <Text style={{ width: '100%', marginLeft: '10%', marginRight: '10%', fontFamily: "avenir light", fontSize: 17, textAlign: 'center', flex: 1, }}>3. Do you have the time and resources
+                                        to accomplish what you have to do?
+    
+</Text>
+                                    </Row>
+                                    <Row>
+                                        <View style={{ marginTop: 10, marginBottom: 15, flex: 1, flexDirection: 'row', justifyContent: 'space-around', fontFamily: "avenir light" }}>
+                                            <RadioForm
+
+                                                radio_props={radio_props}
+                                                initial={0}
+                                                formHorizontal={true}
+                                                buttonColor={'#F7941D'}
+                                                selectedButtonColor={'#F7941D'}
+                                                buttonSize={10}
+                                                buttonOuterSize={20}
+                                                onPress={(value) => { this.setState({ value: value }) }}
+                                            />
+                                        </View>
+                                    </Row>
+                                </Grid>
+                            </View>
+                            <Grid>
+                                <Row>
+
+                                    <View style={styles.buttonContainer}>
+                                        <TouchableOpacity style={[styles.button, styles.loginButton]}>
+                                            <Text style={styles.loginText}>Submit</Text>
+                                        </TouchableOpacity>
+                                    </View>
+
+                                </Row>
+                            </Grid>
 
                         </View>}
                     </Content>

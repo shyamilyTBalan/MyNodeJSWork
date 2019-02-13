@@ -119,7 +119,7 @@ export default class FeedbackMain extends Component {
     return (
       <StyleProvider style={getTheme(material)}>
       <Container >
-      <View style={{height: '85%' }}>
+      <View style={{height: '90%' }}>
         <Tabs  >
        
           <Tab heading="Pending" >  
@@ -132,7 +132,7 @@ export default class FeedbackMain extends Component {
 
         </Tabs>
         </View>
-        <View style={{height: '15%'}}>
+        <View style={{height: '10%'}}>
         <Content>
          <Row >
            <Col style={{ width: '50%' }}>

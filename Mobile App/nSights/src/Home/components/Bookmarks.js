@@ -31,30 +31,30 @@ const BookmarkData = [
         Author: 'Marlene Dietrich',
         Lifespan: '1901 - 1992'
     }
-, {
-    Date: '22 January 2019',
-    Content: 'Its so easy to be kind - you only need to imagine yourself in the place of another person before you start judging him',
-    Author: 'Marlene Dietrich',
-    Lifespan: '1901 - 1992'
-},
-{
-    Date: '23 January 2019',
-    Content: 'Its so easy to be kind - you only need to imagine yourself in the place of another person before you start judging him',
-    Author: 'Marlene Dietrich',
-    Lifespan: '1901 - 1992'
-},
-{
-    Date: '24 January 2019',
-    Content: 'Its so easy to be kind - you only need to imagine yourself in the place of another person before you start judging him',
-    Author: 'Marlene Dietrich',
-    Lifespan: '1901 - 1992'
-},
-{
-    Date: '25 January 2019',
-    Content: 'Its so easy to be kind - you only need to imagine yourself in the place of another person before you start judging him',
-    Author: 'Marlene Dietrich',
-    Lifespan: '1901 - 1992'
-}]
+    , {
+        Date: '22 January 2019',
+        Content: 'Its so easy to be kind - you only need to imagine yourself in the place of another person before you start judging him',
+        Author: 'Marlene Dietrich',
+        Lifespan: '1901 - 1992'
+    },
+    {
+        Date: '23 January 2019',
+        Content: 'Its so easy to be kind - you only need to imagine yourself in the place of another person before you start judging him',
+        Author: 'Marlene Dietrich',
+        Lifespan: '1901 - 1992'
+    },
+    {
+        Date: '24 January 2019',
+        Content: 'Its so easy to be kind - you only need to imagine yourself in the place of another person before you start judging him',
+        Author: 'Marlene Dietrich',
+        Lifespan: '1901 - 1992'
+    },
+    {
+        Date: '25 January 2019',
+        Content: 'Its so easy to be kind - you only need to imagine yourself in the place of another person before you start judging him',
+        Author: 'Marlene Dietrich',
+        Lifespan: '1901 - 1992'
+    }]
 const rowHeight = (Dimensions.get('screen').height - 150) / 3;
 
 export default class Bookmarks extends Component {
@@ -72,7 +72,7 @@ export default class Bookmarks extends Component {
                     <Header>
                         <Left style={{ flex: 0, width: '10%' }}>
                             <Button transparent onPress={() => this.props.navigation.goBack()}>
-                                <Icon1 name='chevron-left' size={22} color='white' />
+                                <Icon type='Entypo' name='chevron-thin-left' style={{ maxWidth: '100%', maxHeight: '100%' }} />
                             </Button>
                         </Left>
                         <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '80%', }}>
@@ -86,9 +86,9 @@ export default class Bookmarks extends Component {
 
                     </Header>
                     <Content padder>
-                    {BookmarkData.map((data, i) => (
-                        <Card>
-                           
+                        {BookmarkData.map((data, i) => (
+                            <Card>
+
                                 <View>
                                     <CardItem header >
                                         <Left style={{ flex: 0, width: '10%', }}>
@@ -97,27 +97,27 @@ export default class Bookmarks extends Component {
                                             <Text>{data.Date}</Text>
                                         </Body>
                                         <Right style={{ flex: 0, width: '10%' }}>
-                                        <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Bookmark1.png')} />
+                                            <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Bookmark1.png')} />
                                         </Right>
                                     </CardItem>
                                     <CardItem>
                                         <Body>
-                                            <Text style={{textAlign:'center',fontFamily: 'avenir light', fontSize:15}}>
+                                            <Text style={{ textAlign: 'center', fontFamily: 'avenir light', fontSize: 15 }}>
                                                 {data.Content}
                                             </Text>
                                         </Body>
                                     </CardItem>
 
 
-                                    <CardItem footer style={{ flex: 1,flexDirection:'row' ,justifyContent: 'center', alignItems: 'center' }}>
-                                        <Text style={{fontWeight: "300",fontFamily: 'avenir light', fontStyle: "italic",fontSize:13}}>{data.Author}</Text>
-                                        <Text  style={{fontWeight: "300",fontFamily: 'avenir light', fontStyle: "italic",fontSize:13}}>({data.Lifespan})</Text>
+                                    <CardItem footer style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                        <Text style={{ fontWeight: "300", fontFamily: 'avenir light', fontStyle: "italic", fontSize: 13 }}>{data.Author}</Text>
+                                        <Text style={{ fontWeight: "300", fontFamily: 'avenir light', fontStyle: "italic", fontSize: 13 }}>({data.Lifespan})</Text>
                                     </CardItem>
                                 </View>
-                           
 
-                        </Card>
-                    ))}
+
+                            </Card>
+                        ))}
 
                     </Content>
                 </Container>

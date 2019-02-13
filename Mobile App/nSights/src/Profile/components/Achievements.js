@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, Button, Left, Right, Body, StyleProvider, Card, CardItem } from 'native-base';
+import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, Icon, FooterTab, Label, List, ListItem, Button, Left, Right, Body, StyleProvider, Card, CardItem } from 'native-base';
 import { Platform, StyleSheet, ScrollView, TextInput, Image, ImageBackground, View, TouchableOpacity, FlatList, TouchableHighlight, Dimensions } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
@@ -11,16 +11,16 @@ const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.tt
 
 
 const MyAchievements =
-    {
-        HoursWorked: '14,400',
-        MostCalls: 20,
-        TotalMiles: '75,000',
-        Shifts: 600,
-        TotalMVC: 300,
-        Morphine: 1200
+{
+    HoursWorked: '14,400',
+    MostCalls: 20,
+    TotalMiles: '75,000',
+    Shifts: 600,
+    TotalMVC: 300,
+    Morphine: 1200
 
 
-    }
+}
 const rowHeight = (Dimensions.get('screen').height - 150) / 3;
 
 export default class Achievements extends Component {
@@ -33,22 +33,22 @@ export default class Achievements extends Component {
 
             <StyleProvider style={getTheme(material)}>
                 <Container>
-                <Header>
-            <Left style={{ flex: 0,width:'10%'}}>
-              <Button transparent onPress={() => this.props.navigation.goBack()}>
-                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Path1.png')} />
-              </Button>
-            </Left>
-            <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center',width:'80%' ,}}>
-              <Title style={{
-                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
-                fontStyle: "normal",
-              }}>My Achievements</Title>
-            </Body>
-            <Right  style={{ flex:0,width:'10%'}}>
-                </Right>
-          
-          </Header>
+                    <Header>
+                        <Left style={{ flex: 0, width: '10%' }}>
+                            <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                <Icon type='Entypo' name='chevron-thin-left' style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                            </Button>
+                        </Left>
+                        <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '80%', }}>
+                            <Title style={{
+                                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                                fontStyle: "normal",
+                            }}>My Achievements</Title>
+                        </Body>
+                        <Right style={{ flex: 0, width: '10%' }}>
+                        </Right>
+
+                    </Header>
                     <Content padder>
                         <Grid>
                             <Col>

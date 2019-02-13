@@ -1,7 +1,7 @@
 
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Text, Content, Segment, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, Button, Left, Right, Body, StyleProvider, Card, CardItem } from 'native-base';
+import { Container, Header, Title, Text, Content, Segment, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem,Icon, Button, Left, Right, Body, StyleProvider, Card, CardItem } from 'native-base';
 import { Platform, StyleSheet, ScrollView, ActivityIndicator, Dimensions, TextInput, ProgressBarAndroid, Image, ImageBackground, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
@@ -21,9 +21,7 @@ export default class OnSceneTime extends Component {
 
     constructor(props) {
         super(props);
-        // this.state = {
-        //     selected: 2
-        //   };
+      
     }
     state = { selected: 1 }
     render() {
@@ -42,37 +40,7 @@ export default class OnSceneTime extends Component {
 
         const data = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
-        // const data1 = [195, 150, 180, 155, 140, 180, 192]
-        //     .map((value) => ({ value }))
-        // const data2 = [180, 190, 193, 195, 190, 140, 150]
-        //     .map((value) => ({ value }))
-        // const data3 = [190, 125, 160, 125, 120, 150, 128]
-        //     .map((value) => ({ value }))
-
-
-
-
-        // const barData = [
-        //     {
-        //         data: data1,
-        //         svg: {
-        //             fill: '#F7941D',
-        //             borderRadius: 100
-        //         },
-        //     },
-        //     {
-        //         data: data2,
-        //         svg: {
-        //             fill: '#FAB007',
-        //         },
-        //     },
-        //     {
-        //         data: data3,
-        //         svg: {
-        //             fill: '#E67702',
-        //         },
-        //     },
-        // ]
+       
 
         const barWidth = Dimensions.get('screen').width - 30;
 
@@ -95,6 +63,22 @@ export default class OnSceneTime extends Component {
 
             <StyleProvider style={getTheme(material)}>
                 <Container>
+
+                     <Header>
+                        <Left style={{ flex: 0, width: '10%' }}>
+                            <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                <Icon type='Entypo' name='chevron-thin-left' style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                            </Button>
+                        </Left>
+                        <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' , width: '80%', }}>
+                            <Title style={{
+                                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                                fontStyle: "normal",
+                            }}>On-Scene Time</Title>
+                        </Body>
+                        <Right style={{ flex: 0, width: '10%' }}>
+                        </Right>
+                    </Header>
                     <Header hasSegment style={{ backgroundColor: 'white' }}>
 
                         <Body>
@@ -172,7 +156,7 @@ Keep up the good work!
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    {/* <Grid1/> */}
+                                   
                                 </LineChart>
                                 <LineChart
                                     style={StyleSheet.absoluteFill}
@@ -201,7 +185,7 @@ Keep up the good work!
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
-                                    //paddingLeft: 0, marginRight: 20
+                                   
                                 }}
                                 formatLabel={(value, index) => data[index]}
                             />
@@ -310,7 +294,7 @@ Keep up the good work!
                                 yMin={10}
                                 yMax={100}
                             >
-                                {/* <Grid1/> */}
+                               
                             </LineChart>
                             <LineChart
                                 style={StyleSheet.absoluteFill}
@@ -339,7 +323,7 @@ Keep up the good work!
                                 fill: 'black',
                                 fontFamily: 'avenir light',
                                 fontSize: 14,
-                                //paddingLeft: 0, marginRight: 20
+                               
                             }}
                             formatLabel={(value, index) => data[index]}
                         />
@@ -449,7 +433,7 @@ Keep up the good work!
                                 yMin={10}
                                 yMax={100}
                             >
-                                {/* <Grid1/> */}
+                               
                             </LineChart>
                             <LineChart
                                 style={StyleSheet.absoluteFill}
@@ -478,7 +462,7 @@ Keep up the good work!
                                 fill: 'black',
                                 fontFamily: 'avenir light',
                                 fontSize: 14,
-                                //paddingLeft: 0, marginRight: 20
+                              
                             }}
                             formatLabel={(value, index) => data[index]}
                         />

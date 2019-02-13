@@ -1,13 +1,13 @@
 
 import React, { Component } from 'react';
-import { Container, Header, Text, Content, Tab, Tabs, StyleProvider, TabHeading, List, ListItem, Separator, Thumbnail, Left, Right, Button, Title, Body } from 'native-base';
+import { Container, Header, Text, Content, Tab, Tabs, StyleProvider, TabHeading, List, Icon, ListItem, Separator, Thumbnail, Left, Right, Button, Title, Body } from 'native-base';
 import { Platform, StyleSheet, ScrollView, TextInput, Image, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import StarRating from 'react-native-star-rating';
 import Icon1 from 'react-native-vector-icons/FontAwesome';
-import Icon from 'react-native-vector-icons/Entypo';
+
 
 
 
@@ -88,13 +88,13 @@ const CommentsData = [
     },]
 
 const RatingsData =
-    {
-        Professionalism: 4,
-        PatientCare: 3,
-        TeamWork: 5,
-        Attitude: 5,
-        Leadership: 3
-    }
+{
+    Professionalism: 4,
+    PatientCare: 3,
+    TeamWork: 5,
+    Attitude: 5,
+    Leadership: 3
+}
 var count = Object.keys(RatingsData).length;
 const avg = (RatingsData.Professionalism + RatingsData.PatientCare + RatingsData.TeamWork + RatingsData.Leadership + RatingsData.Attitude) / count
 
@@ -108,7 +108,7 @@ export default class Rating_Comments extends Component {
                     <Header>
                         <Left style={{ flex: 1 }}>
                             <Button transparent onPress={() => this.props.navigation.goBack()}>
-                                <Icon name='chevron-left' size={22} color='white' />                              
+                                <Icon type='Entypo' name='chevron-thin-left' style={{ maxWidth: '100%', maxHeight: '100%' }} />
                             </Button>
                         </Left>
                         <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

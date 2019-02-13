@@ -489,60 +489,23 @@ const KeyResultsStack = createStackNavigator({
   },
   HospitalTurnaroundTime: {
     navigationOptions: {
-
-      title: 'Hospital Turnaround Time',
-      headerStyle: {
-        backgroundColor: '#F7941D',
-      },
-      headerTintColor: '#fff',
-
+      header: null,
     }, screen: HospitalTurnaroundTime
   },
   ChuteTime: {
     navigationOptions: {
-
-      title: 'Chute Time',
-      headerStyle: {
-        backgroundColor: '#F7941D',
-
-      },
-      headerTitleStyle: { flex: 1, textAlign: 'center', marginLeft: -10 },
-      headerTintColor: '#fff',
-
+      header: null,
     }, screen: ChuteTime
   },
   ResponseTime: {
     navigationOptions: {
-
-      title: 'Response Time',
-      headerStyle: {
-        backgroundColor: '#F7941D',
-
-      },
-      headerTitleStyle: { flex: 1, textAlign: 'center', marginLeft: -10 },
-      headerTintColor: '#fff',
-
+      header: null,
     }, screen: ResponseTime
   },
   OnSceneTime: {
-    navigationOptions: ({ navigation }) => ({
-
-
-      title: 'On-Scene Time',
-      headerStyle: {
-        backgroundColor: '#F7941D',
-
-      },
-      headerTitleStyle: { flex: 1, textAlign: 'center', marginLeft: -10 },
-
-
-
-      headerTintColor: '#fff',
-
-    }), screen: OnSceneTime
-
-
-
+    navigationOptions: {
+      header: null,
+    }, screen: OnSceneTime
   },
 });
 

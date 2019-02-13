@@ -1,7 +1,7 @@
 
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Text, Content, Segment, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, Button, Left, Right, Body, StyleProvider, Card, CardItem } from 'native-base';
+import { Container, Header, Title, Text, Content, Segment, Icon, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, Button, Left, Right, Body, StyleProvider, Card, CardItem } from 'native-base';
 import { Platform, StyleSheet, ScrollView, ActivityIndicator, Dimensions, TextInput, ProgressBarAndroid, Image, ImageBackground, View, Linking, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
@@ -22,9 +22,7 @@ export default class ResponseTime extends Component {
 
     constructor(props) {
         super(props);
-        // this.state = {
-        //     selected: 2
-        //   };
+
     }
     state = { selected: 1 }
     render() {
@@ -36,7 +34,7 @@ export default class ResponseTime extends Component {
         const data12 = [50, 50, 50, 50, 50, 50, 50]
         const data13 = [70, 80, 70, 50, 80, 80, 71,]
 
-        const data21 =  [10, 50, 48, 95, 30, 75, 60,].reverse()
+        const data21 = [10, 50, 48, 95, 30, 75, 60,].reverse()
         const data22 = [50, 50, 50, 50, 50, 50, 50]
         const data23 = [70, 80, 30, 20, 70, 50, 61,].reverse()
 
@@ -44,28 +42,6 @@ export default class ResponseTime extends Component {
         const data = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 
-
-        // const barData = [
-        //     {
-        //         data: data1,
-        //         svg: {
-        //             fill: '#F7941D',
-        //             borderRadius: 100
-        //         },
-        //     },
-        //     {
-        //         data: data2,
-        //         svg: {
-        //             fill: '#FAB007',
-        //         },
-        //     },
-        //     {
-        //         data: data3,
-        //         svg: {
-        //             fill: '#E67702',
-        //         },
-        //     },
-        // ]
 
         const barWidth = Dimensions.get('screen').width - 30;
 
@@ -88,6 +64,23 @@ export default class ResponseTime extends Component {
 
             <StyleProvider style={getTheme(material)}>
                 <Container>
+
+                    <Header>
+                        <Left style={{ flex: 0, width: '10%' }}>
+                            <Button transparent onPress={() => this.props.navigation.goBack()}>
+                                <Icon type='Entypo' name='chevron-thin-left' style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                            </Button>
+                        </Left>
+                        <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '80%', }}>
+                            <Title style={{
+                                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                                fontStyle: "normal",
+                            }}>Response Time</Title>
+                        </Body>
+                        <Right style={{ flex: 0, width: '10%' }}>
+                        </Right>
+                    </Header>
+
                     <Header hasSegment style={{ backgroundColor: 'white' }}>
 
                         <Body>
@@ -195,7 +188,7 @@ export default class ResponseTime extends Component {
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    {/* <Grid1/> */}
+
                                 </LineChart>
                                 <LineChart
                                     style={StyleSheet.absoluteFill}
@@ -224,7 +217,7 @@ export default class ResponseTime extends Component {
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
-                                    //paddingLeft: 0, marginRight: 20
+
                                 }}
                                 formatLabel={(value, index) => data[index]}
                             />
@@ -361,7 +354,7 @@ export default class ResponseTime extends Component {
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    {/* <Grid1/> */}
+
                                 </LineChart>
                                 <LineChart
                                     style={StyleSheet.absoluteFill}
@@ -390,7 +383,7 @@ export default class ResponseTime extends Component {
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
-                                    //paddingLeft: 0, marginRight: 20
+
                                 }}
                                 formatLabel={(value, index) => data[index]}
                             />
@@ -528,7 +521,7 @@ export default class ResponseTime extends Component {
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    {/* <Grid1/> */}
+
                                 </LineChart>
                                 <LineChart
                                     style={StyleSheet.absoluteFill}
@@ -557,7 +550,7 @@ export default class ResponseTime extends Component {
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
-                                    //paddingLeft: 0, marginRight: 20
+
                                 }}
                                 formatLabel={(value, index) => data[index]}
                             />

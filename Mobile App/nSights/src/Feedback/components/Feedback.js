@@ -268,7 +268,7 @@ else if (this.state.qualities === "Leadership" ) {
           <Header>
             <Left style={{ flex: 1 }}>
               <Button transparent onPress={() => this.props.navigation.goBack()}>
-                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Path1.png')} />
+              <Icon type='Entypo' name='chevron-thin-left' style={{ maxWidth: '100%', maxHeight: '100%' }} />
               </Button>
             </Left>
             <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

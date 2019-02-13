@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, CheckBox, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
-import { Platform, span, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableOpacity, FlatList, TouchableHighlight, Dimensions } from 'react-native';
+import { Platform, span, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableWithoutFeedback, TouchableOpacity, FlatList, TouchableHighlight, Dimensions, Modal } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 
@@ -12,6 +12,7 @@ import Login from '../../../src/Login/components/Login'
 import KeyResults from '../../../src/Key Results/components/KeyResults'
 import Bookmarks from '../../../src/Home/components/Bookmarks'
 import Notifications from '../../../src/Home/components/Notifications'
+import ReportUser from '../../../src/Home/components/ReportUser'
 import HospitalTurnaroundTime from '../../../src/Key Results/components/HospitalTurnaroundTime'
 import ChuteTime from '../../../src/Key Results/components/ChuteTime'
 import ResponseTime from '../../../src/Key Results/components/ResponseTime'
@@ -23,8 +24,8 @@ import FeedbackMain from '../../../src/Feedback/components/FeedbackMain'
 import RequestFeedback from '../../../src/Feedback/components/RequestFeedback'
 
 import GiveFeedback from '../../../src/Feedback/components/GiveFeedback'
-import Pending from  '../../../src/Feedback/components/FeedbackMain'
-import Requested from  '../../../src/Feedback/components/FeedbackMain'
+import Pending from '../../../src/Feedback/components/FeedbackMain'
+import Requested from '../../../src/Feedback/components/FeedbackMain'
 
 
 import Profile from '../../../src/Profile/components/Profile'
@@ -39,84 +40,94 @@ const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.tt
 
 const posts = [
   {
+    Id: 1,
     Ownername: 'Ted Mosby',
-    targetuser: 'Mary Smith',
-    content: 'great job on that MVC today!  When our unit arrived we were given clear direction on which patient was ours.  It was clear you had great scene management.',
+    targetuser: null,
+    content: 'Very interesting and useful',
     datetime: '6h ago',
     likes: 23,
     comments: 5,
+    ImageUrl:require('../../../assets/images/ImagePost.png')
 
   },
   {
+    Id: 2,
     Ownername: 'Kate Black',
     targetuser: 'Nick Brown',
-    content: '@NikBrown, I noticed how kind you were to that frustrated nurse.  It was clear your kindness made her feel better.',
+    content: 'I noticed how kind you were to that frustrated nurse.  It was clear your kindness made her feel better.',
     datetime: '8h ago',
     likes: 16,
     comments: 6,
-
+    ImageUrl:null,
   },
   {
+    Id: 3,
     Ownername: 'Nina Grek',
     targetuser: 'Ted Mosby',
     content: 'Thank you for covering my shift with such late notice.  I was able to help my family when an emergency arose.',
     datetime: '6h ago',
     likes: 20,
     comments: 4,
-
+    ImageUrl:null,
   },
   {
+    Id: 4,
     Ownername: 'John Harris',
     targetuser: 'Nina Grek',
     content: 'thanks for leaving such a great unit this morning!  It&apos;s nice to start my day with a clean, stocked unit',
     datetime: '6h ago',
     likes: 22,
     comments: 7,
-
+    ImageUrl:null,
   }
   , {
+    Id: 5,
     Ownername: 'Ted Mosby',
     targetuser: 'Mary Smith',
     content: 'great job on that MVC today!  When our unit arrived we were given clear direction on which patient was ours.  It was clear you had great scene management.',
     datetime: '6h ago',
     likes: 23,
     comments: 5,
-
+    ImageUrl:null,
   },
   {
+    Id: 6,
     Ownername: 'Kate Black',
     targetuser: 'Nick Brown',
-    content: '@NikBrown, I noticed how kind you were to that frustrated nurse.  It was clear your kindness made her feel better.',
-    datetime: '8h ago',
-    likes: 16,
-    comments: 6,
-
-  }, {
-    Ownername: 'Ted Mosby',
-    targetuser: 'Mary Smith',
-    content: 'great job on that MVC today!  When our unit arrived we were given clear direction on which patient was ours.  It was clear you had great scene management.',
-    datetime: '6h ago',
-    likes: 23,
-    comments: 5,
-
-  },
-  {
-    Ownername: 'Kate Black',
-    targetuser: 'Nick Brown',
-    content: '@NikBrown, I noticed how kind you were to that frustrated nurse.  It was clear your kindness made her feel better.',
-    datetime: '8h ago',
-    likes: 16,
-    comments: 6,
-
-  },
-  {
-    Ownername: 'Kate Black',
-    targetuser: null,
     content: 'I noticed how kind you were to that frustrated nurse.  It was clear your kindness made her feel better.',
     datetime: '8h ago',
     likes: 16,
     comments: 6,
-
+    ImageUrl:null,
+  }, {
+    Id: 7,
+    Ownername: 'Ted Mosby',
+    targetuser: 'Mary Smith',
+    content: 'great job on that MVC today!  When our unit arrived we were given clear direction on which patient was ours.  It was clear you had great scene management.',
+    datetime: '6h ago',
+    likes: 23,
+    comments: 5,
+    ImageUrl:null,
+  },
+  {
+    Id: 8,
+    Ownername: 'Kate Black',
+    targetuser: 'Nick Brown',
+    content: 'I noticed how kind you were to that frustrated nurse.  It was clear your kindness made her feel better.',
+    datetime: '8h ago',
+    likes: 16,
+    comments: 6,
+    ImageUrl:null,
+  },
+  {
+    Id: 9,
+    Ownername: 'Kate Black',
+    targetuser: null,
+    content: 'Very interesting and useful',
+    datetime: '8h ago',
+    likes: 16,
+    comments: 6,
+    ImageUrl:require('../../../assets/images/ImagePost.png')
   },
 ];
 const inputWidth = (Dimensions.get('screen').width - 20);
@@ -126,7 +137,11 @@ class Home extends Component {
     this.state = {
       visible: false,
       isFocused: false,
-      checkbox: false
+      checkbox: false,
+      modalVisible: false,
+      modalBlockVisible: false,     
+      name: '',
+      
     }
   }
   componentWillUnmount() {
@@ -142,6 +157,7 @@ class Home extends Component {
 
   }
   handleBlur = event => {
+    this.textInput.blur();
     this.textInput.clear()
     this.setState({
       isFocused: false, visible: false,
@@ -164,7 +180,9 @@ class Home extends Component {
       checkbox: !this.state.checkbox
     });
   }
+
   pickerValues = (val) => {
+
     if (this.state.visible) {
       return (
         <View>
@@ -193,35 +211,27 @@ class Home extends Component {
       return null
     }
   }
-
+  actionOnRow(item, index) {
+    Alert.alert(index);
+  }
+  toggleModal(visible) {
+    this.setState({ modalVisible: visible });
+  }
+  toggleBlockModal(visible, Id) {  
+    this.setState({ name: Id });
+    this.setState({ modalBlockVisible: visible });
+   
+  }
   render() {
-    const user = [{
-      name: 'John',
-      surname: 'Doe',
-      address: null,
-    },
-    {
-      name: 'John',
-      surname: 'Doe',
-      address: null,
-    }];
-
-    const userName = user && user[0].name // John
-
     const { isFocused } = this.state;
     const { onFocus } = this.props;
-
-
-
-
     return (
 
       <StyleProvider style={getTheme(material)}>
         <Container>
           <Header>
             <Left style={{ flex: 1 }}>
-              <Button transparent onPress={() => this.props.navigation.navigate('Bookmarks')}>
-                {/* <Icon name='ios-bookmark' color='#ffffff' /> */}
+              <Button transparent onPress={() => this.props.navigation.navigate('Bookmarks')}>              
                 <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Bookmark.png')} />
               </Button>
             </Left>
@@ -232,34 +242,24 @@ class Home extends Component {
               }}>nSights</Title>
             </Body>
             <Right style={{ flex: 1 }}>
-              <Button transparent onPress={() => this.props.navigation.navigate('Notifications')}>
-                {/* <Icon name='ios-notifications' /> */}
+              <Button transparent onPress={() => this.props.navigation.navigate('Notifications')}>            
                 <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/group6.png')} />
               </Button>
             </Right>
-          </Header>
-          {/* <Container> */}
+          </Header>         
           <Content >
             <View
               style={[styles.viewInput, { borderColor: isFocused ? '#f7941d' : '#D1D3D4' }]}>
               <View style={{ width: '10%', marginTop: 7 }}>
                 <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
-
-
-
               <View style={{ width: '90%' }}><TextInput multiline onFocus={this.handleFocus} onBlur={this.handleBlur} ref={input => { this.textInput = input }}
-
                 style={[styles.textInput, { borderColor: isFocused ? '#f7941d' : '#D1D3D4' }]}
                 placeholderTextColor="#939598"
                 placeholder="Use @ mention to recognize your teammates and give them Kudos"
               />
-
               </View>
-
             </View>
-
             {this.pickerValues(this.state.visible)}
-
             <List>
               {posts.map((data, i) => (
 
@@ -292,14 +292,22 @@ class Home extends Component {
                         </View>
                         <View style={{ flex: 0, flexDirection: 'row', width: '28%', }}>
                           <Text note style={{ alignItems: 'flex-end', alignSelf: 'flex-end', textAlign: 'center' }} >{data.datetime}</Text>
-                          <Image style={{ maxWidth: '100%', maxHeight: '100%', marginRight: 15, marginTop: 10 }} source={require('../../../assets/images/arrowDown.png')} />
-                        </View>
+                          {posts[i].targetuser ? <TouchableOpacity onPress={() => { this.toggleModal(true) }}  >
+                            <Image style={{ maxWidth: '100%', maxHeight: '100%', marginRight: 15, marginTop: 10 }} source={require('../../../assets/images/arrowDown.png')} />
+                          </TouchableOpacity > : <TouchableOpacity onPress={() => { this.toggleBlockModal(true, data.Ownername) }} >
+                              <Image style={{ maxWidth: '100%', maxHeight: '100%', marginRight: 15, marginTop: 10 }} source={require('../../../assets/images/arrowDown.png')} />
+                            </TouchableOpacity >}
+                        </View>                      
                       </View>
                       <Content style={{ marginLeft: 5 }}>
                         <Text style={{ fontFamily: "avenir light", fontWeight: "300" }}>
                           {posts[i].targetuser && <Text style={{ color: '#F7941D', fontFamily: "avenir light" }}>{"@" + data.targetuser + ", "}</Text>}
                           {data.content}
+
                         </Text>
+                        <View style={{ width:'95%'}}> 
+                          <Image style={{ maxWidth: '100%', maxHeight: '100%', marginRight:10}} source={data.ImageUrl} />
+                          </View>
                       </Content>
                       <View style={{ marginLeft: 5 }}>
                         <Text>
@@ -319,6 +327,48 @@ class Home extends Component {
                 </View>
               ))}
             </List>
+
+            <Modal animationType={"slide"} transparent={true}
+              visible={this.state.modalVisible}
+              onRequestClose={() => { console.log("Modal has been closed.") }}>
+              <View style={styles.modal}>
+                <View style={{ backgroundColor: '#FCFCFC', width: '85%', borderRadius: 13, marginBottom: 10 }}>
+                  <TouchableOpacity style={{ marginTop: 10, marginBottom: 10 }} >
+                    <Text style={styles.modalText}>Delete Post</Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={{ backgroundColor: '#FCFCFC', width: '85%', borderRadius: 13, marginBottom: 10 }}>
+                  <TouchableOpacity style={{ marginTop: 10, marginBottom: 10 }} onPress={() => {
+                    this.toggleModal(!this.state.modalVisible)
+                  }}>
+                    <Text style={[styles.modalText, { color: '#F7941D' }]}>Cancel</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Modal>
+
+
+            <Modal animationType={"slide"} transparent={true}
+              visible={this.state.modalBlockVisible}
+              onRequestClose={() => { console.log("Modal has been closed.") }}>
+              <View style={styles.modal}>
+                <View style={{ backgroundColor: '#FCFCFC', width: '85%', borderRadius: 13, marginBottom: 10 }}>
+                  <TouchableOpacity style={{ marginTop: 10, marginBottom: 10 }} >
+                    <Text style={styles.modalText}>Mute @{this.state.name}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{ marginTop: 10, marginBottom: 10 }}  onPress={() => {this.props.navigation.navigate('ReportUser'); this.toggleBlockModal(!this.state.modalBlockVisible)}}>
+                    <Text style={styles.modalText}>Report</Text>
+                  </TouchableOpacity>
+                </View>
+                <View style={{ backgroundColor: '#FCFCFC', width: '85%', borderRadius: 13, marginBottom: 10 }}>
+                  <TouchableOpacity style={{ marginTop: 10, marginBottom: 10 }} onPress={() => {
+                    this.toggleBlockModal(!this.state.modalBlockVisible)
+                  }}>
+                    <Text style={[styles.modalText, { color: '#F7941D' }]}>Cancel</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Modal>
           </Content>
         </Container>
       </StyleProvider>
@@ -326,9 +376,23 @@ class Home extends Component {
   }
 }
 const styles = StyleSheet.create({
+  modalText: {
+    textAlign: 'center',
+    fontFamily: 'avenir light',
+    fontSize: 20
+  },
+  modal: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,.4)',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+
+  },
   viewInput:
   {
-    flex: 1, 
+    flex: 1,
     flexDirection: 'row',
     width: inputWidth,
     marginLeft: 10,
@@ -385,6 +449,12 @@ const HomeStack = createStackNavigator({
     }, screen: Notifications
   },
 
+  ReportUser: {
+    navigationOptions: {
+
+      header: null,
+    }, screen: ReportUser
+  },
 
 
 

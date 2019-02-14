@@ -2,7 +2,7 @@
 
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, CheckBox, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
+import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem,Icon, CheckBox, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
 import { Platform, span, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableWithoutFeedback, TouchableOpacity, FlatList, TouchableHighlight, Dimensions, Modal } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
@@ -211,9 +211,7 @@ class Home extends Component {
       return null
     }
   }
-  actionOnRow(item, index) {
-    Alert.alert(index);
-  }
+
   toggleModal(visible) {
     this.setState({ modalVisible: visible });
   }
@@ -264,7 +262,7 @@ class Home extends Component {
               {posts.map((data, i) => (
 
                 <View>
-                  <ListItem avatar noBorder >
+                  <ListItem avatar noBorder  key={i}>
                     <Left>
                       {posts[i].targetuser
                         ? <View >
@@ -281,24 +279,23 @@ class Home extends Component {
                     </Left>
                     <Body>
                       <View style={{ flex: 1, flexDirection: 'row', marginLeft: 5, width: '100%' }}>
-                        <View style={{ width: '72%' }}>
-                          <Text>
-                            <Text style={{ fontFamily: 'avenir light', fontWeight: "500" }}>
-                              {data.Ownername} </Text>
-                            {posts[i].targetuser && <Text><Text style={{ fontFamily: 'avenir light', color: '#D1D3D4' }}> to </Text>
-                              <Text style={{ fontFamily: 'avenir light', fontWeight: "500" }}>
-                                {data.targetuser} </Text></Text>}
-                          </Text>
+                        <View style={{flex: 0, flexDirection: 'row', width: '65%' ,alignItems:'center'}}>                         
+                            <Text style={{ fontFamily: 'avenir light', fontWeight: "500" }}>{data.Ownername}</Text>
+                            {posts[i].targetuser && <Text><Text style={{ fontFamily: 'avenir light', color: '#D1D3D4' }}>to </Text>
+                              <Text style={{ fontFamily: 'avenir light', fontWeight: "500" }}>{data.targetuser}</Text></Text>}
+                         
                         </View>
-                        <View style={{ flex: 0, flexDirection: 'row', width: '28%', }}>
-                          <Text note style={{ alignItems: 'flex-end', alignSelf: 'flex-end', textAlign: 'center' }} >{data.datetime}</Text>
-                          {posts[i].targetuser ? <TouchableOpacity onPress={() => { this.toggleModal(true) }}  >
-                            <Image style={{ maxWidth: '100%', maxHeight: '100%', marginRight: 15, marginTop: 10 }} source={require('../../../assets/images/arrowDown.png')} />
-                          </TouchableOpacity > : <TouchableOpacity onPress={() => { this.toggleBlockModal(true, data.Ownername) }} >
-                              <Image style={{ maxWidth: '100%', maxHeight: '100%', marginRight: 15, marginTop: 10 }} source={require('../../../assets/images/arrowDown.png')} />
+                        <View style={{ flex: 2,marginRight:10, flexDirection: 'row',alignItems:'center',justifyContent:'center', width: '35%', }}>
+
+                          <View style={{justifyContent:'flex-end',flex:1,}}><Text note style={{textAlign:'right' ,marginRight:-5}} >{data.datetime}</Text></View>
+                          {posts[i].targetuser ? <View  style={{justifyContent:'flex-end'}}><TouchableOpacity onPress={() => { this.toggleModal(true) }} >
+                          <Icon type='Entypo' name='chevron-small-down' size={5} style={{textAlign:'left',color: "#a7a9ac", }} />                         
+                          </TouchableOpacity ></View>: <TouchableOpacity onPress={() => { this.toggleBlockModal(true, data.Ownername) }} >
+                          <Icon type='Entypo' name='chevron-small-down' size={5} style={{textAlign:'right', color: "#a7a9ac",}} />
                             </TouchableOpacity >}
                         </View>                      
                       </View>
+                   
                       <Content style={{ marginLeft: 5 }}>
                         <Text style={{ fontFamily: "avenir light", fontWeight: "300" }}>
                           {posts[i].targetuser && <Text style={{ color: '#F7941D', fontFamily: "avenir light" }}>{"@" + data.targetuser + ", "}</Text>}

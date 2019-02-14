@@ -8,7 +8,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import icoMoonConfig from '../../../selection.json';
 import Icon1 from 'react-native-vector-icons/Entypo';
-
+import PositiveQuotes from '../../../src/Home/components/PositiveQuotes'
 const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
 
@@ -118,7 +118,9 @@ export default class Bookmarks extends Component {
 
                             </Card>
                         ))}
-
+                        <View>
+          {/* <PositiveQuotes pagekey={"uniquekey"} title={"categort title"} description={"topic description"}/> */}
+      </View>
                     </Content>
                 </Container>
             </StyleProvider>

@@ -17,7 +17,7 @@ import HospitalTurnaroundTime from '../../../src/Key Results/components/Hospital
 import ChuteTime from '../../../src/Key Results/components/ChuteTime'
 import ResponseTime from '../../../src/Key Results/components/ResponseTime'
 import OnSceneTime from '../../../src/Key Results/components/OnSceneTime'
-
+import LeaderBoards from '../../../src/Leader Boards/components/LeaderBoards'
 import Feedback from '../../../src/Feedback/components/Feedback'
 
 import FeedbackMain from '../../../src/Feedback/components/FeedbackMain'
@@ -31,7 +31,7 @@ import Requested from '../../../src/Feedback/components/FeedbackMain'
 import Profile from '../../../src/Profile/components/Profile'
 import Achievements from '../../../src/Profile/components/Achievements'
 import Rating_Comments from '../../../src/Profile/components/Rating_Comments'
-import LeaderBoards from '../../../src/Leader Boards/components/LeaderBoards'
+
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import icoMoonConfig from '../../../selection.json';
 const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
@@ -546,6 +546,21 @@ const FeedbackStack = createStackNavigator({
 
 });
 
+const LeaderBoardsStack = createStackNavigator({
+
+  LeaderBoards: {
+    navigationOptions: {
+      title: 'Leader boards',
+      headerStyle: {
+        backgroundColor: '#F7941D',
+      },
+      headerTitleStyle: { flex: 1, textAlign: 'center', },
+      headerTintColor: '#fff',
+    }, screen: LeaderBoards
+  },
+
+});
+
 export default createAppContainer(
 
   createBottomTabNavigator(
@@ -553,7 +568,7 @@ export default createAppContainer(
       Home: { screen: HomeStack },
       KeyResults: { screen: KeyResultsStack },
       Feedback: { screen: FeedbackStack },
-      LeaderBoards: { screen: LeaderBoards },
+      LeaderBoards: { screen: LeaderBoardsStack },
       Profile: { screen: ProfileStack },
 
     },
@@ -566,12 +581,8 @@ export default createAppContainer(
 
         activeTintColor: '#F7941D',
         inactiveTintColor: '#D1D3D4',
-        style: {
-
-          elevation: 2
-        }
-      },
-      lazy: true,
+       
+      }
     }
   ));
 

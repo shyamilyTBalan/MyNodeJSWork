@@ -85,6 +85,81 @@ import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
    
    
  ];
+
+
+ const datas2 = [
+  {
+    img: kate,
+    name: "Kate White",
+    note: "EMT-Paramedic",
+    rank: 50
+  },
+  {
+    img: mary,
+    name: "Mary-Kate Washington",
+    note: "EMT-Basic",
+    rank: 47
+  },
+  {
+    img: ann,
+    name: "Ann Davis",
+    note: "EMT-Basic",
+    rank: 45
+  },
+  {
+    img: john,
+    name: "John Harris",
+    note: "Critical Care Paramedic",
+    rank: 42
+  },
+  
+  {
+    img: ted,
+    name: "Ted Mosby",
+    note: "EMT-Paramedic",
+    rank: 35
+  },
+  {
+    img: mary,
+    name: "Mary-Kate Washington",
+    note: "EMT-Basic",
+    rank: 38
+  },
+  {
+    img: kate,
+    name: "Kate White",
+    note: "EMT-Paramedic",
+    rank: 33
+  },
+  {
+    img: ann,
+    name: "Ann Davis",
+    note: "EMT-Basic",
+    rank: 30
+  },
+  {
+    img: kate,
+    name: "Kate White",
+    note: "EMT-Paramedic",
+    rank: 27
+  },
+  {
+    img: ted,
+    name: "Ted Mosby",
+    note: "EMT-Paramedic",
+    rank: 25
+  },
+  
+  {
+    img: ann,
+    name: "Ann Davis",
+    note: "EMT-Basic",
+    rank: 22
+  }
+  
+  
+];
+
  
  const rowWidth = (Dimensions.get('screen').width );
 
@@ -97,7 +172,7 @@ import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
         <Container>
          
         
-          <View style={{height: '85%' }}>
+          {/* <View style={{height: '85%' }}> */}
          
         {/* <Tabs tabContainerStyle={{ height: 80, width: 380  }}> */}
         <Tabs tabContainerStyle={{ height: 80, width: rowWidth }}>
@@ -120,10 +195,10 @@ import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 
         </Tabs>
        
-        </View>
+        {/* </View> */}
        
-        <View style={{height: '15%'}}>
-        {/* <Content> */}
+        {/* <View style={{height: '15%'}}>
+      
       
        <View style={styles.buttonContainer}>
                             <TouchableOpacity style={[styles.button]}  >
@@ -131,8 +206,8 @@ import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
                             </TouchableOpacity>
                         </View>
                         
-           {/* </Content> */}
-           </View>
+          
+           </View> */}
  </Container>
       </StyleProvider>
     );
@@ -146,18 +221,19 @@ import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
          
           return (
             <Container >
+               <View style={{height: '85%' }}>
               <Content>
               <List >
        {datas1.map((data, i) => (
               <ListItem avatar noBorder>
-              <TouchableOpacity onPress={() => this.props.navigate('Feedback')}>
+              <TouchableOpacity >
                 <Left>
                   <Thumbnail  source={data.img} />
                 </Left>
                 </TouchableOpacity>
                
                 <Body>
-                <TouchableOpacity onPress={() => this.props.navigate('Feedback')}>
+                <TouchableOpacity >
                   <Text style={styles.textname}>{data.name}</Text>
                   <Text style={styles.textnote} numberOfLines={1} note>
                     {data.note}
@@ -172,6 +248,18 @@ import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
             ))}
          </List>
               </Content>
+              </View>
+              <View style={{height: '15%'}}>
+      
+      
+       <View style={styles.buttonContainer}>
+                            <TouchableOpacity style={[styles.button]}  >
+                                <Text style={styles.loginText}>Your postion in the ranking 10</Text>
+                            </TouchableOpacity>
+                        </View>
+                        
+          
+           </View>
       </Container>
     );
   }
@@ -184,9 +272,45 @@ class GotFeedbacks extends Component {
    
     return (
       <Container >
-        <Content>
-          <Text>Got most feedbacks</Text>
-        </Content>
+         <View style={{height: '85%' }}>
+      <Content>
+      <List >
+{datas2.map((data, i) => (
+      <ListItem avatar noBorder>
+      <TouchableOpacity >
+        <Left>
+          <Thumbnail  source={data.img} />
+        </Left>
+        </TouchableOpacity>
+       
+        <Body>
+        <TouchableOpacity >
+          <Text style={styles.textname}>{data.name}</Text>
+          <Text style={styles.textnote} numberOfLines={1} note>
+            {data.note}
+          </Text>
+          </TouchableOpacity>
+        </Body>
+        
+        <Right>
+          <Text style={styles.texttime} note>{data.rank}</Text>
+        </Right>
+      </ListItem>
+    ))}
+ </List>
+      </Content>
+      </View>
+      <View style={{height: '15%'}}>
+      
+      
+      <View style={styles.buttonContainer}>
+                           <TouchableOpacity style={[styles.button]}  >
+                               <Text style={styles.loginText}>Your postion in the ranking 9</Text>
+                           </TouchableOpacity>
+                       </View>
+                       
+         
+          </View>
 </Container>
 );
 }

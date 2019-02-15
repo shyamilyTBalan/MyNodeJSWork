@@ -113,7 +113,7 @@ export default class GiveFeedback extends Component {
 
 
 
-          <Header style={{ marginTop: 15, backgroundColor: 'white' }} noShadow={true} searchBar rounded>
+          {/* <Header style={{ marginTop: 15, backgroundColor: 'white' }} noShadow={true} searchBar rounded>
             <View style={{ borderColor: '#D1D3D4', borderWidth: 1, borderRadius: 5, width: "95%", padding: 5 }}>
               <Item style={{ width: "100%" }}>
                 <Icon name="ios-search" style={{ color: '#D1D3D4' }} />
@@ -123,7 +123,22 @@ export default class GiveFeedback extends Component {
                 />
               </Item>
             </View>
-          </Header>
+          </Header> */}
+
+
+
+
+  <View style={{ marginTop: 15, height: 50, width: "100%", alignItems: 'center'}} noShadow={true}>
+            <View style={{ borderColor: '#D1D3D4', borderWidth: 1, borderRadius: 5, height:'100%',width: "90%", padding: 5}}>
+              <Item style={{ width: "100%" ,height:'100%', borderColor: 'white'}}>
+                <Icon name="ios-search" style={{ color: '#D1D3D4' }} />
+                <SearchInput placeholder="Search for the colleague you want to rate" placeholderTextColor="#D1D3D4"
+                  style={{ fontFamily: 'avenir light', fontSize: 13 , borderColor: 'white'}}
+                  onChangeText={(term) => { this.searchUpdated(term) }}
+                />
+              </Item>
+            </View>
+            </View>
 
           <Content>
             <List >

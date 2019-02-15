@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Label, List, ListItem, Button,Icon, Left, Right, Body,CheckBox, StyleProvider, Form, Card, Picker, CardItem } from 'native-base';
-import { Platform, StyleSheet, ScrollView, TextInput, Image, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
+import { Platform, StyleSheet, ScrollView, TextInput, Image, View,Dimensions, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
@@ -529,7 +529,8 @@ picker: {
   backgroundColor:'#FDE5BE',
   borderRadius: 10,
   marginTop: 2,
-   width: 150,
+  width: Dimensions.get('window').width-80,
+  //  width: 150,
   },
   labelstyle: {
     fontFamily:'avenir light',

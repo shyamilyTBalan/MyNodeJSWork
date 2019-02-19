@@ -161,14 +161,14 @@ export default class RequestFeedback extends Component {
                 <ListItem avatar noBorder
                 >
 
-                  <TouchableOpacity onPress={() => this.props.navigate('Feedback')}>
+                  <TouchableOpacity >
                     <Left>
                       <Thumbnail source={data.img} />
                     </Left>
                   </TouchableOpacity>
 
                   <Body>
-                    <TouchableOpacity onPress={() => this.props.navigate('Feedback')}>
+                    <TouchableOpacity >
                       <Text style={styles.textname}>{data.name}</Text>
                       <Text style={styles.textnote} numberOfLines={1} note>
                         {data.note}

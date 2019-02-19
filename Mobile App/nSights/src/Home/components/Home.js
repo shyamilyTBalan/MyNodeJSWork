@@ -234,10 +234,12 @@ class Home extends Component {
               </Button>
             </Left>
             <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <Title style={{
-                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
-                fontStyle: "normal",
-              }}>nSights</Title>
+              <Title  
+               style={{
+                 fontFamily: 'ArialRoundedMT', fontSize: 20, fontWeight: "bold",
+                 fontStyle: "normal",
+               }}>
+              nSights</Title>
             </Body>
             <Right style={{ flex: 1 }}>
               <Button transparent onPress={() => this.props.navigation.navigate('Notifications')}>            
@@ -373,6 +375,13 @@ class Home extends Component {
   }
 }
 const styles = StyleSheet.create({
+
+  Headername: {
+    fontFamily: 'ArialRoundedMT',
+    fontSize: 20, 
+    fontWeight: "bold",
+    fontStyle: "normal",
+},
   modalText: {
     textAlign: 'center',
     fontFamily: 'avenir light',

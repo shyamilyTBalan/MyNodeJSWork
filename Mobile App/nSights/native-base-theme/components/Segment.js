@@ -33,13 +33,13 @@ export default (variables /*: * */ = variable) => {
         }
       },
       ".first": {
-        borderTopLeftRadius: platform === "ios" ? 5 : undefined,
-        borderBottomLeftRadius: platform === "ios" ? 5 : undefined,
+        borderTopLeftRadius: platform === "ios" ? undefined : undefined,
+        borderBottomLeftRadius: platform === "ios" ? undefined : undefined,
         borderLeftWidth: 1
       },
       ".last": {
-        borderTopRightRadius: platform === "ios" ? 5 : undefined,
-        borderBottomRightRadius: platform === "ios" ? 5 : undefined
+        borderTopRightRadius: platform === "ios" ? undefined : undefined,
+        borderBottomRightRadius: platform === "ios" ? undefined : undefined
       },
       "NativeBase.Text": {
         color: variables.segmentTextColor,

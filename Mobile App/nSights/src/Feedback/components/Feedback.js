@@ -273,12 +273,12 @@ else if (this.state.qualities === "Leadership" ) {
             </Left>
             <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
               <Title style={{
-                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                fontFamily: 'Arial Rounded MT Bold', fontSize: 20, fontWeight: "bold",
                 fontStyle: "normal",
               }}>Feedback</Title>
             </Body>
             <Right style={{ flex: 1 }}>
-              <Text style={{ color: '#FFFFFF', fontFamily: 'ARLRDBD' }}>Done</Text>
+              <Text style={{ color: '#FFFFFF', fontFamily: 'Arial Rounded MT Bold' }}>Done</Text>
             </Right>
           </Header>
           <Content>

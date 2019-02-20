@@ -24,7 +24,7 @@ export default class Home extends Component {
           <Header>
 
             <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <Title style={{ fontFamily: "ARLRDBD", fontSize: 20, letterSpacing: 0, fontStyle: "normal", }}>Key Results</Title>
+              <Title style={{ fontFamily: "Arial Rounded MT Bold", fontSize: 20, letterSpacing: 0, fontStyle: "normal", }}>Key Results</Title>
             </Body>
 
           </Header>

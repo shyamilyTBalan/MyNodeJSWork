@@ -113,7 +113,7 @@ export default class Rating_Comments extends Component {
                         </Left>
                         <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                             <Title style={{
-                                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                                fontFamily: 'Arial Rounded MT Bold', fontSize: 20, fontWeight: "bold",
                                 fontStyle: "normal",
                             }}>Profile</Title>
                         </Body>

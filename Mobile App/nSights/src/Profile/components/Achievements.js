@@ -48,7 +48,7 @@ export default class Achievements extends Component {
                         </Left>
                         <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '80%', }}>
                             <Title style={{
-                                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                                fontFamily: 'Arial Rounded MT Bold', fontSize: 20, fontWeight: "bold",
                                 fontStyle: "normal",
                             }}>My Achievements</Title>
                         </Body>

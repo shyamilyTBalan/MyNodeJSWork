@@ -50,13 +50,13 @@ export default class ReportUser extends Component {
                         </Left>
                         <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '70%', }}>
                             <Title style={{
-                                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                                fontFamily: 'Arial Rounded MT Bold', fontSize: 20, fontWeight: "bold",
                                 fontStyle: "normal",
                             }}>Report</Title>
                         </Body>
                         <Right style={{ flex: 0, width: '15%' }}>
                             <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                                <Text style={{ color: '#FFFFFF', fontFamily: 'ARLRDBD' }}>Done</Text>
+                                <Text style={{ color: '#FFFFFF', fontFamily: 'Arial Rounded MT Bold' }}>Done</Text>
                             </TouchableOpacity>
                         </Right>
                     </Header>

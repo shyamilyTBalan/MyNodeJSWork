@@ -377,7 +377,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
 
   Headername: {
-    fontFamily: 'ArialRoundedMT',
+    fontFamily: 'Arial Rounded MT Bold',
     fontSize: 20, 
     fontWeight: "bold",
     fontStyle: "normal",

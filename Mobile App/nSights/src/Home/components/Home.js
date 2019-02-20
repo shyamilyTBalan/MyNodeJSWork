@@ -26,7 +26,7 @@ import RequestFeedback from '../../../src/Feedback/components/RequestFeedback'
 import GiveFeedback from '../../../src/Feedback/components/GiveFeedback'
 import Pending from '../../../src/Feedback/components/FeedbackMain'
 import Requested from '../../../src/Feedback/components/FeedbackMain'
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import Profile from '../../../src/Profile/components/Profile'
 import Achievements from '../../../src/Profile/components/Achievements'
@@ -526,7 +526,7 @@ const FeedbackStack = createStackNavigator({
       headerStyle: {
         backgroundColor: '#F7941D',
       },
-      headerTitleStyle: { flex: 1, textAlign: 'center', },
+      headerTitleStyle: { flex: 1, textAlign: 'center',fontFamily: 'Arial Rounded MT Bold' },
       headerTintColor: '#fff',
     }, screen: FeedbackMain
   },
@@ -563,7 +563,7 @@ const LeaderBoardsStack = createStackNavigator({
       headerStyle: {
         backgroundColor: '#F7941D',
       },
-      headerTitleStyle: { flex: 1, textAlign: 'center', },
+      headerTitleStyle: { flex: 1, textAlign: 'center',fontFamily: 'Arial Rounded MT Bold' },
       headerTintColor: '#fff',
     }, screen: LeaderBoards
   },

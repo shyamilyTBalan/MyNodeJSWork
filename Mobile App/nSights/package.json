@@ -18,6 +18,7 @@
     "react-native-navigation": "^2.7.0",
     "react-native-progress-bar-animated": "^1.0.6",
     "react-native-pure-chart": "0.0.24",
+    "react-native-responsive-screen": "^1.2.0",
     "react-native-router-flux": "^4.0.6",
     "react-native-search-filter": "^0.1.4",
     "react-native-simple-radio-button": "^2.7.3",

@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
         marginTop: '35%',
         width: '50%',
         height: 34,
+        // fontFamily: "ArialRoundedMT",
         fontFamily: "Arial Rounded MT Bold",
         fontSize: 30,
         fontStyle: "normal",

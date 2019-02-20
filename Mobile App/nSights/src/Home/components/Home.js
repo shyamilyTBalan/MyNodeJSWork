@@ -236,7 +236,7 @@ class Home extends Component {
             <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
               <Title  
                style={{
-                 fontFamily: 'ArialRoundedMT', fontSize: 20, fontWeight: "bold",
+                 fontFamily: 'Arial Rounded MT Bold', fontSize: 20, fontWeight: "bold",
                  fontStyle: "normal",
                }}>
               nSights</Title>
@@ -377,7 +377,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
 
   Headername: {
-    fontFamily: 'ArialRoundedMT',
+    fontFamily: 'Arial Rounded MT Bold',
     fontSize: 20, 
     fontWeight: "bold",
     fontStyle: "normal",

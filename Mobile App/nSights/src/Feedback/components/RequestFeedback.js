@@ -131,12 +131,12 @@ export default class RequestFeedback extends Component {
             </Left>
             <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
               <Title style={{
-                fontFamily: 'ARLRDBD', fontSize: 20, fontWeight: "bold",
+                fontFamily: 'Arial Rounded MT Bold', fontSize: 20, fontWeight: "bold",
                 fontStyle: "normal",
               }}>Feedback</Title>
             </Body>
             <Right style={{ flex: 1 }}>
-              <Text style={{ color: '#FFFFFF', fontFamily: 'ARLRDBD' }}>Request</Text>
+              <Text style={{ color: '#FFFFFF', fontFamily: 'Arial Rounded MT Bold' }}>Request</Text>
             </Right>
           </Header>
 

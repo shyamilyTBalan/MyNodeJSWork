@@ -43,6 +43,15 @@ export default class OnSceneTime extends Component {
        
 
         const barWidth = Dimensions.get('screen').width - 30;
+        const innerbarWidthweek1 = '90%';
+        const innerbarWidthweek2 = '80%';
+        const innerbarWidthweek3 = '90%';
+        const innerbarWidthmonth1 = '60%';
+        const innerbarWidthmonth2 = '95%';
+        const innerbarWidthmonth3 = '70%';
+        const innerbarWidthyear1 = '88%';
+        const innerbarWidthyear2 = '60%';
+        const innerbarWidthyear3 = '99%';
 
         const progressAverageStyles = {
             backgroundColor: '#F7941D',
@@ -100,37 +109,26 @@ export default class OnSceneTime extends Component {
                     <Content padder>
                         {this.state.selected === 1 && <View>
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
-                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average Time
-                  </Text>
-                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <ProgressBarAnimated
-                                        {...progressAverageStyles}
-                                        width={barWidth}
-                                        height={28}
-                                        value={90}
-                                    />
-                                </View>
-                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
-                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <ProgressBarAnimated
-                                        {...progressTargetStyles}
-                                        width={barWidth}
-                                        height={28}
-                                        value={80}
-                                    />
-                                </View>
-                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
-                            </Text>
-                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <ProgressBarAnimated
-                                        {...progressTeamAverageStyles}
-                                        width={barWidth}
-                                        height={28}
-                                        value={90}
-                                    />
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
+                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <View style={{width: innerbarWidthweek1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>35 min</Text>
+                                    </View>
                                 </View>
 
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <View style={{width: innerbarWidthweek2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>23 min</Text>
+                                    </View>
+                                </View>
 
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <View style={{width: innerbarWidthweek3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>25 min</Text>
+                                    </View>
+                                </View>
                             </View>
                             <Text style={{ fontFamily: "avenir light", fontSize: 12, textAlign: 'center', color: '#A7A9AC' }}>Last updated 2 days ago
                             </Text>
@@ -238,38 +236,27 @@ Keep up the good work!
                         </View>}
                         {this.state.selected === 2 && <View>
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average Time
-              </Text>
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressAverageStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={60}
-                                />
-                            </View>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressTargetStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={95}
-                                />
-                            </View>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
-                        </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressTeamAverageStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={70}
-                                />
-                            </View>
+                                    <View style={{width: innerbarWidthmonth1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>30 min</Text>
+                                    </View>
+                                </View>
 
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <View style={{width: innerbarWidthmonth2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>33 min</Text>
+                                    </View>
+                                </View>
 
-                        </View>
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <View style={{width: innerbarWidthmonth3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>28 min</Text>
+                                    </View>
+                                </View>
+                            </View>
                         <Text style={{ fontFamily: "avenir light", fontSize: 12, textAlign: 'center', color: '#A7A9AC' }}>Last updated 2 days ago
                         </Text>
                         <View style={styles.separator} />
@@ -377,38 +364,27 @@ Keep up the good work!
                         </View>}
                         {this.state.selected === 3 && <View>
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average Time
-              </Text>
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressAverageStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={88}
-                                />
-                            </View>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target Time         </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressTargetStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={60}
-                                />
-                            </View>
-                            <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average Time
-                        </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                <ProgressBarAnimated
-                                    {...progressTeamAverageStyles}
-                                    width={barWidth}
-                                    height={28}
-                                    value={99}
-                                />
-                            </View>
+                                    <View style={{width: innerbarWidthyear1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>26 min</Text>
+                                    </View>
+                                </View>
 
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <View style={{width: innerbarWidthyear2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>30 min</Text>
+                                    </View>
+                                </View>
 
-                        </View>
+                                <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <View style={{width: innerbarWidthyear3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>33 min</Text>
+                                    </View>
+                                </View>
+                            </View>
                         <Text style={{ fontFamily: "avenir light", fontSize: 12, textAlign: 'center', color: '#A7A9AC' }}>Last updated 2 days ago
                         </Text>
                         <View style={styles.separator} />

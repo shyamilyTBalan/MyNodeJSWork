@@ -131,6 +131,8 @@ const posts = [
   },
 ];
 const inputWidth = (Dimensions.get('screen').width - 20);
+const ScreenWidth = (Dimensions.get('screen').width);
+const ScreenHeight = (Dimensions.get('screen').height);
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -226,7 +228,7 @@ class Home extends Component {
     return (
 
       <StyleProvider style={getTheme(material)}>
-        <Container>
+        <Container style= {styles.container}>
           <Header>
             <Left style={{ flex: 1 }}>
               <Button transparent onPress={() => this.props.navigation.navigate('Bookmarks')}>              
@@ -375,7 +377,14 @@ class Home extends Component {
   }
 }
 const styles = StyleSheet.create({
-
+  container: {
+    height: hp('100%'),
+    width: wp('100%'),
+    // height: ScreenHeight,
+    // width: ScreenWidth,
+    // padding : 0,
+    // margin : 0
+  },
   Headername: {
     fontFamily: 'Arial Rounded MT Bold',
     fontSize: 20, 

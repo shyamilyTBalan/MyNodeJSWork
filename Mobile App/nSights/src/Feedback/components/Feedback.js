@@ -467,7 +467,7 @@ else if (this.state.qualities === "Leadership" ) {
          <View style={{ flex: 1, flexDirection: 'row', marginTop: 15, alignItems: 'center', justifyContent: 'center' }}>
          <CheckBox
   center
-   color="#A7A9AC"
+   color="#f7941d"
   checked={this.state.checkbox}
   onPress={() => this.toggleSwitch()}
 />
@@ -521,7 +521,7 @@ pickerContainer: {
  
 },
 pickeritemstyle: {
-  backgroundColor: '#d3d3d3'
+ // backgroundColor: 'white'
 },
 picker: {
   height: 40,
@@ -542,6 +542,7 @@ picker: {
 },
 inputstyle: {
   fontFamily:'avenir light',
+  height:50,
   fontSize: 14, 
   fontWeight: "normal",
   color: '#000000', 

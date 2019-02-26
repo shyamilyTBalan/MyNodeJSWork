@@ -36,7 +36,7 @@ export default {
   // Button
   btnFontFamily: "Roboto",
   btnDisabledBg: "#b5b5b5",
-  buttonPadding: 6,
+  buttonPadding: 3,
   get btnPrimaryBg() {
     return this.brandPrimary;
   },

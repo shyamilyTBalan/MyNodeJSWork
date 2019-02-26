@@ -7,8 +7,8 @@ import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { BarChart, XAxis, AreaChart, LineChart, YAxis, Grid as Grid1 } from 'react-native-svg-charts'
-
-import Svg, { Circle } from 'react-native-svg'
+import * as shape from 'd3-shape'
+import Svg, { Circle, G, Line, Rect, Path, Text as Text1 } from 'react-native-svg'
 
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import icoMoonConfig from '../../../selection.json';
@@ -28,10 +28,9 @@ export default class HospitalTurnaroudTime extends Component {
     state = { selected: 1 }
     render() {
 
-
-        const data1 = [70, 80, 80, 95, 50, 60, 85,]
+        const data1 = [70, 80, 80, 95, 50, 60, 85]
         const data2 = [50, 50, 50, 50, 50, 50, 50]
-        const data3 = [50, 65, 60, 95, 40, 60, 80,]
+        const data3 = [50, 65, 60, 95, 40, 60, 60,]
 
         const data11 = [50, 60, 70, 90, 60, 50, 95,]
         const data12 = [50, 50, 50, 50, 50, 50, 50]
@@ -71,11 +70,183 @@ export default class HospitalTurnaroudTime extends Component {
             borderRadius: 14,
             borderColor: '#F3F3F3',
         };
-        return (
 
+        const Labels = ({ x, y, bandwidth }) => {
+            return data1.map((value, index) => (
+
+                <Text1
+                    key={index}
+                    x={x(index) + (bandwidth / 2)}
+                    y={value < 20 ? y(value) - 10 : y(value) + 15}
+                    fontSize={14}
+                    fill={value >= 20 ? 'white' : 'black'}
+                    alignmentBaseline={'middle'}
+                    textAnchor={'middle'}
+                >
+                    {value}
+                </Text1>
+            ))
+        }
+
+        const Tooltip = ({ x, y }) => {
+            return data1.map(value => (
+                <G
+                    x={0}
+                    key={'tooltip'}
+                    onPress={() => console.log('tooltip clicked')}
+                >
+                    <G y={50}>
+                        <Text1
+                            x={0}
+                            dy={20}
+                            alignmentBaseline={'middle'}
+                            textAnchor={'middle'}
+                            stroke={'rgb(134, 65, 244)'}
+                        >
+                            {value}
+                        </Text1>
+                    </G>
+                </G>
+            ))
+        }
+        const CustomGrid = ({ x, y, data, ticks }) => (
+            <G>
+                {
+                    // Horizontal grid
+                    ticks.map(tick => (
+                        <Line
+                            key={tick}
+                            x1={'0%'}
+                            x2={'100%'}
+                            y1={y(tick)}
+                            y2={y(tick)}
+                            stroke={'rgba(0,0,0,0.2)'}
+                            strokeDasharray="3 2"
+                        />
+                    ))
+                }
+                {
+                    // Vertical grid
+                    data.map((_, index) => (
+                        <Line
+                            key={index}
+                            y1={'0%'}
+                            y2={'100%'}
+                            x1={x(index)}
+                            x2={x(index)}
+                            stroke={'rgba(0,0,0,0.2)'}
+                            strokeDasharray="3 2"
+                        />
+                    ))
+                }
+            </G>
+        )
+        const datass = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+        const contentInset = { top: 20, bottom: 20 }
+        const Decorator = ({ x, y, contents }) => {
+            return contents.map((value, index) => (
+                <Circle
+                    key={index}
+                    cx={x(index)}
+                    cy={y(value)}
+                    r={4}
+                    stroke={'#975A16'}
+                    fill={'white'}
+                />
+            ))
+        }
+        // const Decorator = ({ x, y, contents }) => {
+        //     const arrayLength = contents.length - 1
+        //     return contents.map((value, index) => {
+        //         if (index == 0)
+        //             return <View>
+
+        //                 <G y={y(value)} >
+
+        //                     <Text1
+        //                         x={x(index)}
+        //                         dy={20}
+        //                         alignmentBaseline={'after-edge'}
+        //                         textAnchor={'start'}
+        //                         stroke={'#975A16'}
+        //                     >
+
+        //                         {`${value}`}
+        //                     </Text1>
+        //                 </G>
+        //                 <G x={0}  >
+
+        //                     <Circle
+        //                         key={index}
+        //                         cx={x(index)}
+        //                         cy={y(value)}
+        //                         r={4}
+        //                         stroke={'#975A16'}
+        //                         fill={'rgba(255, 255, 255, .4)'}
+        //                     />
+        //                 </G>
+        //             </View>
+        //         else if (index == arrayLength)
+        //             return <View>
+
+        //                 <G y={y(value)} >
+
+        //                     <Text1
+        //                         x={x(index)}
+        //                         dy={20}
+        //                         alignmentBaseline={'after-edge'}
+        //                         textAnchor={'end'}
+        //                         stroke={'#975A16'}
+        //                     >
+
+        //                         {`${value}`}
+        //                     </Text1>
+        //                 </G>
+        //                 <G x={0}  >
+
+        //                     <Circle
+        //                         key={index}
+        //                         cx={x(index)}
+        //                         cy={y(value)}
+        //                         r={4}
+        //                         stroke={'#975A16'}
+        //                         fill={'rgba(255, 255, 255, .4)'}
+        //                     />
+        //                 </G>
+        //             </View>
+        //         else return <View>
+
+        //             <G y={y(value)} >
+
+        //                 <Text1
+        //                     x={x(index)}
+        //                     dy={10}
+        //                     alignmentBaseline={'middle'}
+        //                     textAnchor={'middle'}
+        //                     stroke={'#975A16'}
+        //                 >
+
+        //                     {`${value}`}
+        //                 </Text1>
+        //             </G>
+        //             <G x={0}  >
+        //                 <Circle
+        //                     key={index}
+        //                     cx={x(index)}
+        //                     cy={y(value)}
+        //                     r={4}
+        //                     stroke={'#975A16'}
+        //                     fill={'rgba(255, 255, 255, .4)'}
+        //                 />
+        //             </G>
+        //         </View>
+
+        //     })
+        // }
+        return (
             <StyleProvider style={getTheme(material)}>
                 <Container>
-
                     <Header>
                         <Left style={{ flex: 0, width: '10%' }}>
                             <Button transparent onPress={() => this.props.navigation.goBack()}>
@@ -124,23 +295,23 @@ export default class HospitalTurnaroudTime extends Component {
                                     />
                                 </View> */}
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthweek1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>27 min</Text>
+                                    <View style={{ width: innerbarWidthweek1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15, alignItems: 'flex-end' }}>
+                                        <Text style={{ color: '#ffffff', fontFamily: "avenir light", fontSize: 14, marginRight: 10, marginTop: 2 }}>27 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthweek2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>30 min</Text>
+                                    <View style={{ width: innerbarWidthweek2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15, alignItems: 'flex-end' }}>
+                                        <Text style={{ color: '#ffffff', fontFamily: "avenir light", fontSize: 14, marginRight: 10, marginTop: 2 }}>30 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average
                             </Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthweek3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>35 min</Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <View style={{ width: innerbarWidthweek3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15, alignItems: 'flex-end' }}>
+                                        <Text style={{ color: '#ffffff', fontFamily: "avenir light", fontSize: 14, marginRight: 10, marginTop: 2 }}>35 min</Text>
                                     </View>
                                 </View>
 
@@ -161,34 +332,51 @@ Keep up the good work!
                             </Text>
                             <View style={[styles.separator, { marginTop: 15 }]} />
 
-                            <View style={{ height: 200, marginLeft: 10 }}>
-                                <LineChart
+                            <View style={{ height: 200, marginLeft: 20 }}>
+                                <YAxis style={[StyleSheet.absoluteFill, { marginLeft: -(Dimensions.get('screen').width - 5) }]} spacingInner={.9}
+                                    spacingOuter={1}
+                                    data={datass}
+                                    contentInset={contentInset}
+                                    svg={{
+                                        fill: 'grey',
+                                        fontSize: 10,
+                                    }}
+                                    numberOfTicks={9}
+                                    formatLabel={value => value}
+                                />
+                                <LineChart curve={shape.curveNatural}
                                     style={{ flex: 1 }}
                                     data={data1}
-                                    svg={{ stroke: '#F7941D', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F5A623', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    {/* <Grid1/> */}
+                                    <CustomGrid belowChart={false} />
+                                    <Decorator contents={data1} />
                                 </LineChart>
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data2}
-                                    svg={{ stroke: '#975A16', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F2816F', strokeWidth: 2 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 />
 
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data3}
-                                    svg={{ stroke: '#E67702', strokeWidth: 4 }}
+                                    svg={{ stroke: '#883100', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
-                                />
+                                >
+
+                                    <Decorator contents={data3} />
+                                </LineChart>
+
+
                             </View>
                             <XAxis
                                 spacingInner={.9}
@@ -214,7 +402,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#F7941D"
+                                                fill="#F5A623"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -227,7 +415,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#975A16"
+                                                fill="#F2816F"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -240,7 +428,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#E67702"
+                                                fill="#883100"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -253,23 +441,23 @@ Keep up the good work!
                         {this.state.selected === 2 && <View>
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
-                            <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthmonth1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>28 min</Text>
+                                <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
+                                    <View style={{ width: innerbarWidthmonth1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15, alignItems: 'flex-end' }}>
+                                        <Text style={{ color: '#ffffff', fontFamily: "avenir light", fontSize: 14, marginRight: 10, marginTop: 2 }}>28 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthmonth2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>23 min</Text>
+                                    <View style={{ width: innerbarWidthmonth2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15, alignItems: 'flex-end' }}>
+                                        <Text style={{ color: '#ffffff', fontFamily: "avenir light", fontSize: 14, marginRight: 10, marginTop: 2 }}>23 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthmonth3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>20 min</Text>
+                                    <View style={{ width: innerbarWidthmonth3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15, alignItems: 'flex-end' }}>
+                                        <Text style={{ color: '#ffffff', fontFamily: "avenir light", fontSize: 14, marginRight: 10, marginTop: 2 }}>20 min</Text>
                                     </View>
                                 </View>
 
@@ -291,33 +479,47 @@ Keep up the good work!
                             <View style={[styles.separator, { marginTop: 15 }]} />
 
                             <View style={{ height: 200, marginLeft: 10 }}>
-                                <LineChart
+                                <YAxis style={[StyleSheet.absoluteFill, { marginLeft: -(Dimensions.get('screen').width - 5) }]} spacingInner={.9}
+                                    spacingOuter={1}
+                                    data={datass}
+                                    contentInset={contentInset}
+                                    svg={{
+                                        fill: 'grey',
+                                        fontSize: 10,
+                                    }}
+                                    numberOfTicks={9}
+                                    formatLabel={value => value}
+                                />
+                                <LineChart curve={shape.curveNatural}
                                     style={{ flex: 1 }}
                                     data={data11}
-                                    svg={{ stroke: '#F7941D', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F5A623', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
-
+                                    <CustomGrid belowChart={false} />
+                                    <Decorator contents={data11} />
                                 </LineChart>
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data12}
-                                    svg={{ stroke: '#975A16', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F2816F', strokeWidth: 2 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 />
 
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data13}
-                                    svg={{ stroke: '#E67702', strokeWidth: 4 }}
+                                    svg={{ stroke: '#883100', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
-                                />
+                                >
+                                    <Decorator contents={data13} />
+                                </LineChart>
                             </View>
                             <XAxis
                                 spacingInner={.9}
@@ -343,7 +545,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#F7941D"
+                                                fill="#F5A623"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -356,7 +558,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#975A16"
+                                                fill="#F2816F"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -369,7 +571,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#E67702"
+                                                fill="#883100"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -384,22 +586,22 @@ Keep up the good work!
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthyear1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>30 min</Text>
+                                    <View style={{ width: innerbarWidthyear1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15, alignItems: 'flex-end' }}>
+                                        <Text style={{ color: '#ffffff', fontFamily: "avenir light", fontSize: 14, marginRight: 10, marginTop: 2 }}>30 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthyear2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>25 min</Text>
+                                    <View style={{ width: innerbarWidthyear2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15, alignItems: 'flex-end' }}>
+                                        <Text style={{ color: '#ffffff', fontFamily: "avenir light", fontSize: 14, marginRight: 10, marginTop: 2 }}>25 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthyear3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>33 min</Text>
+                                    <View style={{ width: innerbarWidthyear3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15, alignItems: 'flex-end' }}>
+                                        <Text style={{ color: '#ffffff', fontFamily: "avenir light", fontSize: 14, marginRight: 10, marginTop: 2 }}>33 min</Text>
                                     </View>
                                 </View>
 
@@ -421,33 +623,49 @@ Keep up the good work!
                             <View style={[styles.separator, { marginTop: 15 }]} />
 
                             <View style={{ height: 200, marginLeft: 10 }}>
-                                <LineChart
+                                <YAxis style={[StyleSheet.absoluteFill, { marginLeft: -(Dimensions.get('screen').width - 5) }]} spacingInner={.9}
+                                    spacingOuter={1}
+                                    data={datass}
+                                    contentInset={contentInset}
+                                    svg={{
+                                        fill: 'grey',
+                                        fontSize: 10,
+                                    }}
+                                    numberOfTicks={9}
+                                    formatLabel={value => value}
+                                />
+                                <LineChart curve={shape.curveNatural}
+
                                     style={{ flex: 1 }}
                                     data={data21}
-                                    svg={{ stroke: '#F7941D', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F5A623', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
 
+                                    <CustomGrid belowChart={false} />
+                                    <Decorator contents={data21} />
                                 </LineChart>
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data22}
-                                    svg={{ stroke: '#975A16', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F2816F', strokeWidth: 2 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 />
 
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data23}
-                                    svg={{ stroke: '#E67702', strokeWidth: 4 }}
+                                    svg={{ stroke: '#883100', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
-                                />
+                                >
+                                    <Decorator contents={data23} />
+                                </LineChart>
                             </View>
                             <XAxis
                                 spacingInner={.9}
@@ -473,7 +691,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#F7941D"
+                                                fill="#F5A623"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -486,7 +704,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#975A16"
+                                                fill="#F2816F"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -499,7 +717,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#E67702"
+                                                fill="#883100"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',

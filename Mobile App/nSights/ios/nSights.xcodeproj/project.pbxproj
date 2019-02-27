@@ -1553,7 +1553,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nsightify.nsights;
 				PRODUCT_NAME = nSights;
 				PROVISIONING_PROFILE_SPECIFIER = "nSightify Appstore Distribution Profile";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1583,7 +1583,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nsightify.nsights;
 				PRODUCT_NAME = nSights;
 				PROVISIONING_PROFILE_SPECIFIER = "nSightify Appstore Distribution Profile";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

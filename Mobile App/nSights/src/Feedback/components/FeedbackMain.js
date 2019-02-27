@@ -17,19 +17,19 @@ const datas1 = [
     img: ann,
     name: "Ann Davis",
     note: "EMT-Basic",
-    time: "Yesterday"
+    time: "1h ago"
   },
   {
     img: john,
     name: "John Harris",
     note: "Critical Care Paramedic",
-    time: "28 days ago"
+    time: "5h ago"
   },
   {
     img: kate,
     name: "Kate White",
     note: "EMT-Paramedic",
-    time: "12/12/18"
+    time: "6h ago"
   },
   {
     img: mary,
@@ -41,7 +41,7 @@ const datas1 = [
     img: ted,
     name: "Ted Mosby",
     note: "EMT-Paramedic",
-    time: "5h ago"
+    time: "8h ago"
   },
   {
     img: kate,
@@ -59,13 +59,13 @@ const datas1 = [
     img: mary,
     name: "Mary-Kate Washington",
     note: "EMT-Basic",
-    time: "1h ago"
+    time: "Yesterday"
   },
   {
     img: ted,
     name: "Ted Mosby",
     note: "EMT-Paramedic",
-    time: "5h ago"
+    time: "Yesterday"
   },
   {
     img: kate,
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
      marginTop: 5,
-    // marginBottom: 10,
+    marginBottom: 5,
     flexDirection: 'column',
     alignItems: 'center',
    
@@ -264,7 +264,7 @@ button: {
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
-  width: 160,
+  width: '90%',
   borderRadius: 30,
 },
 loginButton: {

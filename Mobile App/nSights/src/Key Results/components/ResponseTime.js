@@ -7,8 +7,9 @@ import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { BarChart, XAxis, AreaChart, LineChart, YAxis, Grid as Grid1 } from 'react-native-svg-charts'
+import * as shape from 'd3-shape'
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
-import Svg, { Circle } from 'react-native-svg'
+import Svg, { Circle, G, Line, Rect, Path, Text as Text1 } from 'react-native-svg'
 import * as scale from 'd3-scale'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import icoMoonConfig from '../../../selection.json';
@@ -26,20 +27,22 @@ export default class ResponseTime extends Component {
     }
     state = { selected: 1 }
     render() {
-        const data1 = [80, 60, 74, 95, 85, 91, 70,]
+        const data1 = [70, 80, 80, 95, 50, 60, 85]
         const data2 = [50, 50, 50, 50, 50, 50, 50]
-        const data3 = [70, 80, 30, 20, 70, 50, 61,]
+        const data3 = [50, 65, 60, 95, 40, 60, 60]
 
-        const data11 = [10, 50, 48, 95, 30, 75, 60,]
-        const data12 = [50, 50, 50, 50, 50, 50, 50]
-        const data13 = [70, 80, 70, 50, 80, 80, 71,]
+        const data11 = [50, 60, 70, 90, 60, 50, 95, 80, 90, 84, 77, 66, 84, 57, 54, 67, 80, 75, 68, 84, 77, 80, 85, 90, 84, 65, 75, 90, 77, 80]
+        const data12 = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+        const data13 = [80, 62, 52, 75, 90, 54, 60, 75, 85, 90, 84, 65, 70, 76, 62, 88, 78, 64, 85, 70, 65, 80, 75, 55, 75, 60, 80, 75, 79, 60]
 
-        const data21 = [10, 50, 48, 95, 30, 75, 60,].reverse()
-        const data22 = [50, 50, 50, 50, 50, 50, 50]
-        const data23 = [70, 80, 30, 20, 70, 50, 61,].reverse()
+        const data21 = [50, 60, 75, 90, 80, 50, 95, 75, 60, 80, 55, 65]
+        const data22 = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+        const data23 = [80, 72, 52, 65, 90, 54, 70, 65, 80, 95, 60, 73]
 
 
-        const data = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        const weekdata = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        const monthdata = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+        const yeardata = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 
 
@@ -69,6 +72,53 @@ export default class ResponseTime extends Component {
             borderRadius: 14,
             borderColor: '#F3F3F3',
         };
+        const CustomGrid = ({ x, y, contentdata, ticks }) => (
+            <G>
+                {
+                    // Horizontal grid
+                    ticks.map(tick => (
+                        <Line
+                            key={tick}
+                            x1={'0%'}
+                            x2={'100%'}
+                            y1={y(tick)}
+                            y2={y(tick)}
+                            stroke={'rgba(0,0,0,0.2)'}
+                            strokeDasharray="3 2"
+                        />
+                    ))
+                }
+                {
+                    // Vertical grid
+                    contentdata .map((_, index) => (
+                        <Line
+                            key={index}
+                            y1={'0%'}
+                            y2={'100%'}
+                            x1={x(index)}
+                            x2={x(index)}
+                            stroke={'rgba(0,0,0,0.2)'}
+                            strokeDasharray="3 2"
+                        />
+                    ))
+                }
+            </G>
+        )
+        const datass = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+        const contentInset = { top: 20, bottom: 20 }
+        const Decorator = ({ x, y, contents }) => {
+            return contents.map((value, index) => (
+                <Circle
+                    key={index}
+                    cx={x(index)}
+                    cy={y(value)}
+                    r={4}
+                    stroke={'#975A16'}
+                    fill={'white'}
+                />
+            ))
+        }
         return (
 
             <StyleProvider style={getTheme(material)}>
@@ -178,47 +228,64 @@ export default class ResponseTime extends Component {
                                 </Grid>
                             </View>
                             <View style={styles.separator} />
-                            <View style={{ height: 200, marginLeft: 10 }}>
-                                <LineChart
+                            <View style={{ height: 200, marginLeft: 20 }}>
+                                <YAxis style={[StyleSheet.absoluteFill, { marginLeft: -(Dimensions.get('screen').width - 5) }]} spacingInner={.9}
+                                    spacingOuter={1}
+                                    data={datass}
+                                    contentInset={contentInset}
+                                    svg={{
+                                        fill: 'grey',
+                                        fontSize: 10,
+                                    }}
+                                    numberOfTicks={9}
+                                    formatLabel={value => value}
+                                />
+                                <LineChart curve={shape.curveNatural}
                                     style={{ flex: 1 }}
                                     data={data1}
-                                    svg={{ stroke: '#F7941D', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F5A623', strokeWidth: 1 }}
+                                    contentInset={{ top: 20, bottom: 20 }}
+                                    yMin={10}
+                                    yMax={100}
+                                >
+                                    <CustomGrid  contentdata = {weekdata} belowChart={false} />
+                                    <Decorator contents={data1} />
+                                </LineChart>
+                                <LineChart curve={shape.curveNatural}
+                                    style={StyleSheet.absoluteFill}
+                                    data={data2}
+                                    svg={{ stroke: '#F2816F', strokeWidth: 2 }}
+                                    contentInset={{ top: 20, bottom: 20 }}
+                                    yMin={10}
+                                    yMax={100}
+                                />
+
+                                <LineChart curve={shape.curveNatural}
+                                    style={StyleSheet.absoluteFill}
+                                    data={data3}
+                                    svg={{ stroke: '#883100', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
 
+                                    <Decorator contents={data3} />
                                 </LineChart>
-                                <LineChart
-                                    style={StyleSheet.absoluteFill}
-                                    data={data2}
-                                    svg={{ stroke: '#975A16', strokeWidth: 4 }}
-                                    contentInset={{ top: 20, bottom: 20 }}
-                                    yMin={10}
-                                    yMax={100}
-                                />
 
-                                <LineChart
-                                    style={StyleSheet.absoluteFill}
-                                    data={data3}
-                                    svg={{ stroke: '#E67702', strokeWidth: 4 }}
-                                    contentInset={{ top: 20, bottom: 20 }}
-                                    yMin={10}
-                                    yMax={100}
-                                />
+
                             </View>
                             <XAxis
                                 spacingInner={.9}
                                 spacingOuter={.9}
                                 contentInset={{ left: 20, right: 10 }}
-                                data={data}
+                                data={weekdata}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
 
                                 }}
-                                formatLabel={(value, index) => data[index]}
+                                formatLabel={(value, index) => weekdata[index]}
                             />
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
                                 <Grid>
@@ -334,47 +401,62 @@ export default class ResponseTime extends Component {
                             </View>
                             <View style={styles.separator} />
                             <View style={{ height: 200, marginLeft: 10 }}>
-                                <LineChart
+                                <YAxis style={[StyleSheet.absoluteFill, { marginLeft: -(Dimensions.get('screen').width - 5) }]} spacingInner={.9}
+                                    spacingOuter={1}
+                                    data={datass}
+                                    contentInset={contentInset}
+                                    svg={{
+                                        fill: 'grey',
+                                        fontSize: 10,
+                                    }}
+                                    numberOfTicks={9}
+                                    formatLabel={value => value}
+                                />
+                                <LineChart curve={shape.curveNatural}
                                     style={{ flex: 1 }}
                                     data={data11}
-                                    svg={{ stroke: '#F7941D', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F5A623', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
-
+                                    <CustomGrid  contentdata = {monthdata} belowChart={false} />
+                                    <Decorator contents={data11} />
                                 </LineChart>
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data12}
-                                    svg={{ stroke: '#975A16', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F2816F', strokeWidth: 2 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 />
 
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data13}
-                                    svg={{ stroke: '#E67702', strokeWidth: 4 }}
+                                    svg={{ stroke: '#883100', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
-                                />
+                                >
+                                    <Decorator contents={data13} />
+                                </LineChart>
                             </View>
                             <XAxis
                                 spacingInner={.9}
                                 spacingOuter={.9}
                                 contentInset={{ left: 20, right: 10 }}
-                                data={data}
+                                data={monthdata}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
 
                                 }}
-                                formatLabel={(value, index) => data[index]}
+                                formatLabel={(value, index) => monthdata[index]}
                             />
+
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
                                 <Grid>
                                     <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
@@ -490,47 +572,64 @@ export default class ResponseTime extends Component {
                             </View>
                             <View style={styles.separator} />
                             <View style={{ height: 200, marginLeft: 10 }}>
-                                <LineChart
+                                <YAxis style={[StyleSheet.absoluteFill, { marginLeft: -(Dimensions.get('screen').width - 5) }]} spacingInner={.9}
+                                    spacingOuter={1}
+                                    data={datass}
+                                    contentInset={contentInset}
+                                    svg={{
+                                        fill: 'grey',
+                                        fontSize: 10,
+                                    }}
+                                    numberOfTicks={9}
+                                    formatLabel={value => value}
+                                />
+                                <LineChart curve={shape.curveNatural}
+
                                     style={{ flex: 1 }}
                                     data={data21}
-                                    svg={{ stroke: '#F7941D', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F5A623', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
 
+                                    <CustomGrid  contentdata = {yeardata} belowChart={false} />
+                                    <Decorator contents={data21} />
                                 </LineChart>
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data22}
-                                    svg={{ stroke: '#975A16', strokeWidth: 4 }}
+                                    svg={{ stroke: '#F2816F', strokeWidth: 2 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 />
 
-                                <LineChart
+                                <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
                                     data={data23}
-                                    svg={{ stroke: '#E67702', strokeWidth: 4 }}
+                                    svg={{ stroke: '#883100', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
-                                />
+                                >
+                                    <Decorator contents={data23} />
+                                </LineChart>
                             </View>
                             <XAxis
                                 spacingInner={.9}
                                 spacingOuter={.9}
                                 contentInset={{ left: 20, right: 10 }}
-                                data={data}
+                                data={yeardata}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
 
                                 }}
-                                formatLabel={(value, index) => data[index]}
+                                formatLabel={(value, index) => yeardata[index]}
                             />
+
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
                                 <Grid>
                                     <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>

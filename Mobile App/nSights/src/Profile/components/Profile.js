@@ -39,7 +39,10 @@ export default class Home extends Component {
       <StyleProvider style={getTheme(material)}>
         <Container>
           <Header>
-            <Left style={{ flex: 1, }}>
+            <Left style={{ flex: 1 }}>
+              <Button transparent onPress={() => this.props.navigation.navigate('Bookmarks')}>              
+                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Bookmark.png')} />
+              </Button>
             </Left>
             <Body style={{
               flex: 1, justifyContent: 'center', alignItems: 'center'

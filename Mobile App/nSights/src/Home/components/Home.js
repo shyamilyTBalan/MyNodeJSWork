@@ -2,7 +2,7 @@
 
 
 import React, { Component } from 'react';
-import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem,Icon, CheckBox, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
+import { Container, Header, Title, Text, Content, Input, Thumbnail, Item,Icon, Footer, FooterTab, Label, List, ListItem, CheckBox, Button, Left, Right, Separator, Body, StyleProvider, Card, CardItem } from 'native-base';
 import { Platform, span, StyleSheet, ScrollView, TextInput, Alert, BackHandler, Image, View, TouchableWithoutFeedback, TouchableOpacity, FlatList, TouchableHighlight, Dimensions, Modal } from 'react-native';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
@@ -10,7 +10,7 @@ import material from '../../../native-base-theme/variables/material';
 import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
 import Login from '../../../src/Login/components/Login'
 import KeyResults from '../../../src/Key Results/components/KeyResults'
-import Bookmarks from '../../../src/Home/components/Bookmarks'
+import Bookmarks from '../../../src/Profile/components/Bookmarks'
 import Notifications from '../../../src/Home/components/Notifications'
 import ReportUser from '../../../src/Home/components/ReportUser'
 import HospitalTurnaroundTime from '../../../src/Key Results/components/HospitalTurnaroundTime'
@@ -19,19 +19,16 @@ import ResponseTime from '../../../src/Key Results/components/ResponseTime'
 import OnSceneTime from '../../../src/Key Results/components/OnSceneTime'
 import LeaderBoards from '../../../src/Leader Boards/components/LeaderBoards'
 import Feedback from '../../../src/Feedback/components/Feedback'
-
 import FeedbackMain from '../../../src/Feedback/components/FeedbackMain'
 import RequestFeedback from '../../../src/Feedback/components/RequestFeedback'
-
 import GiveFeedback from '../../../src/Feedback/components/GiveFeedback'
 import Pending from '../../../src/Feedback/components/FeedbackMain'
 import Requested from '../../../src/Feedback/components/FeedbackMain'
+import Search from '../../../src/Search/components/Search'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-
 import Profile from '../../../src/Profile/components/Profile'
 import Achievements from '../../../src/Profile/components/Achievements'
 import Rating_Comments from '../../../src/Profile/components/Rating_Comments'
-
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
 import icoMoonConfig from '../../../selection.json';
 const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
@@ -230,9 +227,11 @@ class Home extends Component {
       <StyleProvider style={getTheme(material)}>
         <Container style= {styles.container}>
           <Header>
-            <Left style={{ flex: 1 }}>
-              <Button transparent onPress={() => this.props.navigation.navigate('Bookmarks')}>              
-                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Bookmark.png')} />
+          <Left style={{ flex: 1 }}>
+              <Button transparent onPress={() => this.props.navigation.navigate('Profile')}>              
+                {/* <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/Bookmark.png')} /> */}
+                <View style={{  maxWidth: '100%', maxHeight: '100%'  }}>
+                <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
               </Button>
             </Left>
             <Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -252,8 +251,8 @@ class Home extends Component {
           <Content >
             <View
               style={[styles.viewInput, { borderColor: isFocused ? '#f7941d' : '#D1D3D4' }]}>
-              <View style={{ width: '10%', marginTop: 7 }}>
-                <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View>
+              {/* <View style={{ width: '10%', marginTop: 7 }}>
+                <Thumbnail small source={require('../../../assets/images/bitmap1.png')} /></View> */}
               <View style={{ width: '90%' }}><TextInput multiline onFocus={this.handleFocus} onBlur={this.handleBlur} ref={input => { this.textInput = input }}
                 style={[styles.textInput, { borderColor: isFocused ? '#f7941d' : '#D1D3D4' }]}
                 placeholderTextColor="#939598"
@@ -451,12 +450,6 @@ const HomeStack = createStackNavigator({
     },
     screen: Home,
   },
-  Bookmarks: {
-    navigationOptions: {
-
-      header: null,
-    }, screen: Bookmarks
-  },
   Notifications: {
     navigationOptions: {
 
@@ -485,6 +478,12 @@ const ProfileStack = createStackNavigator({
 
       header: null,
     }, screen: Achievements
+  },
+  Bookmarks: {
+    navigationOptions: {
+
+      header: null,
+    }, screen: Bookmarks
   },
   Rating_Comments: {
     navigationOptions: {
@@ -587,7 +586,7 @@ export default createAppContainer(
       KeyResults: { screen: KeyResultsStack },
       Feedback: { screen: FeedbackStack },
       LeaderBoards: { screen: LeaderBoardsStack },
-      Profile: { screen: ProfileStack },
+      Search: { screen: Search },
 
     },
     {
@@ -626,7 +625,8 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     iconName = `Clipboard${focused ? '' : ''}`;
   }
   else {
-    iconName = `User${focused ? '' : ''}`;
+    return  <Icon  name="search" style={{ color: iconcolor }}/>
+   // iconName = `User${focused ? '' : ''}`;
   }
 
   return <Linericon name={iconName} size={24} color={iconcolor} />;

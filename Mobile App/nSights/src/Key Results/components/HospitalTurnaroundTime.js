@@ -30,18 +30,20 @@ export default class HospitalTurnaroudTime extends Component {
 
         const data1 = [70, 80, 80, 95, 50, 60, 85]
         const data2 = [50, 50, 50, 50, 50, 50, 50]
-        const data3 = [50, 65, 60, 95, 40, 60, 60,]
+        const data3 = [50, 65, 60, 95, 40, 60, 60]
 
-        const data11 = [50, 60, 70, 90, 60, 50, 95,]
-        const data12 = [50, 50, 50, 50, 50, 50, 50]
-        const data13 = [80, 62, 52, 75, 90, 54, 60,]
+        const data11 = [50, 60, 70, 90, 60, 50, 95, 80, 90, 84, 77, 66, 84, 57, 54, 67, 80, 75, 68, 84, 77, 80, 85, 90, 84, 65, 75, 90, 77, 80]
+        const data12 = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+        const data13 = [80, 62, 52, 75, 90, 54, 60, 75, 85, 90, 84, 65, 70, 76, 62, 88, 78, 64, 85, 70, 65, 80, 75, 55, 75, 60, 80, 75, 79, 60]
 
-        const data21 = [50, 60, 70, 90, 60, 50, 95,].reverse()
-        const data22 = [50, 50, 50, 50, 50, 50, 50]
-        const data23 = [80, 62, 52, 75, 90, 54, 60,].reverse()
+        const data21 = [50, 60, 75, 90, 80, 50, 95, 75, 60, 80, 55, 65]
+        const data22 = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+        const data23 = [80, 72, 52, 65, 90, 54, 70, 65, 80, 95, 60, 73]
 
 
-        const data = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        const weekdata = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        const monthdata = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+        const yeardata = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 
         const barWidth = Dimensions.get('screen').width - 30;
@@ -109,7 +111,7 @@ export default class HospitalTurnaroudTime extends Component {
                 </G>
             ))
         }
-        const CustomGrid = ({ x, y, data, ticks }) => (
+        const CustomGrid = ({ x, y, contentdata, ticks }) => (
             <G>
                 {
                     // Horizontal grid
@@ -127,7 +129,7 @@ export default class HospitalTurnaroudTime extends Component {
                 }
                 {
                     // Vertical grid
-                    data.map((_, index) => (
+                    contentdata .map((_, index) => (
                         <Line
                             key={index}
                             y1={'0%'}
@@ -352,7 +354,7 @@ Keep up the good work!
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    <CustomGrid belowChart={false} />
+                                    <CustomGrid  contentdata = {weekdata} belowChart={false} />
                                     <Decorator contents={data1} />
                                 </LineChart>
                                 <LineChart curve={shape.curveNatural}
@@ -382,14 +384,14 @@ Keep up the good work!
                                 spacingInner={.9}
                                 spacingOuter={.9}
                                 contentInset={{ left: 20, right: 10 }}
-                                data={data}
+                                data={weekdata}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
 
                                 }}
-                                formatLabel={(value, index) => data[index]}
+                                formatLabel={(value, index) => weekdata[index]}
                             />
 
 
@@ -498,7 +500,7 @@ Keep up the good work!
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    <CustomGrid belowChart={false} />
+                                    <CustomGrid  contentdata = {monthdata} belowChart={false} />
                                     <Decorator contents={data11} />
                                 </LineChart>
                                 <LineChart curve={shape.curveNatural}
@@ -525,14 +527,14 @@ Keep up the good work!
                                 spacingInner={.9}
                                 spacingOuter={.9}
                                 contentInset={{ left: 20, right: 10 }}
-                                data={data}
+                                data={monthdata}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
 
                                 }}
-                                formatLabel={(value, index) => data[index]}
+                                formatLabel={(value, index) => monthdata[index]}
                             />
 
 
@@ -644,7 +646,7 @@ Keep up the good work!
                                     yMax={100}
                                 >
 
-                                    <CustomGrid belowChart={false} />
+                                    <CustomGrid  contentdata = {yeardata} belowChart={false} />
                                     <Decorator contents={data21} />
                                 </LineChart>
                                 <LineChart curve={shape.curveNatural}
@@ -671,14 +673,14 @@ Keep up the good work!
                                 spacingInner={.9}
                                 spacingOuter={.9}
                                 contentInset={{ left: 20, right: 10 }}
-                                data={data}
+                                data={yeardata}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
 
                                 }}
-                                formatLabel={(value, index) => data[index]}
+                                formatLabel={(value, index) => yeardata[index]}
                             />
 
 

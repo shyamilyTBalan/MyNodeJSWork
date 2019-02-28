@@ -463,11 +463,6 @@ const HomeStack = createStackNavigator({
       header: null,
     }, screen: ReportUser
   },
-
-
-
-});
-const ProfileStack = createStackNavigator({
   Profile: {
     navigationOptions: {
       header: null,
@@ -493,7 +488,36 @@ const ProfileStack = createStackNavigator({
 
     }, screen: Rating_Comments
   },
-})
+
+
+});
+// const ProfileStack = createStackNavigator({
+//   Profile: {
+//     navigationOptions: {
+//       header: null,
+//     }, screen: Profile
+//   },
+//   Achievements: {
+//     navigationOptions: {
+
+//       header: null,
+//     }, screen: Achievements
+//   },
+//   Bookmarks: {
+//     navigationOptions: {
+
+//       header: null,
+//     }, screen: Bookmarks
+//   },
+//   Rating_Comments: {
+//     navigationOptions: {
+
+//       header: null,
+
+
+//     }, screen: Rating_Comments
+//   },
+// })
 
 const KeyResultsStack = createStackNavigator({
   KeyResults: {

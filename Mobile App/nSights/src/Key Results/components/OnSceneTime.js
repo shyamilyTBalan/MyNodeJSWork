@@ -260,14 +260,14 @@ Keep up the good work!
 
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
 
-                                <Grid>
+                            <Grid>
                                     <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
                                         <Svg height="20%" width="20%" viewBox="0 0 100 100">
                                             <Circle
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#F7941D"
+                                                fill="#F5A623"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -280,7 +280,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#975A16"
+                                                fill="#F2816F"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -293,7 +293,7 @@ Keep up the good work!
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#E67702"
+                                                fill="#883100"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -301,6 +301,7 @@ Keep up the good work!
                                         }}>Team Time</Text>
                                     </Col>
                                 </Grid>
+
                             </View>
                         </View>}
                         {this.state.selected === 2 && <View>
@@ -402,47 +403,47 @@ Keep up the good work!
 
                         <View style={{ marginTop: 10, width: '100%', height: 100 }}>
 
-                            <Grid>
-                                <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
-                                    <Svg height="20%" width="20%" viewBox="0 0 100 100">
-                                        <Circle
-                                            cx="50"
-                                            cy="50"
-                                            r="45"
-                                            fill="#F7941D"
-                                        />
-                                    </Svg><Text style={{
-                                        fontFamily: 'avenir light',
-                                        fontSize: 14,
-                                    }}>Your Time</Text>
-                                </Col>
-                                <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
-                                    <Svg height="20%" width="20%" viewBox="0 0 100 100">
-                                        <Circle
-                                            cx="50"
-                                            cy="50"
-                                            r="45"
-                                            fill="#975A16"
-                                        />
-                                    </Svg><Text style={{
-                                        fontFamily: 'avenir light',
-                                        fontSize: 14,
-                                    }}>Target Time</Text>
-                                </Col>
-                                <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
-                                    <Svg height="20%" width="20%" viewBox="0 0 100 100">
-                                        <Circle
-                                            cx="50"
-                                            cy="50"
-                                            r="45"
-                                            fill="#E67702"
-                                        />
-                                    </Svg><Text style={{
-                                        fontFamily: 'avenir light',
-                                        fontSize: 14,
-                                    }}>Team Time</Text>
-                                </Col>
-                            </Grid>
+                        <Grid>
+                                    <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
+                                        <Svg height="20%" width="20%" viewBox="0 0 100 100">
+                                            <Circle
+                                                cx="50"
+                                                cy="50"
+                                                r="45"
+                                                fill="#F5A623"
+                                            />
+                                        </Svg><Text style={{
+                                            fontFamily: 'avenir light',
+                                            fontSize: 14,
+                                        }}>Your Time</Text>
+                                    </Col>
+                                    <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
+                                        <Svg height="20%" width="20%" viewBox="0 0 100 100">
+                                            <Circle
+                                                cx="50"
+                                                cy="50"
+                                                r="45"
+                                                fill="#F2816F"
+                                            />
+                                        </Svg><Text style={{
+                                            fontFamily: 'avenir light',
+                                            fontSize: 14,
+                                        }}>Target Time</Text>
+                                    </Col>
+                                    <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
+                                        <Svg height="20%" width="20%" viewBox="0 0 100 100">
+                                            <Circle
+                                                cx="50"
+                                                cy="50"
+                                                r="45"
+                                                fill="#883100"
+                                            />
+                                        </Svg><Text style={{
+                                            fontFamily: 'avenir light',
+                                            fontSize: 14,
+                                        }}>Team Time</Text>
+                                    </Col>
+                                </Grid>
                         </View>
 
                         </View>}
@@ -548,47 +549,48 @@ Keep up the good work!
 
                         <View style={{ marginTop: 10, width: '100%', height: 100 }}>
 
-                            <Grid>
-                                <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
-                                    <Svg height="20%" width="20%" viewBox="0 0 100 100">
-                                        <Circle
-                                            cx="50"
-                                            cy="50"
-                                            r="45"
-                                            fill="#F7941D"
-                                        />
-                                    </Svg><Text style={{
-                                        fontFamily: 'avenir light',
-                                        fontSize: 14,
-                                    }}>Your Time</Text>
-                                </Col>
-                                <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
-                                    <Svg height="20%" width="20%" viewBox="0 0 100 100">
-                                        <Circle
-                                            cx="50"
-                                            cy="50"
-                                            r="45"
-                                            fill="#975A16"
-                                        />
-                                    </Svg><Text style={{
-                                        fontFamily: 'avenir light',
-                                        fontSize: 14,
-                                    }}>Target Time</Text>
-                                </Col>
-                                <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
-                                    <Svg height="20%" width="20%" viewBox="0 0 100 100">
-                                        <Circle
-                                            cx="50"
-                                            cy="50"
-                                            r="45"
-                                            fill="#E67702"
-                                        />
-                                    </Svg><Text style={{
-                                        fontFamily: 'avenir light',
-                                        fontSize: 14,
-                                    }}>Team Time</Text>
-                                </Col>
-                            </Grid>
+                        <Grid>
+                                    <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
+                                        <Svg height="20%" width="20%" viewBox="0 0 100 100">
+                                            <Circle
+                                                cx="50"
+                                                cy="50"
+                                                r="45"
+                                                fill="#F5A623"
+                                            />
+                                        </Svg><Text style={{
+                                            fontFamily: 'avenir light',
+                                            fontSize: 14,
+                                        }}>Your Time</Text>
+                                    </Col>
+                                    <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
+                                        <Svg height="20%" width="20%" viewBox="0 0 100 100">
+                                            <Circle
+                                                cx="50"
+                                                cy="50"
+                                                r="45"
+                                                fill="#F2816F"
+                                            />
+                                        </Svg><Text style={{
+                                            fontFamily: 'avenir light',
+                                            fontSize: 14,
+                                        }}>Target Time</Text>
+                                    </Col>
+                                    <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
+                                        <Svg height="20%" width="20%" viewBox="0 0 100 100">
+                                            <Circle
+                                                cx="50"
+                                                cy="50"
+                                                r="45"
+                                                fill="#883100"
+                                            />
+                                        </Svg><Text style={{
+                                            fontFamily: 'avenir light',
+                                            fontSize: 14,
+                                        }}>Team Time</Text>
+                                    </Col>
+                                </Grid>
+
                         </View>
 
                         </View>}

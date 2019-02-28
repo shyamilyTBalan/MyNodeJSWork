@@ -41,7 +41,7 @@ export default class ResponseTime extends Component {
 
 
         const weekdata = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        const monthdata = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+        const monthdata = ['2/1/19', '2/2/19', '2/3/19', '2/4/19', '2/5/19', '2/6/19', '2/7/19', '2/8/19', '2/9/19', '2/10/19', '2/11/19', '2/12/19', '2/13/19', '2/14/19', '2/15/19', '2/16/19', '2/17/19', '2/18/19', '2/19/19', '2/20/19', '2/21/19', '2/22/19', '2/23/19', '2/24/19', '2/25/19', '2/26/19', '2/27/19', '2/28/19', '2/29/19', '2/30/19', '2/31/19']
         const yeardata = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 
@@ -107,14 +107,14 @@ export default class ResponseTime extends Component {
         const datass = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
         const contentInset = { top: 20, bottom: 20 }
-        const Decorator = ({ x, y, contents }) => {
+        const Decorator = ({ x, y, contents,color }) => {
             return contents.map((value, index) => (
                 <Circle
                     key={index}
                     cx={x(index)}
                     cy={y(value)}
                     r={4}
-                    stroke={'#975A16'}
+                    stroke={color}
                     fill={'white'}
                 />
             ))
@@ -164,21 +164,21 @@ export default class ResponseTime extends Component {
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
                                     <View style={{width: innerbarWidthweek1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>35 min</Text>
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>35 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
                                     <View style={{width: innerbarWidthweek2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>23 min</Text>
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>23 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
                                     <View style={{width: innerbarWidthweek3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>25 min</Text>
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>25 min</Text>
                                     </View>
                                 </View>
                             </View>
@@ -249,7 +249,7 @@ export default class ResponseTime extends Component {
                                     yMax={100}
                                 >
                                     <CustomGrid  contentdata = {weekdata} belowChart={false} />
-                                    <Decorator contents={data1} />
+                                    <Decorator color='#F5A623' contents={data1} />
                                 </LineChart>
                                 <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
@@ -269,24 +269,27 @@ export default class ResponseTime extends Component {
                                     yMax={100}
                                 >
 
-                                    <Decorator contents={data3} />
+                                    <Decorator color='#883100' contents={data3} />
                                 </LineChart>
 
 
                             </View>
-                            <XAxis
-                                spacingInner={.9}
-                                spacingOuter={.9}
-                                contentInset={{ left: 20, right: 10 }}
+                            <XAxis  
+                             style={{height: 60}}                             
+                                contentInset={{ left: 10, right: 10 }}
                                 data={weekdata}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
+                                    rotation: 270,
+                                    originY: 20,
+                                   y: 18,
 
                                 }}
                                 formatLabel={(value, index) => weekdata[index]}
                             />
+
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
                                 <Grid>
                                     <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
@@ -337,21 +340,21 @@ export default class ResponseTime extends Component {
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
                                     <View style={{width: innerbarWidthmonth1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>28 min</Text>
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>28 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
                                     <View style={{width: innerbarWidthmonth2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>23 min</Text>
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>23 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
                                     <View style={{width: innerbarWidthmonth3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>20 min</Text>
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>20 min</Text>
                                     </View>
                                 </View>
                             </View>
@@ -421,7 +424,7 @@ export default class ResponseTime extends Component {
                                     yMax={100}
                                 >
                                     <CustomGrid  contentdata = {monthdata} belowChart={false} />
-                                    <Decorator contents={data11} />
+                                    <Decorator color='#F5A623' contents={data11} />
                                 </LineChart>
                                 <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
@@ -440,18 +443,20 @@ export default class ResponseTime extends Component {
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    <Decorator contents={data13} />
+                                    <Decorator color='#883100' contents={data13} />
                                 </LineChart>
                             </View>
-                            <XAxis
-                                spacingInner={.9}
-                                spacingOuter={.9}
-                                contentInset={{ left: 20, right: 10 }}
+                            <XAxis  
+                             style={{height: 40}}                             
+                                contentInset={{ left: 10, right: 10 }}
                                 data={monthdata}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
-                                    fontSize: 14,
+                                    fontSize: 10,
+                                    rotation: 270,
+                                    originY: 20,
+                                   y: 20,
 
                                 }}
                                 formatLabel={(value, index) => monthdata[index]}
@@ -508,21 +513,21 @@ export default class ResponseTime extends Component {
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
                                     <View style={{width: innerbarWidthyear1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>30 min</Text>
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>30 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
                                     <View style={{width: innerbarWidthyear2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>25 min</Text>
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>25 min</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
                                     <View style={{width: innerbarWidthyear3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 2}}>28 min</Text>
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>28 min</Text>
                                     </View>
                                 </View>
                             </View>
@@ -594,7 +599,7 @@ export default class ResponseTime extends Component {
                                 >
 
                                     <CustomGrid  contentdata = {yeardata} belowChart={false} />
-                                    <Decorator contents={data21} />
+                                    <Decorator color='#F5A623' contents={data21} />
                                 </LineChart>
                                 <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
@@ -613,23 +618,24 @@ export default class ResponseTime extends Component {
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    <Decorator contents={data23} />
+                                    <Decorator color='#883100' contents={data23} />
                                 </LineChart>
                             </View>
-                            <XAxis
-                                spacingInner={.9}
-                                spacingOuter={.9}
-                                contentInset={{ left: 20, right: 10 }}
+                            <XAxis  
+                             style={{height: 60}}                             
+                                contentInset={{ left: 10, right: 10 }}
                                 data={yeardata}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
                                     fontSize: 14,
+                                    rotation: 270,
+                                    originY: 20,
+                                   y: 18,
 
                                 }}
                                 formatLabel={(value, index) => yeardata[index]}
                             />
-
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
                                 <Grid>
                                     <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>

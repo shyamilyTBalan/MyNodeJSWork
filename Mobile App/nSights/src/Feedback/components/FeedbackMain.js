@@ -35,7 +35,7 @@ const datas1 = [
     img: mary,
     name: "Mary-Kate Washington",
     note: "EMT-Basic",
-    time: "1h ago"
+    time: "7h ago"
   },
   {
     img: ted,

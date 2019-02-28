@@ -291,14 +291,14 @@ export default class ResponseTime extends Component {
                             />
 
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
-                                <Grid>
+                            <Grid>
                                     <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
                                         <Svg height="20%" width="20%" viewBox="0 0 100 100">
                                             <Circle
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#F7941D"
+                                                fill="#F5A623"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -311,7 +311,7 @@ export default class ResponseTime extends Component {
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#975A16"
+                                                fill="#F2816F"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -324,7 +324,7 @@ export default class ResponseTime extends Component {
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#E67702"
+                                                fill="#883100"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -332,6 +332,7 @@ export default class ResponseTime extends Component {
                                         }}>Team Time</Text>
                                     </Col>
                                 </Grid>
+
                             </View>
 
                         </View>}
@@ -463,14 +464,14 @@ export default class ResponseTime extends Component {
                             />
 
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
-                                <Grid>
+                            <Grid>
                                     <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
                                         <Svg height="20%" width="20%" viewBox="0 0 100 100">
                                             <Circle
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#F7941D"
+                                                fill="#F5A623"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -483,7 +484,7 @@ export default class ResponseTime extends Component {
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#975A16"
+                                                fill="#F2816F"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -496,7 +497,7 @@ export default class ResponseTime extends Component {
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#E67702"
+                                                fill="#883100"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -504,6 +505,7 @@ export default class ResponseTime extends Component {
                                         }}>Team Time</Text>
                                     </Col>
                                 </Grid>
+
 
                             </View>
 
@@ -637,14 +639,14 @@ export default class ResponseTime extends Component {
                                 formatLabel={(value, index) => yeardata[index]}
                             />
                             <View style={{ marginTop: 10, width: '100%', height: 100 }}>
-                                <Grid>
+                            <Grid>
                                     <Col style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
                                         <Svg height="20%" width="20%" viewBox="0 0 100 100">
                                             <Circle
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#F7941D"
+                                                fill="#F5A623"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -657,7 +659,7 @@ export default class ResponseTime extends Component {
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#975A16"
+                                                fill="#F2816F"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -670,7 +672,7 @@ export default class ResponseTime extends Component {
                                                 cx="50"
                                                 cy="50"
                                                 r="45"
-                                                fill="#E67702"
+                                                fill="#883100"
                                             />
                                         </Svg><Text style={{
                                             fontFamily: 'avenir light',
@@ -678,6 +680,7 @@ export default class ResponseTime extends Component {
                                         }}>Team Time</Text>
                                     </Col>
                                 </Grid>
+
                             </View>
 
                         </View>}

@@ -24,53 +24,52 @@ export default class OnSceneTime extends Component {
         super(props);
       
     }
-    state = { selected: 1 }
+    state = { selected: 1 ,
+        inputs :   {
+            "HospitalTurnaroudTime": {
+                "week": {
+                    "data1": [70, 80, 80, 95, 50, 60, 85],
+                    "data2": [50, 50, 50, 50, 50, 50, 50],
+                    "data3": [50, 65, 60, 95, 40, 60, 60],
+                    "content": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                    "innerbarWidthweek1" : "90%",
+                    "innerbarWidthweek2" : "80%",
+                    "innerbarWidthweek3" : "90%",
+                    "tweek1" : "35 min",
+                    "tweek2" : "23 min",
+                    "tweek3" : "25 min"
+                },
+                "month": {
+                    "data1": [50, 60, 70, 90, 60, 50, 95, 80, 90, 84, 77, 66, 84, 57, 54, 67, 80, 75, 68, 84, 77, 80, 85, 90, 84, 65, 75, 90, 77, 80],
+                    "data2": [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
+                    "data3": [80, 62, 52, 75, 90, 54, 60, 75, 85, 90, 84, 65, 70, 76, 62, 88, 78, 64, 85, 70, 65, 80, 75, 55, 75, 60, 80, 75, 79, 60],
+                    "content": ["2/1/19", "2/2/19", "2/3/19", "2/4/19", "2/5/19", "2/6/19", "2/7/19", "2/8/19", "2/9/19", "2/10/19", "2/11/19", "2/12/19", "2/13/19", "2/14/19", "2/15/19", "2/16/19", "2/17/19", "2/18/19", "2/19/19", "2/20/19", "2/21/19", "2/22/19", "2/23/19", "2/24/19", "2/25/19", "2/26/19", "2/27/19", "2/28/19", "2/29/19", "2/30/19", "2/31/19"],
+                    "innerbarWidthmonth1" : "60%",
+                    "innerbarWidthmonth2" : "95%",
+                    "innerbarWidthmonth3" : "70%",
+                    "tmonth1" : "30",
+                    "tmonth2" : "33",
+                    "tmonth3" : "28",
+                },
+                "year": {
+                    "data1": [50, 60, 75, 90, 80, 50, 95, 75, 60, 80, 55, 65],
+                    "data2": [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
+                    "data3": [80, 72, 52, 65, 90, 54, 70, 65, 80, 95, 60, 73],
+                    "content": ["Jan", "Feb", "March", "April", "Ma", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    "innerbarWidthyear1" : "88%",
+                    "innerbarWidthyear2" : "60%",
+                    "innerbarWidthyear3" : "99%",
+                    "tyear1" : "26",
+                    "tyear2" : "30",
+                    "tyear3" : "33"
+                }
+            }
+        }
+    }
     render() {
-        const data1 = [70, 80, 80, 95, 50, 60, 85]
-        const data2 = [50, 50, 50, 50, 50, 50, 50]
-        const data3 = [50, 65, 60, 95, 40, 60, 60]
-
-        const data11 = [50, 60, 70, 90, 60, 50, 95, 80, 90, 84, 77, 66, 84, 57, 54, 67, 80, 75, 68, 84, 77, 80, 85, 90, 84, 65, 75, 90, 77, 80]
-        const data12 = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
-        const data13 = [80, 62, 52, 75, 90, 54, 60, 75, 85, 90, 84, 65, 70, 76, 62, 88, 78, 64, 85, 70, 65, 80, 75, 55, 75, 60, 80, 75, 79, 60]
-
-        const data21 = [50, 60, 75, 90, 80, 50, 95, 75, 60, 80, 55, 65]
-        const data22 = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
-        const data23 = [80, 72, 52, 65, 90, 54, 70, 65, 80, 95, 60, 73]
-
-
-        const weekdata = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        const monthdata = ['2/1/19', '2/2/19', '2/3/19', '2/4/19', '2/5/19', '2/6/19', '2/7/19', '2/8/19', '2/9/19', '2/10/19', '2/11/19', '2/12/19', '2/13/19', '2/14/19', '2/15/19', '2/16/19', '2/17/19', '2/18/19', '2/19/19', '2/20/19', '2/21/19', '2/22/19', '2/23/19', '2/24/19', '2/25/19', '2/26/19', '2/27/19', '2/28/19', '2/29/19', '2/30/19', '2/31/19']
-        const yeardata = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
        
-
         const barWidth = Dimensions.get('screen').width - 30;
-        const innerbarWidthweek1 = '90%';
-        const innerbarWidthweek2 = '80%';
-        const innerbarWidthweek3 = '90%';
-        const innerbarWidthmonth1 = '60%';
-        const innerbarWidthmonth2 = '95%';
-        const innerbarWidthmonth3 = '70%';
-        const innerbarWidthyear1 = '88%';
-        const innerbarWidthyear2 = '60%';
-        const innerbarWidthyear3 = '99%';
-
-        const progressAverageStyles = {
-            backgroundColor: '#F7941D',
-            borderRadius: 14,
-            borderColor: '#F3F3F3',
-        };
-        const progressTargetStyles = {
-            backgroundColor: '#FAB007',
-            borderRadius: 14,
-            borderColor: '#F3F3F3',
-        };
-        const progressTeamAverageStyles = {
-            backgroundColor: '#E67702',
-            borderRadius: 14,
-            borderColor: '#F3F3F3',
-        };
+       
         const CustomGrid = ({ x, y, contentdata, ticks }) => (
             <G>
                 {
@@ -161,22 +160,22 @@ export default class OnSceneTime extends Component {
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthweek1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>35 min</Text>
+                                    <View style={{width: this.state.inputs.HospitalTurnaroudTime.week.innerbarWidthweek1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.HospitalTurnaroudTime.week.tweek1}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthweek2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>23 min</Text>
+                                    <View style={{width: this.state.inputs.HospitalTurnaroudTime.week.innerbarWidthweek2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.HospitalTurnaroudTime.week.tweek2}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthweek3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>25 min</Text>
+                                    <View style={{width: this.state.inputs.HospitalTurnaroudTime.week.innerbarWidthweek3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.HospitalTurnaroudTime.week.tweek3}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -209,18 +208,18 @@ Keep up the good work!
                                 />
                                 <LineChart curve={shape.curveNatural}
                                     style={{ flex: 1 }}
-                                    data={data1}
+                                    data={this.state.inputs.HospitalTurnaroudTime.week.data1}
                                     svg={{ stroke: '#F5A623', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    <CustomGrid  contentdata = {weekdata} belowChart={false} />
-                                    <Decorator color='#F5A623' contents={data1} />
+                                    <CustomGrid  contentdata = {this.state.inputs.HospitalTurnaroudTime.week.content} belowChart={false} />
+                                    <Decorator color='#F5A623' contents={this.state.inputs.HospitalTurnaroudTime.week.data1} />
                                 </LineChart>
                                 <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
-                                    data={data2}
+                                    data={this.state.inputs.HospitalTurnaroudTime.week.data2}
                                     svg={{ stroke: '#F2816F', strokeWidth: 2 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
@@ -229,14 +228,14 @@ Keep up the good work!
 
                                 <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
-                                    data={data3}
+                                    data={this.state.inputs.HospitalTurnaroudTime.week.data3}
                                     svg={{ stroke: '#883100', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
 
-                                    <Decorator color='#883100' contents={data3} />
+                                    <Decorator color='#883100' contents={this.state.inputs.HospitalTurnaroudTime.week.data3} />
                                 </LineChart>
 
 
@@ -244,7 +243,7 @@ Keep up the good work!
                             <XAxis  
                              style={{height: 60}}                             
                                 contentInset={{ left: 10, right: 10 }}
-                                data={weekdata}
+                                data={this.state.inputs.HospitalTurnaroudTime.week.content}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
@@ -254,7 +253,7 @@ Keep up the good work!
                                    y: 18,
 
                                 }}
-                                formatLabel={(value, index) => weekdata[index]}
+                                formatLabel={(value, index) => this.state.inputs.HospitalTurnaroudTime.week.content[index]}
                             />
 
 
@@ -308,22 +307,22 @@ Keep up the good work!
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthmonth1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>30 min</Text>
+                                    <View style={{width: this.state.inputs.HospitalTurnaroudTime.month.innerbarWidthmonth1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.HospitalTurnaroudTime.month.tmonth1}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthmonth2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>33 min</Text>
+                                    <View style={{width: this.state.inputs.HospitalTurnaroudTime.month.innerbarWidthmonth2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.HospitalTurnaroudTime.month.tmonth2}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthmonth3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>28 min</Text>
+                                    <View style={{width: this.state.inputs.HospitalTurnaroudTime.month.innerbarWidthmonth3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.HospitalTurnaroudTime.month.tmonth3}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -356,18 +355,18 @@ Keep up the good work!
                                 />
                                 <LineChart curve={shape.curveNatural}
                                     style={{ flex: 1 }}
-                                    data={data11}
+                                    data={this.state.inputs.HospitalTurnaroudTime.month.data1}
                                     svg={{ stroke: '#F5A623', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    <CustomGrid  contentdata = {monthdata} belowChart={false} />
-                                    <Decorator color='#F5A623' contents={data11} />
+                                    <CustomGrid  contentdata = {this.state.inputs.HospitalTurnaroudTime.month.content} belowChart={false} />
+                                    <Decorator color='#F5A623' contents={this.state.inputs.HospitalTurnaroudTime.month.data1} />
                                 </LineChart>
                                 <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
-                                    data={data12}
+                                    data={this.state.inputs.HospitalTurnaroudTime.month.data2}
                                     svg={{ stroke: '#F2816F', strokeWidth: 2 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
@@ -376,19 +375,19 @@ Keep up the good work!
 
                                 <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
-                                    data={data13}
+                                    data={this.state.inputs.HospitalTurnaroudTime.month.data3}
                                     svg={{ stroke: '#883100', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    <Decorator color='#883100' contents={data13} />
+                                    <Decorator color='#883100' contents={this.state.inputs.HospitalTurnaroudTime.month.data3} />
                                 </LineChart>
                             </View>
                             <XAxis  
                              style={{height: 40}}                             
                                 contentInset={{ left: 10, right: 10 }}
-                                data={monthdata}
+                                data={this.state.inputs.HospitalTurnaroudTime.month.content}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
@@ -398,7 +397,7 @@ Keep up the good work!
                                    y: 20,
 
                                 }}
-                                formatLabel={(value, index) => monthdata[index]}
+                                formatLabel={(value, index) => this.state.inputs.HospitalTurnaroudTime.month.content[index]}
                             />
 
                         <View style={{ marginTop: 10, width: '100%', height: 100 }}>
@@ -451,22 +450,22 @@ Keep up the good work!
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthyear1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>26 min</Text>
+                                    <View style={{width: this.state.inputs.HospitalTurnaroudTime.year.innerbarWidthyear1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.HospitalTurnaroudTime.year.tyear1}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthyear2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>30 min</Text>
+                                    <View style={{width: this.state.inputs.HospitalTurnaroudTime.year.innerbarWidthyear2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.HospitalTurnaroudTime.year.tyear2}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthyear3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>33 min</Text>
+                                    <View style={{width: this.state.inputs.HospitalTurnaroudTime.year.innerbarWidthyear3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.HospitalTurnaroudTime.year.tyear3}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -500,19 +499,19 @@ Keep up the good work!
                                 <LineChart curve={shape.curveNatural}
 
                                     style={{ flex: 1 }}
-                                    data={data21}
+                                    data={this.state.inputs.HospitalTurnaroudTime.year.data1}
                                     svg={{ stroke: '#F5A623', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
 
-                                    <CustomGrid  contentdata = {yeardata} belowChart={false} />
-                                    <Decorator color='#F5A623' contents={data21} />
+                                    <CustomGrid  contentdata = {this.state.inputs.HospitalTurnaroudTime.year.content} belowChart={false} />
+                                    <Decorator color='#F5A623' contents={this.state.inputs.HospitalTurnaroudTime.year.data1} />
                                 </LineChart>
                                 <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
-                                    data={data22}
+                                    data={this.state.inputs.HospitalTurnaroudTime.year.data2}
                                     svg={{ stroke: '#F2816F', strokeWidth: 2 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
@@ -521,19 +520,19 @@ Keep up the good work!
 
                                 <LineChart curve={shape.curveNatural}
                                     style={StyleSheet.absoluteFill}
-                                    data={data23}
+                                    data={this.state.inputs.HospitalTurnaroudTime.year.data3}
                                     svg={{ stroke: '#883100', strokeWidth: 1 }}
                                     contentInset={{ top: 20, bottom: 20 }}
                                     yMin={10}
                                     yMax={100}
                                 >
-                                    <Decorator color='#883100' contents={data23} />
+                                    <Decorator color='#883100' contents={this.state.inputs.HospitalTurnaroudTime.year.data3} />
                                 </LineChart>
                             </View>
                             <XAxis  
                              style={{height: 60}}                             
                                 contentInset={{ left: 10, right: 10 }}
-                                data={yeardata}
+                                data={this.state.inputs.HospitalTurnaroudTime.year.content}
                                 svg={{
                                     fill: 'black',
                                     fontFamily: 'avenir light',
@@ -543,7 +542,7 @@ Keep up the good work!
                                    y: 18,
 
                                 }}
-                                formatLabel={(value, index) => yeardata[index]}
+                                formatLabel={(value, index) => this.state.inputs.HospitalTurnaroudTime.year.content[index]}
                             />
 
 

@@ -63,6 +63,12 @@ export default class ResponseTime extends Component {
                     "tyear1" : "30",
                     "tyear2" : "25",
                     "tyear3" : "28"
+                },
+                "imojies": {
+                    "smile1": require('../../../assets/images/happy3.png'),
+                    "smile2": require('../../../assets/images/meh3.png'),
+                    "smile3": require('../../../assets/images/smile4.png')
+
                 }
             }
         }
@@ -188,9 +194,9 @@ export default class ResponseTime extends Component {
                     </Text>
                             <View style={styles.separator} />
                             <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.HospitalTurnaroudTime.imojies.smile1} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.HospitalTurnaroudTime.imojies.smile2} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.HospitalTurnaroudTime.imojies.smile3} />
                             </View>
                             <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Onward!
                     </Text>
@@ -364,9 +370,9 @@ export default class ResponseTime extends Component {
                 </Text>
                             <View style={styles.separator} />
                             <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.HospitalTurnaroudTime.imojies.smile1} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.HospitalTurnaroudTime.imojies.smile2} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.HospitalTurnaroudTime.imojies.smile3} />
                             </View>
                             <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Onward!
                 </Text>
@@ -538,9 +544,9 @@ export default class ResponseTime extends Component {
                 </Text>
                             <View style={styles.separator} />
                             <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.HospitalTurnaroudTime.imojies.smile1} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.HospitalTurnaroudTime.imojies.smile2} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.HospitalTurnaroudTime.imojies.smile3} />
                             </View>
                             <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Onward!
                 </Text>

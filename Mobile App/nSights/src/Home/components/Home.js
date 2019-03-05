@@ -245,6 +245,7 @@ class Home extends Component {
             <Right style={{ flex: 1 }}>
               <Button transparent onPress={() => this.props.navigation.navigate('Notifications')}>            
                 <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/group6.png')} />
+                {/* <Linericon name="bell" size={24} color="#fff" /> */}
               </Button>
             </Right>
           </Header>         
@@ -309,11 +310,13 @@ class Home extends Component {
                           <Image style={{ maxWidth: '100%', maxHeight: '100%', marginRight:10}} source={data.ImageUrl} />
                           </View>
                       </Content>
-                      <View style={{ marginLeft: 5 }}>
+                      <View style={{ marginLeft: 5, marginTop: 2 }}>
                         <Text>
-                          <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/heart11.png')} />
+                          {/* <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/heart11.png')} /> */}
+                          <Linericon name="heart2" size={18} color="#F7941D"/>
                           {" "}{data.likes}{"    "}
-                          <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/path.png')} />
+                          {/* <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/path.png')} /> */}
+                          <Linericon name="path" size={18} color="#D1D3D4"/>
                           {" "}{data.comments}
                         </Text>
                       </View>
@@ -642,7 +645,7 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
 
   }
   else if (routeName === 'Feedback') {
-    iconName = `Star${focused ? '' : ''}`;
+    iconName = `Star1${focused ? '' : ''}`;
 
   }
   else if (routeName === 'LeaderBoards') {

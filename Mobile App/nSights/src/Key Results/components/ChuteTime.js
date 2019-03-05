@@ -24,7 +24,42 @@ export default class ChuteTime extends Component {
         super(props);
 
     }
-    state = { selected: 1, value: 0 }
+    state = { selected: 1, value: 0,
+        inputs :   {
+            "ChuteTime": {
+                "week": {
+                    "innerbarWidthweek1" : "30%",
+                    "innerbarWidthweek2" : "55%",
+                    "innerbarWidthweek3" : "50%",
+                    "tweek1" : "28 min",
+                    "tweek2" : "23 min",
+                    "tweek3" : "20 min"
+                },
+                "month": {
+                    "innerbarWidthmonth1" : "45%",
+                    "innerbarWidthmonth2" : "50%",
+                    "innerbarWidthmonth3" : "30%",
+                    "tmonth1" : "27 min",
+                    "tmonth2" : "30 min",
+                    "tmonth3" : "35 min",
+                },
+                "year": {
+                    "innerbarWidthyear1" : "35%",
+                    "innerbarWidthyear2" : "55%",
+                    "innerbarWidthyear3" : "40%",
+                    "tyear1" : "30 min",
+                    "tyear2" : "25 min",
+                    "tyear3" : "33 min"
+                },
+                "imojies": {
+                    "smile1": require('../../../assets/images/happy3.png'),
+                    "smile2": require('../../../assets/images/meh3.png'),
+                    "smile3": require('../../../assets/images/smile4.png')
+
+                }
+            }
+        }
+    }
     render() {
         const radio_props = [
             { label: 'Yes  ', value: 0 },
@@ -41,16 +76,7 @@ export default class ChuteTime extends Component {
 
 
         const barWidth = Dimensions.get('screen').width - 30;
-        const innerbarWidthweek1 = '30%';
-        const innerbarWidthweek2 = '55%';
-        const innerbarWidthweek3 = '50%';
-        const innerbarWidthmonth1 = '45%';
-        const innerbarWidthmonth2 = '50%';
-        const innerbarWidthmonth3 = '30%';
-        const innerbarWidthyear1 = '35%';
-        const innerbarWidthyear2 = '55%';
-        const innerbarWidthyear3 = '40%';
-
+        
         const progressAverageStyles = {
             backgroundColor: '#F7941D',
             borderRadius: 14,
@@ -109,22 +135,22 @@ export default class ChuteTime extends Component {
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthweek1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>28 min</Text>
+                                    <View style={{width: this.state.inputs.ChuteTime.week.innerbarWidthweek1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.ChuteTime.week.tweek1}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthweek2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>23 min</Text>
+                                    <View style={{width: this.state.inputs.ChuteTime.week.innerbarWidthweek2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.ChuteTime.week.tweek2}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthweek3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>20 min</Text>
+                                    <View style={{width: this.state.inputs.ChuteTime.week.innerbarWidthweek3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.ChuteTime.week.tweek3}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -133,9 +159,9 @@ export default class ChuteTime extends Component {
                         </Text>
                             <View style={styles.separator} />
                             <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.ChuteTime.imojies.smile1} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.ChuteTime.imojies.smile2} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.ChuteTime.imojies.smile3} />
                             </View>
                             <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Attention!
                         </Text>
@@ -229,23 +255,23 @@ at your job?
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                                
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthmonth1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>27 min</Text>
+                                    <View style={{width: this.state.inputs.ChuteTime.month.innerbarWidthmonth1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.ChuteTime.month.tmonth1}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthmonth2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>30 min</Text>
+                                    <View style={{width: this.state.inputs.ChuteTime.month.innerbarWidthmonth2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.ChuteTime.month.tmonth2}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average
                             </Text>
                             <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthmonth3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>35 min</Text>
+                                    <View style={{width: this.state.inputs.ChuteTime.month.innerbarWidthmonth3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.ChuteTime.month.tmonth3}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -254,9 +280,9 @@ at your job?
                     </Text>
                             <View style={styles.separator} />
                             <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.ChuteTime.imojies.smile1} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.ChuteTime.imojies.smile2} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.ChuteTime.imojies.smile3} />
                             </View>
                             <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Attention!
                     </Text>
@@ -348,22 +374,22 @@ at your job?
                             <View style={{ justifyContent: 'center', flex: 1, flexDirection: 'column', marginLeft: 5, marginRight: 5 }}>
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Your Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthyear1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>30 min</Text>
+                                    <View style={{width: this.state.inputs.ChuteTime.year.innerbarWidthyear1, backgroundColor: '#F7941D', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.ChuteTime.year.tyear1}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Target</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthyear2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>25 min</Text>
+                                    <View style={{width: this.state.inputs.ChuteTime.year.innerbarWidthyear2, backgroundColor: '#fab007', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.ChuteTime.year.tyear2}</Text>
                                     </View>
                                 </View>
 
                                 <Text style={{ fontFamily: "avenir light", fontSize: 16, }}>Team Average</Text>
                                 <View style={{ width: barWidth, backgroundColor: '#F3F3F3', height: 28, borderRadius: 14, marginBottom: 15 }}>
-                                    <View style={{width: innerbarWidthyear3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
-                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>33 min</Text>
+                                    <View style={{width: this.state.inputs.ChuteTime.year.innerbarWidthyear3, backgroundColor: '#e67702', height: 28, borderRadius: 14, marginBottom: 15 , alignItems: 'flex-end'}}> 
+                                    <Text style={{color: '#ffffff',fontFamily: "avenir light",fontSize: 14 , marginRight: 10, marginTop: 3}}>{this.state.inputs.ChuteTime.year.tyear3}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -372,9 +398,9 @@ at your job?
                     </Text>
                             <View style={styles.separator} />
                             <View style={{ marginTop: 15, marginBottom: 15, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh3.png')} />
-                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile4.png')} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.ChuteTime.imojies.smile1} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.ChuteTime.imojies.smile2} />
+                                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={this.state.inputs.ChuteTime.imojies.smile3} />
                             </View>
                             <Text style={{ width: '50%', marginBottom: 15, marginLeft: '25%', marginRight: '25%', fontFamily: "avenir light", fontSize: 20, textAlign: 'center', }}>Attention!
                     </Text>

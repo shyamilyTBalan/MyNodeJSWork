@@ -44,11 +44,13 @@ export default class Home extends Component {
               <Text>All
                 </Text>
                 </ImageBackground> */}
-                <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/all1.png')} />
-              <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy1.png')} />
+                <Image style={{ maxWidth: '90%', maxHeight: '100%' }} source={require('../../../assets/images/all1.png')} />
+              {/* <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy1.png')} />
               <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile2.png')} />
-              <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh1.png')} />
-             
+              <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh1.png')} /> */}
+              <Linericon name="happy" size={29} color="#D1D3D4"/>
+              <Linericon name="smile" size={29} color="#D1D3D4"/>
+              <Linericon name="meh" size={29} color="#D1D3D4"/>
               </Row>
               </Col>
               </Row>
@@ -60,7 +62,8 @@ export default class Home extends Component {
                       <Text style={{ fontFamily: "avenir light",fontSize: 17, }}>Hospital Turnaround Time</Text>
                     </Body>                 
                   <Right style={{ width: '20%' }} >
-                    <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile1.png')} />
+                    {/* <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile1.png')} /> */}
+                    <Linericon name="smile" size={40} color="#F7941D"/>
                   </Right>                
                 </CardItem>
               </Card>
@@ -73,7 +76,8 @@ export default class Home extends Component {
                     <Text style={{ fontFamily: "avenir light",fontSize: 17, }}>ChuteTime</Text>
                   </Body>                 
                 <Right style={{ width: '20%' }} >
-                  <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh.png')} />
+                  {/* <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh.png')} /> */}
+                  <Linericon name="meh" size={40} color="#F7941D"/>
                 </Right>                
               </CardItem>
             </Card>
@@ -85,7 +89,8 @@ export default class Home extends Component {
                       <Text style={{ fontFamily: "avenir light",fontSize: 17, }}>Response Time</Text>
                     </Body>                 
                   <Right style={{ width: '20%' }} >
-                    <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh.png')} />
+                    {/* <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh.png')} /> */}
+                    <Linericon name="meh" size={40} color="#F7941D"/>
                   </Right>                
                 </CardItem>
               </Card>
@@ -97,7 +102,8 @@ export default class Home extends Component {
                       <Text style={{ fontFamily: "avenir light",fontSize: 17, }}>On-Scene Time</Text>
                     </Body>                 
                   <Right style={{ width: '20%' }} >
-                    <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy.png')} />
+                    {/* <Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy.png')} /> */}
+                    <Linericon name="happy" size={40} color="#F7941D"/>
                   </Right>                
                 </CardItem>
               </Card>

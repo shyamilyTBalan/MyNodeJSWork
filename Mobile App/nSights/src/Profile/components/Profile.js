@@ -51,7 +51,7 @@ export default class Home extends Component {
             </Body>
             <Right>
               <Button transparent onPress={() => this.props.navigation.navigate('Rating_Comments')}>
-              <Linericon name='Star' size={26} color='white' />
+              <Linericon name='Star1' size={30} color='white' />
              
               </Button>
             </Right>

@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for nSights/src/Key Results/components/KeyResults.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\..\index.html">All files</a> / <a href="index.html">nSights/src/Key Results/components</a> KeyResults.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>24/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">14.29% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/20</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119</td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+&nbsp;
+import React, { Component } from 'react';
+import { Container, Header, Title, Text, Content, Input, Thumbnail, Item, Footer, FooterTab, Label, List, ListItem, Button, Left, Right, Body, StyleProvider, Card, CardItem } from 'native-base';
+import { Platform, StyleSheet, ScrollView, TextInput, Image,ImageBackground, View, TouchableOpacity, FlatList, TouchableHighlight } from 'react-native';
+import getTheme from '../../../native-base-theme/components';
+import material from '../../../native-base-theme/variables/material';
+import { Col, Row, Grid } from "react-native-easy-grid";
+import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import icoMoonConfig from '../../../selection.json';
+const Linericon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon.ttf');
+&nbsp;
+&nbsp;
+export default class Home extends Component {
+&nbsp;
+  construct<span class="fstat-no" title="function not covered" >or(pr</span>ops) {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span>
+    super(props);
+  }<span class="fstat-no" title="function not covered" ></span>
+  render() {<span class="cstat-no" title="statement not covered" ></span>
+    re<span class="cstat-no" title="statement not covered" >turn (</span>
+&nbsp;
+      &lt;StyleProvider style={getTheme(material)}&gt;
+        &lt;Container&gt;
+          &lt;Header&gt;
+&nbsp;
+            &lt;Body style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}&gt;
+              &lt;Title style={{ fontFamily: "Arial Rounded MT Bold", fontSize: 20, letterSpacing: 0, fontStyle: "normal", }}&gt;Key Results&lt;/Title&gt;
+            &lt;/Body&gt;
+&nbsp;
+          &lt;/Header&gt;
+&nbsp;
+          &lt;Content padder style={{ backgroundColor: '#F3F3F3' }}&gt;
+            &lt;Grid&gt;
+              &lt;Row&gt;
+              &lt;Col style={{marginTop:10,width:'100%',alignItems:'center'}}&gt;
+              &lt;Text &gt;
+                Filter&lt;/Text&gt;
+              &lt;/Col&gt;
+              &lt;/Row&gt;
+              &lt;Row&gt;
+              &lt;Col style={{width:'100%',alignItems:'center',flex:2}}&gt;
+              &lt;Row style={{width:'50%',alignItems:'center',justifyContent:'space-around',marginTop:10,marginBottom:10}}&gt;
+              {/* &lt;ImageBackground source={require('../../../assets/images/all.png')} style={{ width: 31, height: 31,  }}&gt;
+              &lt;Text&gt;All
+                &lt;/Text&gt;
+                &lt;/ImageBackground&gt; */}
+                &lt;Image style={{ maxWidth: '90%', maxHeight: '100%' }} source={require('../../../assets/images/all1.png')} /&gt;
+              {/* &lt;Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy1.png')} /&gt;
+              &lt;Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile2.png')} /&gt;
+              &lt;Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh1.png')} /&gt; */}
+              &lt;Linericon name="happy" size={29} color="#D1D3D4"/&gt;
+              &lt;Linericon name="smile" size={29} color="#D1D3D4"/&gt;
+              &lt;Linericon name="meh" size={29} color="#D1D3D4"/&gt;
+              &lt;/Row&gt;
+              &lt;/Col&gt;
+              &lt;/Row&gt;
+              &lt;/Grid&gt;
+            &lt;TouchableOpacity onPress={() =&gt; this.props.navigation.navigate('HospitalTur<span class="fstat-no" title="function not covered" >naroundT</span>ime<span class="cstat-no" title="statement not covered" >')}&gt;</span>
+              &lt;Card &gt;
+                &lt;CardItem padder  &gt;               
+                    &lt;Body style={{justifyContent: 'center',flex:2}} &gt;
+                      &lt;Text style={{ fontFamily: "avenir light",fontSize: 17, }}&gt;Hospital Turnaround Time&lt;/Text&gt;
+                    &lt;/Body&gt;                 
+                  &lt;Right style={{ width: '20%' }} &gt;
+                    {/* &lt;Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/smile1.png')} /&gt; */}
+                    &lt;Linericon name="smile" size={40} color="#F7941D"/&gt;
+                  &lt;/Right&gt;                
+                &lt;/CardItem&gt;
+              &lt;/Card&gt;
+            &lt;/TouchableOpacity&gt;
+&nbsp;
+            &lt;TouchableOpacity  onPress={() =&gt; this.props.navigation.navigate('ChuteTime'<span class="fstat-no" title="function not covered" >)}&gt;<span class="cstat-no" title="statement not covered" ></span></span>
+            &lt;Card &gt;
+              &lt;CardItem padder  &gt;               
+                  &lt;Body style={{justifyContent: 'center',flex:2}} &gt;
+                    &lt;Text style={{ fontFamily: "avenir light",fontSize: 17, }}&gt;ChuteTime&lt;/Text&gt;
+                  &lt;/Body&gt;                 
+                &lt;Right style={{ width: '20%' }} &gt;
+                  {/* &lt;Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh.png')} /&gt; */}
+                  &lt;Linericon name="meh" size={40} color="#F7941D"/&gt;
+                &lt;/Right&gt;                
+              &lt;/CardItem&gt;
+            &lt;/Card&gt;
+          &lt;/TouchableOpacity&gt;
+          &lt;TouchableOpacity  onPress={() =&gt; this.props.navigation.navigate('ResponseTime<span class="fstat-no" title="function not covered" >')}&gt;<span class="cstat-no" title="statement not covered" ></span></span>
+              &lt;Card &gt;
+                &lt;CardItem padder  &gt;               
+                    &lt;Body style={{justifyContent: 'center',flex:2}} &gt;
+                      &lt;Text style={{ fontFamily: "avenir light",fontSize: 17, }}&gt;Response Time&lt;/Text&gt;
+                    &lt;/Body&gt;                 
+                  &lt;Right style={{ width: '20%' }} &gt;
+                    {/* &lt;Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/meh.png')} /&gt; */}
+                    &lt;Linericon name="meh" size={40} color="#F7941D"/&gt;
+                  &lt;/Right&gt;                
+                &lt;/CardItem&gt;
+              &lt;/Card&gt;
+            &lt;/TouchableOpacity&gt;
+            &lt;TouchableOpacity  onPress={() =&gt; this.props.navigation.navigate('OnSceneTim<span class="fstat-no" title="function not covered" >e')}&gt;<span class="cstat-no" title="statement not covered" ></span></span>
+              &lt;Card &gt;
+                &lt;CardItem padder  &gt;               
+                    &lt;Body style={{justifyContent: 'center',flex:2}} &gt;
+                      &lt;Text style={{ fontFamily: "avenir light",fontSize: 17, }}&gt;On-Scene Time&lt;/Text&gt;
+                    &lt;/Body&gt;                 
+                  &lt;Right style={{ width: '20%' }} &gt;
+                    {/* &lt;Image style={{ maxWidth: '100%', maxHeight: '100%' }} source={require('../../../assets/images/happy.png')} /&gt; */}
+                    &lt;Linericon name="happy" size={40} color="#F7941D"/&gt;
+                  &lt;/Right&gt;                
+                &lt;/CardItem&gt;
+              &lt;/Card&gt;
+            &lt;/TouchableOpacity&gt;
+          &lt;/Content&gt;
+&nbsp;
+&nbsp;
+        &lt;/Container&gt;
+      &lt;/StyleProvider&gt;
+    )
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Mar 14 2019 16:28:21 GMT+0530 (India Standard Time)
+</div>
+</div>
+<script src="..\..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\..\sorter.js"></script>
+</body>
+</html>

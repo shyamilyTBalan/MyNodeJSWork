@@ -1,0 +1,78 @@
+{
+  "name": "@nsights/mobile-app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest --verbose --coverage",
+    "test:update": "jest --verbose --coverage --updateSnapshot",
+    "test:watch": "jest --verbose --watch",
+    "coverage": "jest --verbose --coverage && open ./coverage/lcov-report/index.html",
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/**/*.js"
+    ]
+  },
+  "dependencies": {
+    "babel-preset-react-native": "^4.0.1",
+    "es6-promise": "^4.2.6",
+    "isomorphic-fetch": "^2.2.1",
+    "native-base": "^2.10.0",
+    "react": "16.6.3",
+    "react-native": "0.57.8",
+    "react-native-circular-progress": "^1.1.0",
+    "react-native-d3multiline-chart": "^1.0.18",
+    "react-native-easy-grid-view": "^0.1.1",
+    "react-native-gesture-handler": "^1.0.12",
+    "react-native-nav-tabbar": "0.0.2",
+    "react-native-navigation": "^2.7.0",
+    "react-native-progress-bar-animated": "^1.0.6",
+    "react-native-pure-chart": "0.0.24",
+    "react-native-responsive-screen": "^1.2.0",
+    "react-native-router-flux": "^4.0.6",
+    "react-native-search-filter": "^0.1.4",
+    "react-native-simple-radio-button": "^2.7.3",
+    "react-native-star-rating": "^1.1.0",
+    "react-native-svg": "^9.0.2",
+    "react-native-svg-charts": "^5.2.0",
+    "react-native-vector-icons": "^6.2.0",
+    "react-navigation": "^3.0.9",
+    "svg-path-properties": "^0.4.8",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-jest": "23.6.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "jest": "23.6.0",
+    "jest-fetch-mock": "^2.1.1",
+    "metro-react-native-babel-preset": "0.51.1",
+    "react-dom": "^16.8.3",
+    "react-test-renderer": "16.6.3",
+    "ts-jest": "^24.0.0"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!native-base)/"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "setupFiles": [
+      "./jestSetup.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "<rootDir>/native-base-theme/",
+      "<rootDir>/assets/"
+    ]
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  }
+}

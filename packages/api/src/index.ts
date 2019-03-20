@@ -1,5 +1,5 @@
 import { createServer } from "http";
-import { app } from "./app";
+import  app from "./app";
 
 const API_PORT = 4521;
 

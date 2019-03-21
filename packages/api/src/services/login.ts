@@ -1,28 +1,42 @@
-const jwt = require('jsonwebtoken');
-var util = require('util')
-const mysql = require('mysql');
-export const login = async (req, res) => {
+import { getHashedPasswordAndSalt } from "../services/authetication";
+import { createHash, createJwt } from "../utils/crypto";
 
-    const user_id = req.params.id;
-    const username = req.body.username;
-    const password = req.body.password;
+export const login = async (req, res, pool) => {
+    const login_name = req.body.login_name;
+    const login_pwd = req.body.login_pwd;
+    const password_salt = req.body.salt;
     return new Promise(function (resolve, reject) {
-        // Do async job
-       /* con.query("SELECT username,password FROM user WHERE user_id = '" + user_id + "'", function (error, results, fields) {
-            if (error) {
+        pool.query("SELECT * FROM users WHERE login_name = '" + login_name + "'", async function (error, results, fields) {
+            if (error)
                 reject(error);
-            }
             else {
-                if ((results.length > 0) && (results[0].password == password) && (results[0].username == username)) {
-                    jwt.sign({ user_id }, 'SuperSecRetKey', { expiresIn: 60 * 60 }, (err, token) => {
-                        console.log(token);
-                        resolve(token)
-                    })
+                if (results.rowCount > 0) {
+                    const hashedPassword = getHashedPasswordAndSalt({
+                        password: req.body.password,
+                        salt: password_salt
+                    });
+                    const isPasswordMatching = hashedPassword === login_pwd;
+                    if (isPasswordMatching) {
+                        const token = createJwt({ user_id: req.body.user_id });
+                        const tokenHash = createHash(token);
+                        resolve(res
+                            .status(200)
+                            .cookie("access-token-hmac", tokenHash, {
+                                secure: process.env.NODE_ENV === "production",
+                                signed: true,
+                                httpOnly: true
+                            })
+                            .json({ message: "authenticated", token })
+                        )
+                    }
+                    else
+                        resolve("password is not matching....try again")
                 }
                 else
-                    resolve("invalid username or password..try again")
+                    resolve("user not found with given  username..try again")
             }
-        })*/
-
+        })
     })
 };
+
+

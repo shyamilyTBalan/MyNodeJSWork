@@ -1,25 +1,26 @@
-import {pg,Pool,Client} from "pg";
+import { Pool } from "pg"
 
-import { Transaction } from "sequelize";
-
-// TODO Move to ENV
 export const CONFIG = {
-  user: process.env.DWM_DB_USER,
-  password: process.env.DWM_DB_SECRET,
-  database: process.env.DWM_DB_SCHEMA,
-  server: process.env.DWM_DB_HOST,
-  port:process.env.DWM_API_PORT
+  user: process.env.NS_DB_USER || "postgres",
+  password: process.env.NS_DB_SECRET || "postgresql@123",
+  host: process.env.NS_DB_HOST || "192.168.0.108",
+  database: process.env.NS_DB_DB || "postgres",
+  search_path: process.env.NS_DB_SCHEMA || "nsights",
+  port: process.env.NS_API_PORT || '5433'
+
 };
 
-export const pool = new Pool(CONFIG);
-/*
-/*export const createRequest = async () => {
-  const pool = await new pg.connect(CONFIG);
-  return pool.request();
-};
-/*
-export const createTransaction = async () => {
-  const pool = await new pg.connect(CONFIG);
-  const transaction = await new pg.Transaction(pool);
-  return transaction;
-};*/
+export const getPool = async () => {
+  const pool = new Pool(CONFIG)
+  const client = await pool.connect();
+  return client;
+
+}
+
+
+
+
+
+
+
+

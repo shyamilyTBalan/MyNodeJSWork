@@ -2,9 +2,16 @@
   "name": "@nsights/app",
   "version": "0.0.1",
   "scripts": {
-    "test": "cross-env RUNNING_ENV=testing jest",
-    "build": "tsc",
-    "start": "node dist"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build-ts",
+    "build-prod": "npm run build",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "start": "nodemon -r dotenv/config  dist",
+    "start-dev": "npm run build-ts && node -r dotenv/config dist",
+    "dev": "nodemon -r dotenv/config dist/index.js",
+    "prettify": "prettier --write src/**/*.{js,ts}",
+    "precommit": "lint-staged && tsc"
   },
   "keywords": [],
   "author": "",
@@ -21,11 +28,12 @@
     "typescript": "^3.3.3333"
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.16.0",
-    "pg": "^7.9.0",
-    "sequelize": "^5.1.0"
+    "nodemon": "^1.18.10",
+    "pg": "^7.9.0"
+  
   },
   "jest": {
     "transform": {

@@ -3,7 +3,7 @@ export const generateInsertSql = (
   table: string,
   rows: { [key: string]: any } | Array<{ [key: string]: any }>
 ) => {
-  const concatenatedRows = [].concat(rows);
+  const concatenatedRows = [].concat(<any>rows);
   const columns = Object.keys(concatenatedRows[0]);
   const values = concatenatedRows
     .map(row => {

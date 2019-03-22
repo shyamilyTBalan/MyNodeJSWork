@@ -1,3 +1,4 @@
+
 import { randomBytes, pbkdf2 } from "crypto";
 
 export const getHashedPasswordAndSalt = ({
@@ -13,36 +14,9 @@ export const getHashedPasswordAndSalt = ({
       if (error) {
         return reject(error);
       }
-      resolve;
-      resolve({ hashedPassword: hashedPasword.toString("hex"), salt });
+      resolve({ hashedPassword: hashedPasword.toString("hex"), salt: salt || '' })
     });
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

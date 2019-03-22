@@ -1,15 +1,15 @@
 
 import { getPool } from "../services/db";
-export const getAllUsers = async (req, res, pool) => {
+
+export const getAllUsers = async (req, res) => {
+     const pool = await getPool();
      const Allusers = await pool.query("select * from users");
-     console.log(Allusers)
-     return Allusers;
+     return Allusers.rows;
 };
 
 export const getUserByUsername = async (login_name: string) => {
+console.log(login_name)
      const pool = await getPool();
-     const user = await pool.query("select * from users where login_name =" + login_name);
-     console.log(user)
-     return user;
-};
-
+     const recordset = await pool.query("select * from users where login_name = '"+login_name+"'");
+        return recordset.rows;
+      };

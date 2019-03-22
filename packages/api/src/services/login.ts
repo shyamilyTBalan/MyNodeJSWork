@@ -1,42 +1,28 @@
 import { getHashedPasswordAndSalt } from "../services/authetication";
 import { createHash, createJwt } from "../utils/crypto";
+import { getUserByUsername } from "./getAllUser";
+import { resolve } from "url";
 
 export const login = async (req, res, pool) => {
     const login_name = req.body.login_name;
-    const login_pwd = req.body.login_pwd;
-    const password_salt = req.body.salt;
-    return new Promise(function (resolve, reject) {
-        pool.query("SELECT * FROM users WHERE login_name = '" + login_name + "'", async function (error, results, fields) {
-            if (error)
-                reject(error);
-            else {
-                if (results.rowCount > 0) {
-                    const hashedPassword = getHashedPasswordAndSalt({
-                        password: req.body.password,
+    const login_password = req.body.login_pwd;
+
+          const user = await getUserByUsername(login_name)
+          const [{password_salt,login_pwd}]=user;
+                    const hashedPasswordandsalt = await getHashedPasswordAndSalt({
+                        password: login_password,
                         salt: password_salt
                     });
+                    const {hashedPassword} = hashedPasswordandsalt;
                     const isPasswordMatching = hashedPassword === login_pwd;
                     if (isPasswordMatching) {
                         const token = createJwt({ user_id: req.body.user_id });
                         const tokenHash = createHash(token);
-                        resolve(res
-                            .status(200)
-                            .cookie("access-token-hmac", tokenHash, {
-                                secure: process.env.NODE_ENV === "production",
-                                signed: true,
-                                httpOnly: true
-                            })
-                            .json({ message: "authenticated", token })
-                        )
+                       return tokenHash;
                     }
                     else
-                        resolve("password is not matching....try again")
-                }
-                else
-                    resolve("user not found with given  username..try again")
-            }
-        })
-    })
+                      return "password not matching"
+                      
 };
 
 

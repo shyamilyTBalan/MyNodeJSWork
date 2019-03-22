@@ -12,9 +12,9 @@ export const signup = async (fields: object): Promise<Object> => {
     login_pwd: hashedPassword,
     password_salt: password_salt
   });
-  const userInsertString = await generateInsertSql("[users]", fields);
+  const userInsertString = generateInsertSql("users", fields);
   const pool = await getPool();
-  const { recordset: [user] } = await pool.query(userInsertString);
-  return user;
+  const recordset = await pool.query(userInsertString);
+  return "sign up successfully";
 };
 

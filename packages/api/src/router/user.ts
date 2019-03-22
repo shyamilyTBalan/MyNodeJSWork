@@ -21,8 +21,8 @@ router.post("/login", async (req: Request, res: Response) => {
 
 //getAllUsers
 router.get("/", async (req: Request, res: Response) => {
-  const pool = await getPool();
-  const AllUsers = await getAllUsers(req, res, pool);
+  //const pool = await getPool();
+  const AllUsers = await getAllUsers(req, res);
   res.status(200).json(AllUsers)
 })
 

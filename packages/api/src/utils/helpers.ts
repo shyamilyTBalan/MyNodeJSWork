@@ -16,7 +16,7 @@ export const generateInsertSql = (
     })
     .join(",");
 
-  return `INSERT INTO ${table}(${columns}) OUTPUT INSERTED.* values${values}`.replace(
+  return `INSERT INTO ${table}(${columns}) values${values}`.replace(
     /'null'/g,
     "null"
   );

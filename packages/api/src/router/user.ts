@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import { login } from "../services/login";
-import { signup } from "../services/register_user";
+import { signup } from "../services/_authentication_";
 import { getAllUsers } from "../services/user";
 const router = Router({ mergeParams: true });
 
@@ -12,8 +12,13 @@ router.post("/signup", async (req: Request, res: Response) => {
 
 //user login
 router.post("/login", async (req: Request, res: Response) => {
-  const signIn = await login(req.body);
-  res.status(200).json(signIn)
+  try {
+    const signIn = await login(req.body);
+    res.status(200).json(signIn)
+  }
+  catch (error) {
+    res.status(201).json("Password Is Not Matching...Please Try Again..")
+  }
 })
 
 //getAllUsers

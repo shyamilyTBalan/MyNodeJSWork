@@ -14,7 +14,7 @@ export const getHashedPasswordAndSalt = ({
       if (error) {
         return reject(error);
       }
-      resolve({ hashedPassword: hashedPasword.toString("hex"), salt: salt || '' })
+      resolve({ hashedPassword: hashedPasword.toString("hex"), salt: salt as string })
     });
   });
 

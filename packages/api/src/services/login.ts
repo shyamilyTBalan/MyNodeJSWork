@@ -1,24 +1,25 @@
 import { getHashedPasswordAndSalt } from "../services/authetication";
 import { createHash, createJwt } from "../utils/crypto";
-import { getUserByUsername } from "./user";
+import { getUserByUsername, getUserIdByUsername } from "./user";
 
-export const login = async (fields: { login_name: string, login_pwd: string, user_id: string }) => {
-  const { login_name } = fields;
-  const user = await getUserByUsername(login_name)
-  const [{ password_salt, login_pwd }] = user;
-  const hashedPasswordandsalt = await getHashedPasswordAndSalt({
-    password: fields.login_pwd,
-    salt: password_salt
+export const login = async (fields: { login_name: string, login_pwd: string }) => {
+  const { login_name: username, login_pwd: enteredPassword } = fields
+  const user = await getUserByUsername(username)
+  const [{ password_salt: salt, login_pwd: retreivedPassword }] = user
+  const hashedPasswordAndSalt = await getHashedPasswordAndSalt({
+    password: enteredPassword,
+    salt: salt
   });
-  const { hashedPassword } = hashedPasswordandsalt;
-  const isPasswordMatching = hashedPassword === login_pwd;
+  const { hashedPassword } = hashedPasswordAndSalt;
+  const isPasswordMatching = hashedPassword === retreivedPassword
   if (isPasswordMatching) {
-    const token = createJwt({ user_id: fields.user_id });
+    const user_Id = await getUserIdByUsername(username)
+    const token = createJwt({ user_id: user_Id })
     const tokenHash = createHash(token);
     return tokenHash;
   }
   else {
-    return "password not matching"
+    throw Error;
   }
 
 };
